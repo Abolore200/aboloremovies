@@ -1,4 +1,5 @@
 const api = new API()
+const ui = new UI()
 
 //
 const nav = document.querySelector('.navbar')
@@ -7,31 +8,46 @@ const list = Array.from(document.querySelectorAll('.category ul li a'))
 //
 window.addEventListener('scroll', () => {
     if(document.documentElement.scrollTop > 50){
-        api.addActiveClass(nav,span,list)
+        ui.addActiveClass(nav,span,list)
     } else {
-        api.removeActiveClass(nav,span,list)
+        ui.removeActiveClass(nav,span,list)
     }
 })
-
 //
-const movieGenre = document.querySelector('.movie-genre p span')
+const movieSlideshow = document.querySelector('.movie-slideshow')
 //
-// if(window){
-//     window.addEventListener('DOMContentLoaded', () => {
-//         api.getMovie()
-//         .then(genres => {
-//             const moviesGenres = genres.apiMovie.genres
+if(window){
+    window.addEventListener('DOMContentLoaded', () => {
+        //
+        api.popularMovies()
+        .then(genres => {
+            const popularmovie = genres.apiMovie.results
+            //
+            let html = ""
+            for(let i = 0; i < (popularmovie.length - 16); i++){
+                html += `
+                    <figure class="img-slide slides">
+                        <a href="#">
+                            <img src="https://image.tmdb.org/t/p/w500/${popularmovie[i].poster_path !== null ? popularmovie[i].poster_path : popularmovie[i].backdrop_path}" alt="${popularmovie[i].title !== null ? popularmovie[i].title : popularmovie[i].original_title}"/>
+                        </a>
+                        <figcaption>
+                            <a href="#">
+                                <p> ${ui.titleLength(popularmovie[i].title)} </p>
+                            </a>
+                            <div class="year-ratings">
+                                <p> ${popularmovie[i].release_date.substring(0,4)} </p>
+                                <p> ${popularmovie[i].vote_average !== null ? popularmovie[i].vote_average : 'NR'} </p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                `;
+            }
+            movieSlideshow.innerHTML = html
+            //
+            // const slides = document.getElementsByClassName("img-slide")
+            // console.log(slides);
+            // ui.movieSlides(slides);
 
-//             //
-//             let span = ""
-//             moviesGenres.forEach(genreID => {
-//                 span += `${genreID.name}, `
-
-//                 console.log(genreID);
-//             })
-//             movieGenre.innerHTML = span
-
-//             // console.log(genres);
-//         })
-//     })
-// }
+        })
+    })
+}
