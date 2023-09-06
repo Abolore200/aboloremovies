@@ -55,7 +55,7 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .movie-slideshow .img-slide figcaption{text-align:start;margin-top:10px;}
 .movie-slideshow .img-slide figcaption :is(p, :not(.year-ratings)) p{font-family:var(--open-sans);color:var(--yellow);font-weight:var(--wgt600);font-size:1.05rem;}
 .year-ratings{display:flex;align-items:center;justify-content:space-between;margin-top:10px;}
-.year-ratings p{font-family:var(--inter);color:var(--white);border:2.5px solid var(--yellow);padding:3px 5px;}
+.year-ratings p{font-family:var(--inter);color:var(--white);border:2.5px solid var(--yellow);padding:1px 5px;font-size:0.9rem;}
 .main{background-color:var(--blue);padding:30px 0px;width:100%;}
 .main .upcoming{width:95%;margin:0 auto;padding-top:100px;}
 .upcoming-header{display:flex;justify-content:space-between;}
@@ -67,8 +67,9 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .see-more-btn a:hover i{animation:move-arrow .5s forwards ease-out;position:relative;}
 @keyframes move-arrow{from{left:0px;opacity:0;}to{left:4px;opacity:1;}}
 .upcoming-movies{margin:50px 0;}
-.upcoming-movies{display:flex;align-items:center;justify-content:space-between;padding-bottom:100px;}
+.upcoming-movies{display:flex;justify-content:space-between;padding-bottom:100px;}
 .upcoming-movies .img-slide{width:calc(100% / 5);padding:0px 10px;margin:0;min-width:calc(100% / 5);}
+.upcoming-movies .img-slide{display:flex;flex-direction:column;justify-content:space-between;}
 .upcoming-movies .img-slide img{width:100%;height:100%;}
 .upcoming-movies .img-slide figcaption{text-align:start;margin-top:10px;}
 .upcoming-movies .img-slide figcaption :is(p, :not(.year-ratings)) p{font-family:var(--open-sans);color:var(--yellow);font-weight:var(--wgt600);font-size:1.05rem;}
@@ -78,8 +79,9 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .img-hover,.img-slide{border-radius:5px;}
 .img-hover{overflow:hidden;width:100%;height:350px}
 .img-hover img{transition:transform .5s;object-fit:cover;}
-.img-hover:hover img{transform:scale(1.5);}
+.img-hover:hover img{transform:scale(1.1);}
 .movie-slideshow::-webkit-scrollbar{height:5px;}
 .movie-slideshow::-webkit-scrollbar-thumb{background-color:var(--yellow);border-radius:10px;}
 .movie-slideshow::-webkit-scrollbar-track{background-color:transparent;border-radius:10px;}
 /* .movie-slideshow::-webkit-scrollbar-thumb:hover{} */
+.hide{display:none;}

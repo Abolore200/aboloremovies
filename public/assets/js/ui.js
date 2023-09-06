@@ -56,11 +56,17 @@ class UI{
                     </div>
                     <figcaption>
                         <a href="#">
-                            <p> ${this.titleLength(results[i].title)} </p>
+                            <p class="hide"> ${results[i].title} </p>
+                            <p> ${(results[i].title)} </p>
                         </a>
                         <div class="year-ratings">
                             <p class="date"> ${results[i].release_date} </p>
                             <p> ${results[i].vote_average !== null ? results[i].vote_average : 'NR'} </p>
+                        </div>
+                        <div class="hide">
+                            <p class="overview"> ${results[i].overview} </p>
+                            <p class="id"> ${results[i].id} </p>
+                            <p class="language"> ${results[i].original_language} </p>
                         </div>
                     </figcaption>
                 </figure>
@@ -85,11 +91,17 @@ class UI{
                     </div>
                     <figcaption>
                         <a href="#">
-                            <p> ${(results[i].title)} </p>
+                            <p class="hide"> ${results[i].title} </p>
+                            <p> ${this.titleLength(results[i].title)} </p>
                         </a>
                         <div class="year-ratings">
                             <p class="date"> ${results[i].release_date} </p>
                             <p> ${results[i].vote_average !== null ? results[i].vote_average : 'NR'} </p>
+                        </div>
+                        <div class="hide">
+                            <p class="overview"> ${results[i].overview} </p>
+                            <p class="id"> ${results[i].id} </p>
+                            <p class="language"> ${results[i].original_language} </p>
                         </div>
                     </figcaption>
                 </figure>
@@ -98,5 +110,15 @@ class UI{
         if(allUpcomingMoviesHeader){
             allUpcomingMoviesHeader.innerHTML = allUpcomingMovies
         }
+
+        const onclick = Array.from(document.querySelectorAll('.all-upcoming-movies .img-slide'))
+        console.log(onclick);
+        onclick.forEach(all => {
+            all.addEventListener('click', e => {
+                if(e.target){
+                    console.log(all);
+                }
+            })
+        })
     }
 }
