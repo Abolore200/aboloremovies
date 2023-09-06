@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
 :root{
     --blue:#263238;
-    /* --lightblue:rgb(38, 50, 56,.8); */
+    --lightblue:rgb(38, 50, 56,.95);
     --yellow:#ffc727;
     --white:#fff;
     --inter:'Inter';
@@ -58,16 +58,28 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .year-ratings{display:flex;align-items:center;justify-content:space-between;margin-top:10px;}
 .year-ratings p{font-family:var(--inter);color:var(--white);border:2.5px solid var(--yellow);padding:3px 5px;}
 .main{background-color:var(--blue);padding:30px 0px;width:100%;}
-.main .upcoming{width:95%;margin:0 auto;}
+.main .upcoming{width:95%;margin:0 auto;padding-top:100px;}
 .upcoming-header{display:flex;justify-content:space-between;}
 .upcoming-header p{color:var(--white);font-size:2rem;font-weight:600;}
 .see-more-upcoming{display:flex;align-items:end;}
 .see-more-btn a{color:var(--yellow);font-family:var(--inter);font-size:1.1rem;transition:border-bottom .3s;}
-.see-more-btn a{display:flex;align-items:center;}
-.see-more-btn a i{display:none;transition:all .5s;}
-.see-more-btn a:hover i{display:block;}
-
-
+.see-more-btn a{display:flex;align-items:center;transition:display .5s;}
+.see-more-btn a i{opacity:0;}
+.see-more-btn a:hover i{animation:move-arrow .5s forwards ease-out;position:relative;}
+.upcoming-movies{margin:50px 0;}
+.upcoming-movies{display:flex;align-items:center;justify-content:space-between;padding-bottom:100px;}
+.upcoming-movies .img-slide{min-width:0px;}
+.img-slide:first-child{margin-left:0;}
+.img-slide:last-child{margin-right:0;}
+.upcoming-movies .img-slide :is(.date){border:none;padding:3px 0px;}
+.img-hover,.img-slide{border-radius:5px;}
+.img-hover{overflow:hidden;width:100%;height:100%;}
+.img-hover img{transition:transform .5s;}
+.img-hover:hover img{transform:scale(1.1);}
+.movie-slideshow::-webkit-scrollbar{height:5px;}
+.movie-slideshow::-webkit-scrollbar-thumb{background-color:var(--yellow);border-radius:10px;}
+.movie-slideshow::-webkit-scrollbar-track{background-color:transparent;border-radius:10px;}
+/* .movie-slideshow::-webkit-scrollbar-thumb:hover{} */
 
 
 
@@ -75,7 +87,8 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 
 /* 
 .slides{animation:fade 1.5s;}
-@keyframes fade{
-    from{opacity: .4}
-    to{opacity: 1}
-} */
+*/
+@keyframes move-arrow{
+    from{left:0px;opacity:0;}
+    to{left:4px;opacity:1;}
+}

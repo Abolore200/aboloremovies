@@ -22,14 +22,16 @@ if(window){
         api.popularMovies()
         .then(genres => {
             const popularmovie = genres.apiMovie.results
-            //
+
             let html = ""
             for(let i = 0; i < (popularmovie.length - 16); i++){
                 html += `
                     <figure class="img-slide slides">
-                        <a href="#">
-                            <img src="https://image.tmdb.org/t/p/w500/${popularmovie[i].poster_path !== null ? popularmovie[i].poster_path : popularmovie[i].backdrop_path}" alt="${popularmovie[i].title !== null ? popularmovie[i].title : popularmovie[i].original_title}"/>
-                        </a>
+                        <div class="img-hover">
+                            <a href="#">
+                                <img src="https://image.tmdb.org/t/p/w500/${popularmovie[i].poster_path !== null ? popularmovie[i].poster_path : popularmovie[i].backdrop_path}" alt="${popularmovie[i].title !== null ? popularmovie[i].title : popularmovie[i].original_title}"/>
+                            </a>
+                        </div>
                         <figcaption>
                             <a href="#">
                                 <p> ${ui.titleLength(popularmovie[i].title)} </p>
@@ -42,12 +44,23 @@ if(window){
                     </figure>
                 `;
             }
-            movieSlideshow.innerHTML = html
+            if(movieSlideshow){
+                movieSlideshow.innerHTML = html
+            }
             //
             // const slides = document.getElementsByClassName("img-slide")
             // console.log(slides);
             // ui.movieSlides(slides);
-
         })
+        //
+        api.upcomingMovies()
+        .then(upcoming => {
+            const upcomingMovies = upcoming.upcoming
+
+            ui.addUpcomingMovies(upcomingMovies)
+        })
+        // .catch(err => {
+        //     alert(err)
+        // })
     })
 }
