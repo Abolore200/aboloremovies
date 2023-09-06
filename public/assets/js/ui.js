@@ -114,11 +114,13 @@ class UI{
         const onclick = Array.from(document.querySelectorAll('.all-upcoming-movies .img-slide'))
         console.log(onclick);
         onclick.forEach(all => {
+            console.log(all.children.item(0).children.item(0).setAttribute('href', '../index.html'))
             all.addEventListener('click', e => {
                 if(e.target){
-                    console.log(all);
+                    window.location.href = '../index.html'
                 }
             })
         })
     }
+    //
 }
