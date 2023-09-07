@@ -39,7 +39,7 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .search-button a button:hover{background-color:var(--yellow);color:var(--blue);}
 .main{background-color:var(--blue);padding:30px 0px;width:100%;}
 .main .upcoming{width:95%;margin:0 auto;margin-top:100px;}
-.upcoming-header{display:flex;justify-content:space-between;margin-bottom:30px;}
+.upcoming-header{margin-bottom:30px;}
 .upcoming-header p{color:var(--white);font-size:2rem;font-weight:600;padding-left:10px;}
 .all-upcoming-movies{display:flex;flex-wrap:wrap;}
 .img-hover,.img-slide,.img-hover img{border-radius:5px;}
@@ -55,3 +55,16 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .img-hover img{transition:transform .5s;object-fit:cover;}
 .img-hover:hover img{transform:scale(1.1);}
 .hide{display:none;}
+.search-body{background-color:var(--blue);}
+/* .search-header{padding:0 calc(10px - 100%);} */
+.search-header p{padding:0;}
+.search-header p:last-child{font-size:1rem;margin-top:10px;}
+.search-input{width:calc(100% - 70%);padding:12px 8px;font-family:var(--open-sans);border:2px solid var(--yellow);}
+.search-input{background-color:transparent;color:var(--yellow);font-size:1rem;}
+.search-input::placeholder{color:var(--yellow);}
+.submit-search{margin-top:15px;}
+.submit-search button{padding:15px 40px;border:2px solid var(--yellow);background-color:var(--yellow);}
+.submit-search button{border-radius:50px;font-family:var(--inter);font-weight:var(--wgt600);}
+.search-form{margin-bottom:30px;}
+.search-form .error p{color:red;font-family:var(--inter);}
+.search-results{display:flex;flex-wrap:wrap;}

@@ -48,9 +48,6 @@ if(window){
                 movieSlideshow.innerHTML = html
             }
             //
-            // const slides = document.getElementsByClassName("img-slide")
-            // console.log(slides);
-            // ui.movieSlides(slides);
         })
         //
         api.upcomingMovies()
@@ -62,5 +59,35 @@ if(window){
         // .catch(err => {
         //     alert(err)
         // })
+
+        const form = document.querySelector('.search-form')
+
+        if(form){
+            form.addEventListener('submit', e => {
+                e.preventDefault()
+                
+                //search input
+                const search = document.querySelector('.search-input').value
+
+                //if search input is empty
+                if(search === ''){
+                    //
+                    ui.displayMessage(form, 'form is empty')
+
+                    //
+                } else {
+                    api.searchMovies(search)
+                    .then(movies => {
+                        // console.log(movies);
+                        //
+                        if(movies.searchedMovies.results.length === 0){
+                            ui.displayMessage(form, 'details not found, be more specific')
+                        } else {
+                            ui.displaySearchMovies(movies.searchedMovies.results)
+                        }
+                    })
+                }
+            })
+        }
     })
 }

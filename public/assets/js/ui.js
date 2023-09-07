@@ -23,15 +23,25 @@ class UI{
         })
     }
     //
-    titleLength(title){
+    titleLength(title, name){
         let title_length;
         if(title.length > 30){
             title_length = `${title.substring(0,25)}...`
         } else if(title.length > 20){
             title_length = `${title.substring(0,20)}...`
+        } else if(!title){
+            title_length = `${name.substring(0,20)}...`
         } else {
             title_length = title
         } return title_length
+    }
+    releaseDate(date){
+        let noDate = ""
+        if(date === "" || date === undefined){
+            noDate += `no date`
+        } else {
+            noDate = date
+        } return noDate
     }
     //
     addUpcomingMovies(upcomingMovies){
@@ -40,8 +50,9 @@ class UI{
         //upcoming-movies
         const upcomingMoviesHeader = document.querySelector('.upcoming-movies')
 
-        //upcoming-moviesall
+        //upcoming-movies-all
         const allUpcomingMoviesHeader = document.querySelector('.all-upcoming-movies')
+
         //
         let movies = ""
 
@@ -77,7 +88,6 @@ class UI{
             upcomingMoviesHeader.innerHTML = movies
         }
 
-
         //
         let allUpcomingMovies = ""
         //array of all upcoming movies
@@ -110,17 +120,67 @@ class UI{
         if(allUpcomingMoviesHeader){
             allUpcomingMoviesHeader.innerHTML = allUpcomingMovies
         }
-
-        const onclick = Array.from(document.querySelectorAll('.all-upcoming-movies .img-slide'))
-        console.log(onclick);
-        onclick.forEach(all => {
-            console.log(all.children.item(0).children.item(0).setAttribute('href', '../index.html'))
-            all.addEventListener('click', e => {
-                if(e.target){
-                    window.location.href = '../index.html'
-                }
-            })
-        })
     }
     //
+    displayMessage(form, message){
+        const error = document.createElement('div')
+        error.classList.add('error')
+        error.innerHTML = `<p> ${message}</p>`
+        //
+        const searchModal = document.querySelector('.search-modal')
+
+        form.insertBefore(error, searchModal)
+
+        //remove error after 2 seconds
+        setTimeout(() => {
+            error.remove()
+        },2000)
+    }
+    //
+
+    displaySearchMovies(movies){
+        console.log(movies);
+        //
+        const searchResult = document.querySelector('.search-results')
+
+        let searchMovies = ""
+        for(let i = 0; i < movies.length; i++){
+
+            // if(movies[i].title == null || movies[i].title === undefined){
+
+            //     //
+            //     const form = document.querySelector('.search-form')
+
+            //     this.displayMessage(form, 'not found')
+            // }
+            console.log(movies[i]);
+            searchMovies += `
+                <figure class="img-slide slides">
+                    <div class="img-hover">
+                        <a href="#">
+                            <img src="https://image.tmdb.org/t/p/w500/${movies[i].poster_path !== null ? movies[i].poster_path : movies[i].backdrop_path}" alt="${movies[i].title !== null ? movies[i].title : movies[i].original_title}"/>
+                        </a>
+                    </div>
+                    <figcaption>
+                        <a href="#">
+                            <p class="hide"> ${movies[i].title} </p>
+                            <p> ${(!movies[i].title ? movies[i].name : movies[i].title)} </p>
+                        </a>
+                        <div class="year-ratings">
+                            <p class="date"> ${this.releaseDate(movies[i].release_date)} </p>
+                            <p> ${movies[i].vote_average !== null ? movies[i].vote_average : 'NR'} </p>
+                        </div>
+                        <div class="hide">
+                            <p class="overview"> ${movies[i].overview} </p>
+                            <p class="id"> ${movies[i].id} </p>
+                            <p class="language"> ${movies[i].original_language} </p>
+                        </div>
+                    </figcaption>
+                </figure>
+            `
+        }
+        if(searchResult){
+            searchResult.innerHTML = searchMovies
+        }
+    }
 }
