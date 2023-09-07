@@ -68,6 +68,8 @@ if(window){
                 
                 //search input
                 const search = document.querySelector('.search-input').value
+                //
+                const searchs = document.querySelector('.search-input')
 
                 //if search input is empty
                 if(search === ''){
@@ -78,7 +80,7 @@ if(window){
                 } else {
                     api.searchMovies(search)
                     .then(movies => {
-                        // console.log(movies);
+                        console.log(movies);
                         //
                         if(movies.searchedMovies.results.length === 0){
                             ui.displayMessage(form, 'details not found, be more specific')
@@ -86,6 +88,8 @@ if(window){
                             ui.displaySearchMovies(movies.searchedMovies.results)
                         }
                     })
+                    
+                    // form.reset()
                 }
             })
         }

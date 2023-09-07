@@ -102,7 +102,7 @@ class UI{
                     <figcaption>
                         <a href="#">
                             <p class="hide"> ${results[i].title} </p>
-                            <p> ${this.titleLength(results[i].title)} </p>
+                            <p> ${(results[i].title)} </p>
                         </a>
                         <div class="year-ratings">
                             <p class="date"> ${results[i].release_date} </p>
@@ -139,21 +139,12 @@ class UI{
     //
 
     displaySearchMovies(movies){
-        console.log(movies);
         //
         const searchResult = document.querySelector('.search-results')
 
+        //
         let searchMovies = ""
         for(let i = 0; i < movies.length; i++){
-
-            // if(movies[i].title == null || movies[i].title === undefined){
-
-            //     //
-            //     const form = document.querySelector('.search-form')
-
-            //     this.displayMessage(form, 'not found')
-            // }
-            console.log(movies[i]);
             searchMovies += `
                 <figure class="img-slide slides">
                     <div class="img-hover">

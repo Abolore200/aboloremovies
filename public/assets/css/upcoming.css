@@ -44,19 +44,20 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .all-upcoming-movies{display:flex;flex-wrap:wrap;}
 .img-hover,.img-slide,.img-hover img{border-radius:5px;}
 .img-slide{width:calc(100% / 5);padding:0px 10px;margin-bottom:40px;height:100%;}
+.img-slide{min-height:450px;display:flex;flex-direction:column;justify-content:space-between;}
 .img-hover{width:100%;height:350px;}
 .img-hover img{width:100%;height:100%;}
 .img-slide figcaption{text-align:start;margin-top:10px;}
 .img-slide figcaption :is(p, :not(.year-ratings)) p{font-family:var(--open-sans);color:var(--yellow);font-weight:var(--wgt600);font-size:1.05rem;}
 .year-ratings{display:flex;align-items:center;justify-content:space-between;margin-top:10px;}
 .year-ratings p{font-family:var(--inter);color:var(--white);border:2.5px solid var(--yellow);padding:1px 5px;font-size:0.9rem;}
-.all-upcoming-movies .img-slide :is(.date){border:none;padding:3px 0px;}
+.all-upcoming-movies .img-slide :is(.date),.search-results .img-slide :is(.date){border:none;padding:3px 0px;}
 .img-hover{overflow:hidden;width:100%;height:350px}
 .img-hover img{transition:transform .5s;object-fit:cover;}
 .img-hover:hover img{transform:scale(1.1);}
 .hide{display:none;}
+
 .search-body{background-color:var(--blue);}
-/* .search-header{padding:0 calc(10px - 100%);} */
 .search-header p{padding:0;}
 .search-header p:last-child{font-size:1rem;margin-top:10px;}
 .search-input{width:calc(100% - 70%);padding:12px 8px;font-family:var(--open-sans);border:2px solid var(--yellow);}
