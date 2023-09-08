@@ -18,12 +18,15 @@ const movieSlideshow = document.querySelector('.movie-slideshow')
 //
 if(window){
     window.addEventListener('load', () => {
-        //
+        
+        // function to fetch the movies from the api
         api.popularMovies()
         .then(genres => {
             const popularmovie = genres.apiMovie.results
 
             let html = ""
+
+            //loop the available movies
             for(let i = 0; i < (popularmovie.length - 16); i++){
                 html += `
                     <figure class="img-slide slides">
@@ -44,12 +47,15 @@ if(window){
                     </figure>
                 `;
             }
+
+            //insert the fetched movies into the <movieSlideShow>
             if(movieSlideshow){
                 movieSlideshow.innerHTML = html
             }
             //
         })
-        //
+
+        // function to fetch the movies from the api
         api.upcomingMovies()
         .then(upcoming => {
             const upcomingMovies = upcoming.upcoming
@@ -61,30 +67,42 @@ if(window){
         // })
 
         const form = document.querySelector('.search-form')
-
         if(form){
+            //if the submit is clicked, throw a funtion()
             form.addEventListener('submit', e => {
                 e.preventDefault()
                 
                 //search input
                 const search = document.querySelector('.search-input').value
-                //
-                const searchs = document.querySelector('.search-input')
-
+                
                 //if search input is empty
                 if(search === ''){
-                    //
+
+                    //display a message showing 'form is empty'
                     ui.displayMessage(form, 'form is empty')
 
                     //
                 } else {
+                    //add loader to the page before it shows the result
+                    const searchResult = document.querySelector('.search-results')
+
+                    const loader = '<div class="loader"></div>'
+                    if(searchResult){
+                        searchResult.innerHTML = loader
+                    }
+        
+                    // function to fetch the movies from the api
                     api.searchMovies(search)
+
+                    //callback the fetch api
                     .then(movies => {
-                        console.log(movies);
-                        //
+                        console.log(movies)
+
+                        //if the movie cannot be found or is not available, display 'not found message'
                         if(movies.searchedMovies.results.length === 0){
                             ui.displayMessage(form, 'details not found, be more specific')
                         } else {
+                            //if the movie is available, display the movie
                             ui.displaySearchMovies(movies.searchedMovies.results)
                         }
                     })

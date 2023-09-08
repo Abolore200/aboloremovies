@@ -1,5 +1,5 @@
 class API{
-    //popular movies
+    //fetch api for popular movies
     async popularMovies(){
         const options = {
             method: 'GET',
@@ -12,7 +12,8 @@ class API{
         const apiMovie = await response.json()
         return {apiMovie}
     }
-    //upcoming movies
+
+    //fetch api for upcoming movies
     async upcomingMovies(){
         const options = {
             method: 'GET',
@@ -25,7 +26,8 @@ class API{
         const upcoming = await response.json()
         return {upcoming}
     }
-    //search movies
+    
+    //fetch api for search movies
     async searchMovies(search){
         const options = {
             method: 'GET',

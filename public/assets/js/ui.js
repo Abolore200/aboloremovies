@@ -22,47 +22,69 @@ class UI{
             active.classList.remove('active')
         })
     }
+
     //
     titleLength(title, name){
         let title_length;
+        //throw a function if the title length of the movie is more than 30
         if(title.length > 30){
             title_length = `${title.substring(0,25)}...`
-        } else if(title.length > 20){
+        } 
+        //throw a function if the title length of the movie is more than 20
+        else if(title.length > 20){
             title_length = `${title.substring(0,20)}...`
-        } else if(!title){
+        } 
+        //if title is not defined, replace it with name
+        else if(!title){
             title_length = `${name.substring(0,20)}...`
-        } else {
+        } 
+        //throw a function if the title length of the movie is less than 30
+        else {
             title_length = title
         } return title_length
     }
+
     //
     rating(movies){
         let noRate;
+        //if vote_average = 0, return 0
         if(movies.vote_average || movies.vote_average === 0){
             noRate = movies.vote_average
-        } else if(!movies.vote_average) {
+        } 
+        //if vote_average is not defined, return media_type
+        else if(!movies.vote_average) {
             noRate = movies.media_type
         } return noRate
     }
     //
     releaseDate(date){
         let noDate;
+        //if known_for_department is defined, return known_for_department
         if(date.known_for_department){
             noDate = date.known_for_department
-        } else if(date.release_date === "" || date.release_date === undefined){
+        } 
+        //if release_date is empty or undefined, return 'no date'
+        else if(date.release_date === "" || date.release_date === undefined){
             noDate = 'no date'
-        }  else {
+        } 
+        //if date is defined, return date
+        else {
             noDate = date.release_date
         } return noDate
     }
     //
     imgPoster(image){
         let img;
+        //if [poster_path, backdrop_path] is not defined, return profile_path
         if(!image.poster_path && !image.backdrop_path){
             img = image.profile_path
-        } else if(image.poster_path !== null){
+        } 
+        //if poster_path is defined, return poster_path
+        else if(image.poster_path !== null){
             img = image.poster_path
-        } else {
+        } 
+        //if backdrop_path is defined, return backdrop_path
+        else {
             img = image.backdrop_path
         } return img
     }
@@ -165,6 +187,7 @@ class UI{
         //
         const searchResult = document.querySelector('.search-results')
 
+        const loader = '<div class="loader"></div>'
         //
         let searchMovies = ""
         for(let i = 0; i < movies.length; i++){
@@ -197,6 +220,7 @@ class UI{
             `
         }
         if(searchResult){
+            searchResult.innerHTML = loader
             searchResult.innerHTML = searchMovies
         }
     }
