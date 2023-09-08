@@ -56,7 +56,6 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .img-hover img{transition:transform .5s;object-fit:cover;}
 .img-hover:hover img{transform:scale(1.1);}
 .hide{display:none;}
-
 .search-body{background-color:var(--blue);}
 .search-header p{padding:0;}
 .search-header p:last-child{font-size:1rem;margin-top:10px;}
@@ -69,3 +68,5 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .search-form{margin-bottom:30px;}
 .search-form .error p{color:red;font-family:var(--inter);}
 .search-results{display:flex;flex-wrap:wrap;}
+.upcoming-body{background-color:var(--blue);}
+.search-header,.search-form{margin-left:10px;}

@@ -17,7 +17,7 @@ window.addEventListener('scroll', () => {
 const movieSlideshow = document.querySelector('.movie-slideshow')
 //
 if(window){
-    window.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('load', () => {
         //
         api.popularMovies()
         .then(genres => {

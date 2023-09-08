@@ -35,13 +35,36 @@ class UI{
             title_length = title
         } return title_length
     }
+    //
+    rating(movies){
+        let noRate;
+        if(movies.vote_average || movies.vote_average === 0){
+            noRate = movies.vote_average
+        } else if(!movies.vote_average) {
+            noRate = movies.media_type
+        } return noRate
+    }
+    //
     releaseDate(date){
-        let noDate = ""
-        if(date === "" || date === undefined){
-            noDate += `no date`
-        } else {
-            noDate = date
+        let noDate;
+        if(date.known_for_department){
+            noDate = date.known_for_department
+        } else if(date.release_date === "" || date.release_date === undefined){
+            noDate = 'no date'
+        }  else {
+            noDate = date.release_date
         } return noDate
+    }
+    //
+    imgPoster(image){
+        let img;
+        if(!image.poster_path && !image.backdrop_path){
+            img = image.profile_path
+        } else if(image.poster_path !== null){
+            img = image.poster_path
+        } else {
+            img = image.backdrop_path
+        } return img
     }
     //
     addUpcomingMovies(upcomingMovies){
@@ -149,7 +172,7 @@ class UI{
                 <figure class="img-slide slides">
                     <div class="img-hover">
                         <a href="#">
-                            <img src="https://image.tmdb.org/t/p/w500/${movies[i].poster_path !== null ? movies[i].poster_path : movies[i].backdrop_path}" alt="${movies[i].title !== null ? movies[i].title : movies[i].original_title}"/>
+                            <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(movies[i])}" alt="${movies[i].title !== null ? movies[i].name : movies[i].original_title}"/>
                         </a>
                     </div>
                     <figcaption>
@@ -158,13 +181,16 @@ class UI{
                             <p> ${(!movies[i].title ? movies[i].name : movies[i].title)} </p>
                         </a>
                         <div class="year-ratings">
-                            <p class="date"> ${this.releaseDate(movies[i].release_date)} </p>
-                            <p> ${movies[i].vote_average !== null ? movies[i].vote_average : 'NR'} </p>
+                            <p class="date"> ${this.releaseDate(movies[i])} </p>
+                            <p> ${movies[i].media_type} ${this.rating(movies[i])} </p>
                         </div>
                         <div class="hide">
                             <p class="overview"> ${movies[i].overview} </p>
                             <p class="id"> ${movies[i].id} </p>
                             <p class="language"> ${movies[i].original_language} </p>
+                        </div>
+                        <div class="hide">
+                            ${this.personMovie(movies[i])}
                         </div>
                     </figcaption>
                 </figure>
@@ -174,4 +200,42 @@ class UI{
             searchResult.innerHTML = searchMovies
         }
     }
+    //
+    personMovie(movies){
+        //
+        let film = movies.known_for
+        if(film){
+            let html = ""
+            //
+            for(let i = 0; i < film.length; i++){
+                html += `
+                    <figure class="img-slide slides">
+                        <div class="img-hover">
+                            <a href="#">
+                                <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(film[i])}" alt="${film[i].title !== null ? film[i].title : film[i].original_title}"/>
+                            </a>
+                        </div>
+                        <figcaption>
+                            <a href="#">
+                                <p class="hide"> ${film[i].title} </p>
+                                <p> ${(!film[i].title ? film[i].name : film[i].title)} </p>
+                            </a>
+                            <div class="year-ratings">
+                                <p class="date"> ${this.releaseDate(film[i])} </p>
+                                <p> ${this.rating(film[i])} </p>
+                            </div>
+                            <div class="hide">
+                                <p class="overview"> ${film[i].overview} </p>
+                                <p class="id"> ${film[i].id} </p>
+                                <p class="language"> ${film[i].original_language} </p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                `;
+            } return html
+        }
+    }
 }
+
+// movies[i].vote_average !== null ? movies[i].vote_average : 'NR', 
+// movies[i].poster_path !== null ? movies[i].poster_path : movies[i].backdrop_path
