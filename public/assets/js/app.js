@@ -2,6 +2,9 @@ const api = new API()
 const ui = new UI()
 
 //
+const topBtn = document.querySelector('.top-btn')
+
+//
 const nav = document.querySelector('.navbar')
 const span = Array.from(document.querySelectorAll('.site-name a span'))
 const list = Array.from(document.querySelectorAll('.category ul li a'))
@@ -12,6 +15,14 @@ window.addEventListener('scroll', () => {
     } else {
         ui.removeActiveClass(nav,span,list)
     }
+
+    //
+    if(document.documentElement.scrollTop > 200){
+        topBtn.classList.add('block')
+    } else {
+        topBtn.classList.remove('block')
+    }
+
 })
 
 //

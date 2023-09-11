@@ -58,7 +58,7 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .img-hover:hover img{transform:scale(1.1);}
 .hide{display:none;}
 .search-body{background-color:var(--blue);}
-.search-header p{padding:0;}
+.search-header p{padding:0;font-family:var(--inter);}
 .search-header p:last-child{font-size:1rem;margin-top:10px;}
 .search-input{width:calc(100% - 70%);padding:12px 8px;font-family:var(--open-sans);border:2px solid var(--yellow);}
 .search-input{background-color:transparent;color:var(--yellow);font-size:1rem;}
@@ -76,3 +76,14 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .loader-flex p{color:var(--yellow);margin-top:5px;font-family:var(--open-sans);}
 .loader-flex .loader{animation:loader 2s infinite ease-in-out both;}
 @keyframes loader{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+.fixed-header{position:relative;overflow:hidden;}
+.fixed-to-top{position:fixed;top:calc(100% - 15%);left:calc(100% - 8%);bottom:0;right:0;}
+.top-btn{width:55px;height:55px;border:1px solid var(--yellow);background:var(--yellow);border-radius:50%;}
+.top-btn{display:flex;justify-content:center;align-items:center;}
+.top-btn{bottom:-999px;position:relative;transition:bottom 1s ease-in-out}
+.top-btn.block{bottom:0px;transition:bottom .5s ease-in-out;}
+.top-btn{box-shadow:0px 0px 15px -2px var(--yellow);}
+.top-btn i{color:var(--blue);font-size:1.1rem;font-weight:var(--wgt600);position:relative;}
+.top-btn i{transform:rotate(-90deg);}
+.top-btn:hover i{animation:fixed-btn .5s forwards ease-in;}
+@keyframes fixed-btn{from{top:5px;}to{top:-5px;}}
