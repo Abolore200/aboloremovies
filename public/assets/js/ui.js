@@ -279,8 +279,76 @@ class UI{
             } return html
         }
     }
-}
+    //
+    displayPopularMovies(popularmovie){
+        //display 5 of popluar movies 
+        let html = ""
+        for(let i = 0; i < (popularmovie.length - 15); i++){
+            html += `
+                <figure class="img-slide slides">
+                    <div class="img-hover">
+                        <a href="#">
+                            <img src="https://image.tmdb.org/t/p/w500/${popularmovie[i].poster_path !== null ? popularmovie[i].poster_path : popularmovie[i].backdrop_path}" alt="${popularmovie[i].title !== null ? popularmovie[i].title : popularmovie[i].original_title}"/>
+                        </a>
+                    </div>
+                    <figcaption>
+                        <a href="#">
+                            <p class="hide"> ${popularmovie[i].title} </p>
+                            <p> ${(popularmovie[i].title)} </p>
+                        </a>
+                        <div class="year-ratings">
+                            <p class="date"> ${popularmovie[i].release_date} </p>
+                            <p> ${popularmovie[i].vote_average !== null ? popularmovie[i].vote_average : 'NR'} </p>
+                        </div>
+                        <div class="hide">
+                            <p class="overview"> ${popularmovie[i].overview} </p>
+                            <p class="id"> ${popularmovie[i].id} </p>
+                            <p class="language"> ${popularmovie[i].original_language} </p>
+                        </div>
+                    </figcaption>
+                </figure>
+            `;
+        }
+        //
+        const popularHeader = document.querySelector('.popular-movies')
+        if(popularHeader){
+            popularHeader.innerHTML = html
+        }
+        //
 
-// movies[i].vote_average !== null ? movies[i].vote_average : 'NR', 
-// movies[i].poster_path !== null ? movies[i].poster_path : movies[i].backdrop_path
-//film[i].title !== null ? film[i].title : film[i].original_title
+        //display all popluar mvoies 
+        let allPopluarMovies = ""
+        for(let i = 0; i < popularmovie.length; i++){
+            allPopluarMovies += `
+                <figure class="img-slide slides">
+                    <div class="img-hover">
+                        <a href="#">
+                            <img src="https://image.tmdb.org/t/p/w500/${popularmovie[i].poster_path !== null ? popularmovie[i].poster_path : popularmovie[i].backdrop_path}" alt="${popularmovie[i].title !== null ? popularmovie[i].title : popularmovie[i].original_title}"/>
+                        </a>
+                    </div>
+                    <figcaption>
+                        <a href="#">
+                            <p class="hide"> ${popularmovie[i].title} </p>
+                            <p> ${(popularmovie[i].title)} </p>
+                        </a>
+                        <div class="year-ratings">
+                            <p class="date"> ${popularmovie[i].release_date} </p>
+                            <p> ${popularmovie[i].vote_average !== null ? popularmovie[i].vote_average : 'NR'} </p>
+                        </div>
+                        <div class="hide">
+                            <p class="overview"> ${popularmovie[i].overview} </p>
+                            <p class="id"> ${popularmovie[i].id} </p>
+                            <p class="language"> ${popularmovie[i].original_language} </p>
+                        </div>
+                    </figcaption>
+                </figure>
+            `;
+        }
+        const popluar = document.querySelector('.all-popular-movies')
+        if(popluar){
+            popluar.innerHTML = allPopluarMovies
+
+            console.log(popularmovie);
+        }
+    }
+}

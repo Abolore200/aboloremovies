@@ -48,11 +48,23 @@ if(window){
                 `;
             }
 
+            //
+            // const popularHeader = document.querySelector('.popular-movies')
+            // if(popularHeader){
+                ui.displayPopularMovies(popularmovie)    
+            // }
+            // ui.displayPopularMovies(popularmovie)
+
             //insert the fetched movies into the <movieSlideShow>
             if(movieSlideshow){
                 movieSlideshow.innerHTML = html
             }
             //
+        })
+        .catch(err => {
+            if(movieSlideshow){
+                movieSlideshow.innerHTML = err
+            }
         })
 
         // function to fetch the movies from the api
@@ -63,8 +75,10 @@ if(window){
             ui.addUpcomingMovies(upcomingMovies)
         })
         // .catch(err => {
-        //     alert(err)
+        //     alert('error' + err)
         // })
+
+        // api.popular()
 
         const form = document.querySelector('.search-form')
         if(form){
@@ -114,8 +128,6 @@ if(window){
                             ui.displaySearchMovies(movies.searchedMovies.results)
                         }
                     })
-                    
-                    // form.reset()
                 }
             })
         }
