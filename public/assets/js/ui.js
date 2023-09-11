@@ -82,11 +82,27 @@ class UI{
         //if poster_path is defined, return poster_path
         else if(image.poster_path !== null){
             img = image.poster_path
-        } 
+        }
+        //
+        else if(image.poster_path === null || image.backdrop_path === null){
+            img = 'No Image Found'
+        }
         //if backdrop_path is defined, return backdrop_path
         else {
             img = image.backdrop_path
         } return img
+    }
+    
+    //
+    ImgName(film){
+        let name;
+        if(film.title) {
+            name = film.title
+        } else if(film.original_title) {
+            name = film.original_title
+        } else if(!film.title && !film.original_title){
+            name = film.name
+        }return name
     }
     //
     addUpcomingMovies(upcomingMovies){
@@ -167,7 +183,7 @@ class UI{
         }
     }
     //
-    displayMessage(form, message){
+    displayMessage(form, message, loaderFlex){
         const error = document.createElement('div')
         error.classList.add('error')
         error.innerHTML = `<p> ${message}</p>`
@@ -179,6 +195,10 @@ class UI{
         //remove error after 2 seconds
         setTimeout(() => {
             error.remove()
+            //
+            loaderFlex.remove()
+            //
+            form.reset()
         },2000)
     }
     //
@@ -187,7 +207,7 @@ class UI{
         //
         const searchResult = document.querySelector('.search-results')
 
-        const loader = '<div class="loader"></div>'
+        // const loader = '<div class="loader"></div>'
         //
         let searchMovies = ""
         for(let i = 0; i < movies.length; i++){
@@ -195,7 +215,7 @@ class UI{
                 <figure class="img-slide slides">
                     <div class="img-hover">
                         <a href="#">
-                            <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(movies[i])}" alt="${movies[i].title !== null ? movies[i].name : movies[i].original_title}"/>
+                            <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(movies[i])}" alt="${this.ImgName(movies[i])}"/>
                         </a>
                     </div>
                     <figcaption>
@@ -205,7 +225,7 @@ class UI{
                         </a>
                         <div class="year-ratings">
                             <p class="date"> ${this.releaseDate(movies[i])} </p>
-                            <p> ${movies[i].media_type} ${this.rating(movies[i])} </p>
+                            <p> ${this.rating(movies[i])} </p>
                         </div>
                         <div class="hide">
                             <p class="overview"> ${movies[i].overview} </p>
@@ -220,7 +240,7 @@ class UI{
             `
         }
         if(searchResult){
-            searchResult.innerHTML = loader
+            // searchResult.innerHTML = loader
             searchResult.innerHTML = searchMovies
         }
     }
@@ -236,7 +256,7 @@ class UI{
                     <figure class="img-slide slides">
                         <div class="img-hover">
                             <a href="#">
-                                <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(film[i])}" alt="${film[i].title !== null ? film[i].title : film[i].original_title}"/>
+                                <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(film[i])}" alt="${this.ImgName(film[i])}"/>
                             </a>
                         </div>
                         <figcaption>
@@ -263,3 +283,4 @@ class UI{
 
 // movies[i].vote_average !== null ? movies[i].vote_average : 'NR', 
 // movies[i].poster_path !== null ? movies[i].poster_path : movies[i].backdrop_path
+//film[i].title !== null ? film[i].title : film[i].original_title

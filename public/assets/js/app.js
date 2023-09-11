@@ -86,10 +86,18 @@ if(window){
                     //add loader to the page before it shows the result
                     const searchResult = document.querySelector('.search-results')
 
-                    const loader = '<div class="loader"></div>'
+                    const loader = 
+                        `<div class="loader-flex">
+                            <div class="loader"></div>
+                            <p> Loading </p>
+                        </div>`;
+
                     if(searchResult){
                         searchResult.innerHTML = loader
                     }
+
+                    //
+                    const loaderFlex = document.querySelector('.loader-flex')
         
                     // function to fetch the movies from the api
                     api.searchMovies(search)
@@ -100,7 +108,7 @@ if(window){
 
                         //if the movie cannot be found or is not available, display 'not found message'
                         if(movies.searchedMovies.results.length === 0){
-                            ui.displayMessage(form, 'details not found, be more specific')
+                            ui.displayMessage(form, 'details not found, be more specific', loaderFlex)
                         } else {
                             //if the movie is available, display the movie
                             ui.displaySearchMovies(movies.searchedMovies.results)
