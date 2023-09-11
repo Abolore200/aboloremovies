@@ -13,6 +13,7 @@ window.addEventListener('scroll', () => {
         ui.removeActiveClass(nav,span,list)
     }
 })
+
 //
 const movieSlideshow = document.querySelector('.movie-slideshow')
 //
@@ -74,11 +75,13 @@ if(window){
 
             ui.addUpcomingMovies(upcomingMovies)
         })
-        // .catch(err => {
-        //     alert('error' + err)
-        // })
-
-        // api.popular()
+        
+        //Top Rated Movies
+        api.topRatedMovie()
+        .then(rated => {
+            //
+            ui.displayRatedMovies(rated.rated.results)
+        })
 
         const form = document.querySelector('.search-form')
         if(form){
@@ -118,7 +121,6 @@ if(window){
 
                     //callback the fetch api
                     .then(movies => {
-                        console.log(movies)
 
                         //if the movie cannot be found or is not available, display 'not found message'
                         if(movies.searchedMovies.results.length === 0){

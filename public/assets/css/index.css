@@ -57,26 +57,27 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .year-ratings{display:flex;align-items:center;justify-content:space-between;margin-top:10px;}
 .year-ratings p{font-family:var(--inter);color:var(--white);border:2.5px solid var(--yellow);padding:1px 5px;font-size:0.9rem;}
 .main{background-color:var(--blue);padding:30px 0px;width:100%;}
-.main .upcoming,.main .popular{width:95%;margin:0 auto;padding-top:100px;}
-.upcoming-header,.popular-header{display:flex;justify-content:space-between;}
-.upcoming-header p,.popular-header p{color:var(--white);font-size:2rem;font-weight:600;}
-.see-more-upcoming,.see-more-popular{display:flex;align-items:end;}
+.main .upcoming,.main .popular,.main .rated{width:95%;margin:0 auto;padding-top:100px;}
+.upcoming-header,.popular-header,.rated-header{display:flex;justify-content:space-between;}
+.upcoming-header p,.popular-header p,.rated-header p{color:var(--white);font-size:2rem;font-weight:600;}
+.see-more-upcoming,.see-more-popular,.see-more-rated{display:flex;align-items:end;}
 .see-more-btn a{color:var(--yellow);font-family:var(--inter);font-size:1.1rem;transition:border-bottom .3s;}
 .see-more-btn a{display:flex;align-items:center;transition:display .5s;}
 .see-more-btn a i{opacity:0;}
 .see-more-btn a:hover i{animation:move-arrow .5s forwards ease-out;position:relative;}
 @keyframes move-arrow{from{left:0px;opacity:0;}to{left:4px;opacity:1;}}
-.upcoming-movies,.popular-movies{margin:50px 0;}
-.upcoming-movies,.popular-movies{display:flex;justify-content:space-between;padding-bottom:100px;}
-.upcoming-movies .img-slide,.popular-movies .img-slide{width:calc(100% / 5);padding:0px 10px;margin:0;min-width:calc(100% / 5);}
-.upcoming-movies .img-slide,.popular-movies .img-slide{display:flex;flex-direction:column;justify-content:space-between;}
-.upcoming-movies .img-slide img,.popular-movies .img-slide img{width:100%;height:100%;}
-.upcoming-movies .img-slide figcaption,.popular-movies .img-slide figcaption{text-align:start;margin-top:10px;}
+.upcoming-movies,.popular-movies,.rated-movies{margin:50px 0;}
+.upcoming-movies,.popular-movies,.rated-movies{display:flex;justify-content:space-between;padding-bottom:100px;}
+.upcoming-movies .img-slide,.popular-movies .img-slide,.rated-movies .img-slide{width:calc(100% / 5);padding:0px 10px;margin:0;min-width:calc(100% / 5);}
+.upcoming-movies .img-slide,.popular-movies .img-slide,.rated-movies .img-slide{display:flex;flex-direction:column;justify-content:space-between;}
+.upcoming-movies .img-slide img,.popular-movies .img-slide img,.rated-movies .img-slide img{width:100%;height:100%;}
+.upcoming-movies .img-slide figcaption,.popular-movies .img-slide figcaption,.rated-movies .img-slide figcaption{text-align:start;margin-top:10px;}
 .upcoming-movies .img-slide figcaption :is(p, :not(.year-ratings)) p,
-.popular-movies .img-slide figcaption :is(p, :not(.year-ratings)) p{font-family:var(--open-sans);color:var(--yellow);font-weight:var(--wgt600);font-size:1.05rem;}
+.popular-movies .img-slide figcaption :is(p, :not(.year-ratings)) p,
+.rated-movies .img-slide figcaption :is(p, :not(.year-ratings)) p{font-family:var(--open-sans);color:var(--yellow);font-weight:var(--wgt600);font-size:1.05rem;}
 .img-slide:first-child{padding-left:0;}
 .img-slide:last-child{padding-right:0;}
-.upcoming-movies .img-slide :is(.date),.popular-movies .img-slide :is(.date){border:none;padding:3px 0px;}
+.upcoming-movies .img-slide :is(.date),.popular-movies .img-slide :is(.date),.rated-movies .img-slide :is(.date){border:none;padding:3px 0px;}
 .img-hover,.img-slide{border-radius:5px;}
 .img-hover{overflow:hidden;width:100%;height:350px}
 .img-hover img{transition:transform .5s;object-fit:cover;}
@@ -86,5 +87,7 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .movie-slideshow::-webkit-scrollbar-track{background-color:transparent;border-radius:10px;}
 /* .movie-slideshow::-webkit-scrollbar-thumb:hover{} */
 .hide{display:none;}
-.main .popular{padding-top:0;}
-.upcoming-movies{padding-bottom:0px;}
+.main .popular,.main .rated{padding-top:0px;}
+.main .popular,.main .rated,.main .upcoming{margin-bottom:80px;}
+.upcoming-movies,.popular-movies{padding-bottom:0px;}
+/* .popular-movies{margin-bottom:0px;} */

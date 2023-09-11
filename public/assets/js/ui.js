@@ -48,9 +48,13 @@ class UI{
     rating(movies){
         let noRate;
         //if vote_average = 0, return 0
-        if(movies.vote_average || movies.vote_average === 0){
+        if(movies.vote_average){
             noRate = movies.vote_average
-        } 
+        }
+        //
+        else if(movies.vote_average === 0){
+            noRate = 'NR'
+        }
         //if vote_average is not defined, return media_type
         else if(!movies.vote_average) {
             noRate = movies.media_type
@@ -207,7 +211,6 @@ class UI{
         //
         const searchResult = document.querySelector('.search-results')
 
-        // const loader = '<div class="loader"></div>'
         //
         let searchMovies = ""
         for(let i = 0; i < movies.length; i++){
@@ -242,14 +245,27 @@ class UI{
         if(searchResult){
             // searchResult.innerHTML = loader
             searchResult.innerHTML = searchMovies
+
+            //
+            const allBody = document.querySelectorAll('.img-slide a')
+            if(allBody){
+                allBody.forEach(all => {
+                    all.addEventListener('click', e => {
+                        e.preventDefault()
+
+                        console.log(e.target.parentElement.parentElement.parentElement);
+                    })
+                })
+            }
         }
     }
     //
     personMovie(movies){
         //
+        let html = ""
+        //
         let film = movies.known_for
         if(film){
-            let html = ""
             //
             for(let i = 0; i < film.length; i++){
                 html += `
@@ -276,8 +292,9 @@ class UI{
                         </figcaption>
                     </figure>
                 `;
-            } return html
+            }
         }
+        return html
     }
     //
     displayPopularMovies(popularmovie){
@@ -347,8 +364,80 @@ class UI{
         const popluar = document.querySelector('.all-popular-movies')
         if(popluar){
             popluar.innerHTML = allPopluarMovies
+        }
+    }
 
-            console.log(popularmovie);
+    //
+    displayRatedMovies(rated){
+        //
+        const ratedMovieHeader = document.querySelector('.rated-movies')
+        let html = ""
+
+        //display 5 movies of top rated movies
+        for(let i = 0; i < (rated.length - 15); i++){
+            html += `
+                <figure class="img-slide slides">
+                    <div class="img-hover">
+                        <a href="#">
+                            <img src="https://image.tmdb.org/t/p/w500/${rated[i].poster_path !== null ? rated[i].poster_path : rated[i].backdrop_path}" alt="${rated[i].title !== null ? rated[i].title : rated[i].original_title}"/>
+                        </a>
+                    </div>
+                    <figcaption>
+                        <a href="#">
+                            <p class="hide"> ${rated[i].title} </p>
+                            <p> ${(rated[i].title)} </p>
+                        </a>
+                        <div class="year-ratings">
+                            <p class="date"> ${rated[i].release_date} </p>
+                            <p> ${rated[i].vote_average !== null ? rated[i].vote_average : 'NR'} </p>
+                        </div>
+                        <div class="hide">
+                            <p class="overview"> ${rated[i].overview} </p>
+                            <p class="id"> ${rated[i].id} </p>
+                            <p class="language"> ${rated[i].original_language} </p>
+                        </div>
+                    </figcaption>
+                </figure>
+            `;
+        }
+        //
+        if(ratedMovieHeader){
+            ratedMovieHeader.innerHTML = html
+        }
+
+        //display all the movies
+        const allRatedMovieHeader = document.querySelector('.all-rated-movies')
+        let ratedMovie = ""
+
+        for(let i = 0; i < rated.length; i++){
+            ratedMovie += `
+                <figure class="img-slide slides">
+                    <div class="img-hover">
+                        <a href="#">
+                            <img src="https://image.tmdb.org/t/p/w500/${rated[i].poster_path !== null ? rated[i].poster_path : rated[i].backdrop_path}" alt="${rated[i].title !== null ? rated[i].title : rated[i].original_title}"/>
+                        </a>
+                    </div>
+                    <figcaption>
+                        <a href="#">
+                            <p class="hide"> ${rated[i].title} </p>
+                            <p> ${(rated[i].title)} </p>
+                        </a>
+                        <div class="year-ratings">
+                            <p class="date"> ${rated[i].release_date} </p>
+                            <p> ${rated[i].vote_average !== null ? rated[i].vote_average : 'NR'} </p>
+                        </div>
+                        <div class="hide">
+                            <p class="overview"> ${rated[i].overview} </p>
+                            <p class="id"> ${rated[i].id} </p>
+                            <p class="language"> ${rated[i].original_language} </p>
+                        </div>
+                    </figcaption>
+                </figure>
+            `;
+        }
+        //
+        if(allRatedMovieHeader){
+            allRatedMovieHeader.innerHTML = ratedMovie
         }
     }
 }
