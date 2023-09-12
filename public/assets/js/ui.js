@@ -247,13 +247,15 @@ class UI{
             searchResult.innerHTML = searchMovies
 
             //
-            const allBody = document.querySelectorAll('.img-slide a')
-            if(allBody){
-                allBody.forEach(all => {
-                    all.addEventListener('click', e => {
+            const movies_result = document.querySelectorAll('.img-slide a')
+            if(movies_result){
+                movies_result.forEach(result => {
+                    result.addEventListener('click', e => {
                         e.preventDefault()
 
-                        console.log(e.target.parentElement.parentElement.parentElement);
+                        const parent = e.target.parentElement.parentElement.parentElement
+
+                        this.getParentElement(parent)
                     })
                 })
             }
@@ -439,5 +441,9 @@ class UI{
         if(allRatedMovieHeader){
             allRatedMovieHeader.innerHTML = ratedMovie
         }
+    }
+    //
+    getParentElement(parent){
+        console.log(parent);
     }
 }

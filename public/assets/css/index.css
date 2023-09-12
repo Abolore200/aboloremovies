@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
 :root{
@@ -8,6 +9,7 @@
     --white:#fff;
     --inter:'Inter';
     --open-sans:'Open Sans';
+    --raleway:'Raleway';
     --wgt600:600;
 }
 *,::after,::before{padding:0;margin:0;outline:none;box-sizing:border-box;}
@@ -20,7 +22,7 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .navbar{display:flex;align-items:center;justify-content:space-between;padding:30px 20px;color:#fff;transition:background .3s ease-in-out, padding .3s ease-in-out;}
 .navbar{position:fixed;right:0;left:0;top:0px;}
 .navbar.active{padding:20px 20px;background:var(--blue);z-index:1;}
-.site-name a{font-weight:700;font-size:1.5rem;display:flex;align-items:center;}
+.site-name a{font-weight:700;font-size:1.5rem;display:flex;align-items:center;font-family:var(--raleway);}
 .site-name a span:first-child{font-size:30px;margin-right:5px;}
 .site-name a span{color:var(--yellow);transition:color .3s;}
 .site-name a span.active{color:var(--yellow);}
@@ -94,10 +96,16 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .fixed-to-top{position:fixed;top:calc(100% - 15%);left:calc(100% - 8%);bottom:0;right:0;}
 .top-btn{width:55px;height:55px;border:1px solid var(--yellow);background:var(--yellow);border-radius:50%;}
 .top-btn{display:flex;justify-content:center;align-items:center;}
-.top-btn{bottom:-999px;position:relative;transition:bottom 1s ease-in-out}
-.top-btn.block{bottom:0px;transition:bottom .5s ease-in-out;}
+.top-btn{bottom:-999px;position:relative;transition:bottom 1s ease-in}
+.top-btn.block{bottom:0px;transition:bottom .5s ease-out;}
 .top-btn{box-shadow:0px 0px 15px -2px var(--yellow);}
 .top-btn i{color:var(--blue);font-size:1.1rem;font-weight:var(--wgt600);position:relative;}
 .top-btn i{transform:rotate(-90deg);}
 .top-btn:hover i{animation:fixed-btn .5s forwards ease-in;}
 @keyframes fixed-btn{from{top:5px;}to{top:-5px;}}
+
+.loader-flex{display:flex;flex-direction:column;align-items:center;margin-top:50px;width:100%;}
+.loader-flex .loader{width:50px;height:50px;border:5px solid var(--yellow);border-radius:50%;border-right-color:var(--lightblue);}
+.loader-flex p{color:var(--yellow);margin-top:5px;font-family:var(--open-sans);}
+.loader-flex .loader{animation:loader 2s infinite ease-in-out both;}
+@keyframes loader{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}

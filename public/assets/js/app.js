@@ -34,6 +34,19 @@ if(window){
         // function to fetch the movies from the api
         api.popularMovies()
         .then(genres => {
+
+            //
+            let loader = `
+                <div class="loader-flex">
+                    <div class="loader"></div>
+                    <p> Loading </p>
+                </div>
+            `;
+            
+            if(movieSlideshow){
+                movieSlideshow.innerHTML = loader
+            }
+
             const popularmovie = genres.apiMovie.results
 
             let html = ""
@@ -114,11 +127,12 @@ if(window){
                     //add loader to the page before it shows the result
                     const searchResult = document.querySelector('.search-results')
 
-                    const loader = 
-                        `<div class="loader-flex">
+                    const loader = `
+                        <div class="loader-flex">
                             <div class="loader"></div>
                             <p> Loading </p>
-                        </div>`;
+                        </div>
+                    `;
 
                     if(searchResult){
                         searchResult.innerHTML = loader
@@ -133,6 +147,7 @@ if(window){
                     //callback the fetch api
                     .then(movies => {
 
+                        console.log(movies);
                         //if the movie cannot be found or is not available, display 'not found message'
                         if(movies.searchedMovies.results.length === 0){
                             ui.displayMessage(form, 'details not found, be more specific', loaderFlex)
