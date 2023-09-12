@@ -88,7 +88,13 @@ if(window){
         })
         .catch(err => {
             if(movieSlideshow){
-                movieSlideshow.innerHTML = `<p style="color:var(--yellow);"> ${err} </p>`
+                movieSlideshow.innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p> </div>`
+            }
+            if(document.querySelector('.upcoming-movies')){
+                document.querySelector('.upcoming-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
+            }
+            if(document.querySelector('.all-upcoming-movies')){
+                document.querySelector('.all-upcoming-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
             }
         })
 
@@ -99,12 +105,28 @@ if(window){
 
             ui.addUpcomingMovies(upcomingMovies)
         })
+        .catch(err => {
+            if(document.querySelector('.popular-movies')){
+                document.querySelector('.popular-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
+            }
+            if(document.querySelector('.all-popular-movies')){
+                document.querySelector('.all-popular-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
+            }
+        })
         
         //Top Rated Movies
         api.topRatedMovie()
         .then(rated => {
             //
             ui.displayRatedMovies(rated.rated.results)
+        })
+        .catch(err => {
+            if(document.querySelector('.rated-movies')){
+                document.querySelector('.rated-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
+            }
+            if(document.querySelector('.all-rated-movies')){
+                document.querySelector('.all-rated-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
+            }
         })
 
         const form = document.querySelector('.search-form')

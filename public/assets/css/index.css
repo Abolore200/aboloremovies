@@ -68,7 +68,7 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .see-more-btn a i{opacity:0;}
 .see-more-btn a:hover i{animation:move-arrow .5s forwards ease-out;position:relative;}
 @keyframes move-arrow{from{left:0px;opacity:0;}to{left:4px;opacity:1;}}
-.upcoming-movies,.popular-movies,.rated-movies{margin:50px 0;}
+.upcoming-movies,.popular-movies,.rated-movies{margin:50px 0;justify-content:center;}
 .upcoming-movies,.popular-movies,.rated-movies{display:flex;justify-content:space-between;padding-bottom:100px;}
 .upcoming-movies .img-slide,.popular-movies .img-slide,.rated-movies .img-slide{width:calc(100% / 5);padding:0px 10px;margin:0;min-width:calc(100% / 5);}
 .upcoming-movies .img-slide,.popular-movies .img-slide,.rated-movies .img-slide{display:flex;flex-direction:column;justify-content:space-between;}
