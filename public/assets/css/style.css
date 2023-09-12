@@ -54,8 +54,8 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .all-upcoming-movies .img-slide :is(.date),.all-popular-movies .img-slide :is(.date),
 .all-rated-movies .img-slide :is(.date),.search-results .img-slide :is(.date){border:none;padding:3px 0px;}
 .img-hover{overflow:hidden;width:100%;height:350px}
-.img-hover img{transition:transform .5s;object-fit:cover;color:var(--yellow);}
-.img-hover img[alt]{display:flex;text-align:center;font-size:2rem}
+.img-hover img{transition:transform .5s;object-fit:cover;}
+.img-hover img[alt]{display:flex;text-align:center;font-size:2rem;color:var(--yellow);}
 .img-hover:hover img{transform:scale(1.1);}
 .hide{display:none;}
 .search-body{background-color:var(--blue);}

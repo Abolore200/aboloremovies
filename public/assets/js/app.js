@@ -88,7 +88,7 @@ if(window){
         })
         .catch(err => {
             if(movieSlideshow){
-                movieSlideshow.innerHTML = err
+                movieSlideshow.innerHTML = `<p style="color:var(--yellow);"> ${err} </p>`
             }
         })
 

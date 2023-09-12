@@ -218,30 +218,33 @@ class UI{
                 <figure class="img-slide slides">
                     <div class="img-hover">
                         <a href="#">
-                            <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(movies[i])}" alt="${this.ImgName(movies[i])}"/>
+                            <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(movies[i])}" class="poster" alt="${this.ImgName(movies[i])}"/>
                         </a>
                     </div>
                     <figcaption>
                         <a href="#">
-                            <p class="hide"> ${movies[i].title} </p>
+                            <p class="hide title"> ${movies[i].title} </p>
                             <p> ${(!movies[i].title ? movies[i].name : movies[i].title)} </p>
                         </a>
                         <div class="year-ratings">
                             <p class="date"> ${this.releaseDate(movies[i])} </p>
-                            <p> ${this.rating(movies[i])} </p>
+                            <p class="rating"> ${this.rating(movies[i])} </p>
                         </div>
-                        <div class="hide">
+                        <div class="hide hidden-details">
                             <p class="overview"> ${movies[i].overview} </p>
                             <p class="id"> ${movies[i].id} </p>
                             <p class="language"> ${movies[i].original_language} </p>
                         </div>
-                        <div class="hide">
+                        <div class="hide hidden-movies">
                             ${this.personMovie(movies[i])}
                         </div>
                     </figcaption>
                 </figure>
             `
         }
+        // <div class="hide hidden-movies">
+        //
+
         if(searchResult){
             // searchResult.innerHTML = loader
             searchResult.innerHTML = searchMovies
@@ -250,12 +253,16 @@ class UI{
             const movies_result = document.querySelectorAll('.img-slide a')
             if(movies_result){
                 movies_result.forEach(result => {
+                    //
+                    result.setAttribute('href', './search/view.html')
+                    //
                     result.addEventListener('click', e => {
                         e.preventDefault()
 
                         const parent = e.target.parentElement.parentElement.parentElement
 
                         this.getParentElement(parent)
+                        
                     })
                 })
             }
@@ -264,29 +271,28 @@ class UI{
     //
     personMovie(movies){
         //
-        let html = ""
-        //
         let film = movies.known_for
         if(film){
+            let html = ""
             //
             for(let i = 0; i < film.length; i++){
                 html += `
                     <figure class="img-slide slides">
                         <div class="img-hover">
                             <a href="#">
-                                <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(film[i])}" alt="${this.ImgName(film[i])}"/>
+                                <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(film[i])}" class="poster" alt="${this.ImgName(film[i])}"/>
                             </a>
                         </div>
                         <figcaption>
                             <a href="#">
-                                <p class="hide"> ${film[i].title} </p>
+                                <p class="hide title"> ${film[i].title} </p>
                                 <p> ${(!film[i].title ? film[i].name : film[i].title)} </p>
                             </a>
                             <div class="year-ratings">
                                 <p class="date"> ${this.releaseDate(film[i])} </p>
-                                <p> ${this.rating(film[i])} </p>
+                                <p class="rating"> ${this.rating(film[i])} </p>
                             </div>
-                            <div class="hide">
+                            <div class="hide hidden-details">
                                 <p class="overview"> ${film[i].overview} </p>
                                 <p class="id"> ${film[i].id} </p>
                                 <p class="language"> ${film[i].original_language} </p>
@@ -295,8 +301,8 @@ class UI{
                     </figure>
                 `;
             }
+            return html
         }
-        return html
     }
     //
     displayPopularMovies(popularmovie){
@@ -443,7 +449,94 @@ class UI{
         }
     }
     //
+    movieOne(parent){
+        // let all
+        if(parent.querySelectorAll('.hidden-movies figure')){
+            const allMovies = parent.querySelectorAll('.hidden-movies figure')
+
+            const movieArr = Array.from(allMovies)
+
+            if(movieArr.length !== 0){
+                movieArr.forEach(all => {
+                    const getMovies = {
+                        movie_one: {
+                            poster: all.querySelector('.hidden-movies .img-slide:nth-child(1) img').src,
+                            title: all.querySelector('.hidden-movies .img-slide:nth-child(1) .title').textContent,
+                            release_date: all.querySelector('.hidden-movies .img-slide:nth-child(1) .date').textContent,
+                            rating: all.querySelector('.hidden-movies .img-slide:nth-child(1) .rating').textContent,
+                            overview: all.querySelector('.hidden-movies .img-slide:nth-child(1) .hidden-details .overview').textContent,
+                            id: all.querySelector('.hidden-movies .img-slide:nth-child(1) .hidden-details .id').textContent,
+                            language: all.querySelector('.hidden-movies .img-slide:nth-child(1) .hidden-details .language').textContent
+                        },
+                        movie_two: {
+                            poster: all.querySelector('.hidden-movies .img-slide:nth-child(2) img').src,
+                            title: all.querySelector('.hidden-movies .img-slide:nth-child(2) .title').textContent,
+                            release_date: all.querySelector('.hidden-movies .img-slide:nth-child(2) .date').textContent,
+                            rating: all.querySelector('.hidden-movies .img-slide:nth-child(2) .rating').textContent,
+                            overview: all.querySelector('.hidden-movies .img-slide:nth-child(2) .hidden-details .overview').textContent,
+                            id: all.querySelector('.hidden-movies .img-slide:nth-child(2) .hidden-details .id').textContent,
+                            language: all.querySelector('.hidden-movies .img-slide:nth-child(2) .hidden-details .language').textContent
+                        },
+                        movie_three: {
+                            poster: all.querySelector('.hidden-movies .img-slide:nth-child(3) img').src,
+                            title: all.querySelector('.hidden-movies .img-slide:nth-child(3) .title').textContent,
+                            release_date: all.querySelector('.hidden-movies .img-slide:nth-child(3) .date').textContent,
+                            rating: all.querySelector('.hidden-movies .img-slide:nth-child(3) .rating').textContent,
+                            overview: all.querySelector('.hidden-movies .img-slide:nth-child(3) .hidden-details .overview').textContent,
+                            id: all.querySelector('.hidden-movies .img-slide:nth-child(3) .hidden-details .id').textContent,
+                            language: all.querySelector('.hidden-movies .img-slide:nth-child(3) .hidden-details .language').textContent
+                        }
+                    }
+                    console.log(getMovies);
+                })
+            }
+        }
+    }
+    //
     getParentElement(parent){
-        console.log(parent);
+
+        const getMovieDetails = {
+            poster: parent.querySelector('.poster').src,
+            title: parent.querySelector('.title').textContent,
+            release_date: parent.querySelector('.date').textContent,
+            rating: parent.querySelector('.rating').textContent,
+            overview: parent.querySelector('.hidden-details .overview').textContent,
+            id: parent.querySelector('.hidden-details .id').textContent,
+            language: parent.querySelector('.hidden-details .language').textContent,
+            moviesActed: this.movieOne(parent)
+        }
+
+        // console.log(getMovieDetails);
     }
 }
+
+
+// oviesActed: {
+//     movie_one: {
+//         poster: parent.querySelector('.hidden-movies .img-slide:nth-child(1) .poster').src,
+//         title: parent.querySelector('.hidden-movies .img-slide:nth-child(1) .title').textContent,
+//         release_date: parent.querySelector('.hidden-movies .img-slide:nth-child(1) .date').textContent,
+//         rating: parent.querySelector('.hidden-movies .img-slide:nth-child(1) .rating').textContent,
+//         overview: parent.querySelector('.hidden-movies .img-slide:nth-child(1) .hidden-details .overview').textContent,
+//         id: parent.querySelector('.hidden-movies .img-slide:nth-child(1) .hidden-details .id').textContent,
+//         language: parent.querySelector('.hidden-movies .img-slide:nth-child(1) .hidden-details .language').textContent
+//     },
+//     movie_two: {
+//         poster: parent.querySelector('.hidden-movies .img-slide:nth-child(2) .poster').src,
+//         title: parent.querySelector('.hidden-movies .img-slide:nth-child(2) .title').textContent,
+//         release_date: parent.querySelector('.hidden-movies .img-slide:nth-child(2) .date').textContent,
+//         rating: parent.querySelector('.hidden-movies .img-slide:nth-child(2) .rating').textContent,
+//         overview: parent.querySelector('.hidden-movies .img-slide:nth-child(2) .hidden-details .overview').textContent,
+//         id: parent.querySelector('.hidden-movies .img-slide:nth-child(2) .hidden-details .id').textContent,
+//         language: parent.querySelector('.hidden-movies .img-slide:nth-child(2) .hidden-details .language').textContent
+//     },
+//     movie_three: {
+//         poster: parent.querySelector('.hidden-movies .img-slide:nth-child(3) .poster').src,
+//         title: parent.querySelector('.hidden-movies .img-slide:nth-child(3) .title').textContent,
+//         release_date: parent.querySelector('.hidden-movies .img-slide:nth-child(3) .date').textContent,
+//         rating: parent.querySelector('.hidden-movies .img-slide:nth-child(3) .rating').textContent,
+//         overview: parent.querySelector('.hidden-movies .img-slide:nth-child(3) .hidden-details .overview').textContent,
+//         id: parent.querySelector('.hidden-movies .img-slide:nth-child(3) .hidden-details .id').textContent,
+//         language: parent.querySelector('.hidden-movies .img-slide:nth-child(3) .hidden-details .language').textContent
+//     }
+// }
