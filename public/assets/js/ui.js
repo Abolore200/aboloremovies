@@ -109,6 +109,27 @@ class UI{
         }return name
     }
     //
+
+    overview(overview){
+        let over_view;
+        if(overview.overview){
+            over_view = overview.overview
+        } else if(!overview.overview){
+            over_view = ''
+        } return over_view
+    }
+
+    //
+
+    language(language){
+        let main_lanuage;
+        if(language.original_language){
+            main_lanuage = language.original_language
+        } else if(!language.original_language){
+            main_lanuage = ''
+        } return main_lanuage
+    }
+    //
     addUpcomingMovies(upcomingMovies){
         const results = upcomingMovies.results
 
@@ -231,9 +252,9 @@ class UI{
                             <p class="rating"> ${this.rating(movies[i])} </p>
                         </div>
                         <div class="hide hidden-details">
-                            <p class="overview"> ${movies[i].overview} </p>
+                            <p class="overview"> ${this.overview(movies[i])} </p>
                             <p class="id"> ${movies[i].id} </p>
-                            <p class="language"> ${movies[i].original_language} </p>
+                            <p class="language"> ${this.language(movies[i])} </p>
                         </div>
                         <div class="hide hidden-movies">
                             ${this.personMovie(movies[i])}
@@ -268,6 +289,7 @@ class UI{
             }
         }
     }
+
     //
     personMovie(movies){
         //
@@ -286,16 +308,16 @@ class UI{
                         <figcaption>
                             <a href="#">
                                 <p class="hide title"> ${film[i].title} </p>
-                                <p> ${(!film[i].title ? film[i].name : film[i].title)} </p>
+                                <p class="original-title"> ${(!film[i].title ? film[i].name : film[i].title)} </p>
                             </a>
                             <div class="year-ratings">
                                 <p class="date"> ${this.releaseDate(film[i])} </p>
                                 <p class="rating"> ${this.rating(film[i])} </p>
                             </div>
                             <div class="hide hidden-details">
-                                <p class="overview"> ${film[i].overview} </p>
+                                <p class="overview"> ${this.overview(film[i])} </p>
                                 <p class="id"> ${film[i].id} </p>
-                                <p class="language"> ${film[i].original_language} </p>
+                                <p class="language"> ${film[i].original_language ? film[i].original_language : ''} </p>
                             </div>
                         </figcaption>
                     </figure>
@@ -450,47 +472,63 @@ class UI{
     }
     //
     movieOne(parent){
-        // let all
-        if(parent.querySelectorAll('.hidden-movies figure')){
-            const allMovies = parent.querySelectorAll('.hidden-movies figure')
+        let arr = []
+        if(parent.querySelector('.hidden-movies figure')){
 
-            const movieArr = Array.from(allMovies)
-
-            if(movieArr.length !== 0){
-                movieArr.forEach(all => {
-                    const getMovies = {
-                        movie_one: {
-                            poster: all.querySelector('.hidden-movies .img-slide:nth-child(1) img').src,
-                            title: all.querySelector('.hidden-movies .img-slide:nth-child(1) .title').textContent,
-                            release_date: all.querySelector('.hidden-movies .img-slide:nth-child(1) .date').textContent,
-                            rating: all.querySelector('.hidden-movies .img-slide:nth-child(1) .rating').textContent,
-                            overview: all.querySelector('.hidden-movies .img-slide:nth-child(1) .hidden-details .overview').textContent,
-                            id: all.querySelector('.hidden-movies .img-slide:nth-child(1) .hidden-details .id').textContent,
-                            language: all.querySelector('.hidden-movies .img-slide:nth-child(1) .hidden-details .language').textContent
-                        },
-                        movie_two: {
-                            poster: all.querySelector('.hidden-movies .img-slide:nth-child(2) img').src,
-                            title: all.querySelector('.hidden-movies .img-slide:nth-child(2) .title').textContent,
-                            release_date: all.querySelector('.hidden-movies .img-slide:nth-child(2) .date').textContent,
-                            rating: all.querySelector('.hidden-movies .img-slide:nth-child(2) .rating').textContent,
-                            overview: all.querySelector('.hidden-movies .img-slide:nth-child(2) .hidden-details .overview').textContent,
-                            id: all.querySelector('.hidden-movies .img-slide:nth-child(2) .hidden-details .id').textContent,
-                            language: all.querySelector('.hidden-movies .img-slide:nth-child(2) .hidden-details .language').textContent
-                        },
-                        movie_three: {
-                            poster: all.querySelector('.hidden-movies .img-slide:nth-child(3) img').src,
-                            title: all.querySelector('.hidden-movies .img-slide:nth-child(3) .title').textContent,
-                            release_date: all.querySelector('.hidden-movies .img-slide:nth-child(3) .date').textContent,
-                            rating: all.querySelector('.hidden-movies .img-slide:nth-child(3) .rating').textContent,
-                            overview: all.querySelector('.hidden-movies .img-slide:nth-child(3) .hidden-details .overview').textContent,
-                            id: all.querySelector('.hidden-movies .img-slide:nth-child(3) .hidden-details .id').textContent,
-                            language: all.querySelector('.hidden-movies .img-slide:nth-child(3) .hidden-details .language').textContent
-                        }
-                    }
-                    console.log(getMovies);
-                })
+            //movie one
+            let movie_one;
+            if(parent.querySelector('.hidden-movies figure:nth-child(1)')){
+                const allMovies = parent.querySelector('.hidden-movies figure:nth-child(1)')
+                movie_one = {
+                    poster: allMovies.querySelector('.hidden-movies .img-slide:nth-child(1) .poster').src,
+                    title: allMovies.querySelector('.hidden-movies .img-slide:nth-child(1) .original-title').textContent,
+                    release_date: allMovies.querySelector('.hidden-movies .img-slide:nth-child(1) .date').textContent,
+                    rating: allMovies.querySelector('.hidden-movies .img-slide:nth-child(1) .rating').textContent,
+                    overview: allMovies.querySelector('.hidden-movies .img-slide:nth-child(1) .hidden-details .overview').textContent,
+                    id: allMovies.querySelector('.hidden-movies .img-slide:nth-child(1) .hidden-details .id').textContent,
+                    language: allMovies.querySelector('.hidden-movies .img-slide:nth-child(1) .hidden-details .language').textContent
+                }
+            } else {
+                movie_one = ''
             }
+
+            //movie two
+            let movie_two;
+            if(parent.querySelector('.hidden-movies figure:nth-child(2)')){
+                const allMovies = parent.querySelector('.hidden-movies figure:nth-child(2)')
+                movie_two = {
+                    poster: allMovies.querySelector('.hidden-movies .img-slide:nth-child(2) .poster').src,
+                    title: allMovies.querySelector('.hidden-movies .img-slide:nth-child(2) .original-title').textContent,
+                    release_date: allMovies.querySelector('.hidden-movies .img-slide:nth-child(2) .date').textContent,
+                    rating: allMovies.querySelector('.hidden-movies .img-slide:nth-child(2) .rating').textContent,
+                    overview: allMovies.querySelector('.hidden-movies .img-slide:nth-child(2) .hidden-details .overview').textContent,
+                    id: allMovies.querySelector('.hidden-movies .img-slide:nth-child(2) .hidden-details .id').textContent,
+                    language: allMovies.querySelector('.hidden-movies .img-slide:nth-child(2) .hidden-details .language').textContent
+                }
+            } else {
+                movie_two = ''
+            }
+
+            //movie three
+            let movie_three;
+            if(parent.querySelector('.hidden-movies figure:nth-child(3)')){
+                const allMovies = parent.querySelector('.hidden-movies figure:nth-child(3)')
+                movie_three = {
+                    poster: allMovies.querySelector('.hidden-movies .img-slide:nth-child(3) .poster').src,
+                    title: allMovies.querySelector('.hidden-movies .img-slide:nth-child(3) .original-title').textContent,
+                    release_date: allMovies.querySelector('.hidden-movies .img-slide:nth-child(3) .date').textContent,
+                    rating: allMovies.querySelector('.hidden-movies .img-slide:nth-child(3) .rating').textContent,
+                    overview: allMovies.querySelector('.hidden-movies .img-slide:nth-child(3) .hidden-details .overview').textContent,
+                    id: allMovies.querySelector('.hidden-movies .img-slide:nth-child(3) .hidden-details .id').textContent,
+                    language: allMovies.querySelector('.hidden-movies .img-slide:nth-child(3) .hidden-details .language').textContent
+                }
+            } else {
+                movie_three = ''
+            }
+
+            arr.push(movie_one, movie_two, movie_three)
         }
+        return arr
     }
     //
     getParentElement(parent){
@@ -503,40 +541,39 @@ class UI{
             overview: parent.querySelector('.hidden-details .overview').textContent,
             id: parent.querySelector('.hidden-details .id').textContent,
             language: parent.querySelector('.hidden-details .language').textContent,
-            moviesActed: this.movieOne(parent)
+            known_for: this.movieOne(parent)
         }
 
-        // console.log(getMovieDetails);
+        console.log(getMovieDetails);
     }
 }
 
 
-// oviesActed: {
-//     movie_one: {
-//         poster: parent.querySelector('.hidden-movies .img-slide:nth-child(1) .poster').src,
-//         title: parent.querySelector('.hidden-movies .img-slide:nth-child(1) .title').textContent,
-//         release_date: parent.querySelector('.hidden-movies .img-slide:nth-child(1) .date').textContent,
-//         rating: parent.querySelector('.hidden-movies .img-slide:nth-child(1) .rating').textContent,
-//         overview: parent.querySelector('.hidden-movies .img-slide:nth-child(1) .hidden-details .overview').textContent,
-//         id: parent.querySelector('.hidden-movies .img-slide:nth-child(1) .hidden-details .id').textContent,
-//         language: parent.querySelector('.hidden-movies .img-slide:nth-child(1) .hidden-details .language').textContent
-//     },
-//     movie_two: {
-//         poster: parent.querySelector('.hidden-movies .img-slide:nth-child(2) .poster').src,
-//         title: parent.querySelector('.hidden-movies .img-slide:nth-child(2) .title').textContent,
-//         release_date: parent.querySelector('.hidden-movies .img-slide:nth-child(2) .date').textContent,
-//         rating: parent.querySelector('.hidden-movies .img-slide:nth-child(2) .rating').textContent,
-//         overview: parent.querySelector('.hidden-movies .img-slide:nth-child(2) .hidden-details .overview').textContent,
-//         id: parent.querySelector('.hidden-movies .img-slide:nth-child(2) .hidden-details .id').textContent,
-//         language: parent.querySelector('.hidden-movies .img-slide:nth-child(2) .hidden-details .language').textContent
-//     },
-//     movie_three: {
-//         poster: parent.querySelector('.hidden-movies .img-slide:nth-child(3) .poster').src,
-//         title: parent.querySelector('.hidden-movies .img-slide:nth-child(3) .title').textContent,
-//         release_date: parent.querySelector('.hidden-movies .img-slide:nth-child(3) .date').textContent,
-//         rating: parent.querySelector('.hidden-movies .img-slide:nth-child(3) .rating').textContent,
-//         overview: parent.querySelector('.hidden-movies .img-slide:nth-child(3) .hidden-details .overview').textContent,
-//         id: parent.querySelector('.hidden-movies .img-slide:nth-child(3) .hidden-details .id').textContent,
-//         language: parent.querySelector('.hidden-movies .img-slide:nth-child(3) .hidden-details .language').textContent
-//     }
+
+// movie_one: {
+//     poster: all.querySelector('.hidden-movies .img-slide:nth-child(1) img').src,
+//     title: all.querySelector('.hidden-movies .img-slide:nth-child(1) .title').textContent,
+//     release_date: all.querySelector('.hidden-movies .img-slide:nth-child(1) .date').textContent,
+//     rating: all.querySelector('.hidden-movies .img-slide:nth-child(1) .rating').textContent,
+//     overview: all.querySelector('.hidden-movies .img-slide:nth-child(1) .hidden-details .overview').textContent,
+//     id: all.querySelector('.hidden-movies .img-slide:nth-child(1) .hidden-details .id').textContent,
+//     language: all.querySelector('.hidden-movies .img-slide:nth-child(1) .hidden-details .language').textContent
+// },
+// movie_two: {
+//     poster: all.querySelector('.hidden-movies .img-slide:nth-child(2) img').src,
+//     title: all.querySelector('.hidden-movies .img-slide:nth-child(2) .title').textContent,
+//     release_date: all.querySelector('.hidden-movies .img-slide:nth-child(2) .date').textContent,
+//     rating: all.querySelector('.hidden-movies .img-slide:nth-child(2) .rating').textContent,
+//     overview: all.querySelector('.hidden-movies .img-slide:nth-child(2) .hidden-details .overview').textContent,
+//     id: all.querySelector('.hidden-movies .img-slide:nth-child(2) .hidden-details .id').textContent,
+//     language: all.querySelector('.hidden-movies .img-slide:nth-child(2) .hidden-details .language').textContent
+// },
+// movie_three: {
+//     poster: all.querySelector('.hidden-movies .img-slide:nth-child(3) img').src,
+//     title: all.querySelector('.hidden-movies .img-slide:nth-child(3) .title').textContent,
+//     release_date: all.querySelector('.hidden-movies .img-slide:nth-child(3) .date').textContent,
+//     rating: all.querySelector('.hidden-movies .img-slide:nth-child(3) .rating').textContent,
+//     overview: all.querySelector('.hidden-movies .img-slide:nth-child(3) .hidden-details .overview').textContent,
+//     id: all.querySelector('.hidden-movies .img-slide:nth-child(3) .hidden-details .id').textContent,
+//     language: all.querySelector('.hidden-movies .img-slide:nth-child(3) .hidden-details .language').textContent
 // }
