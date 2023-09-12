@@ -209,6 +209,20 @@ class UI{
         }
         if(allUpcomingMoviesHeader){
             allUpcomingMoviesHeader.innerHTML = allUpcomingMovies
+
+            const movies_result = document.querySelectorAll('.img-slide a')
+            if(movies_result){
+                movies_result.forEach(result => {
+                    result.setAttribute('href', './search/view.html')
+                    result.addEventListener('click', e => {
+                        e.preventDefault()
+                        const parent = e.target.parentElement.parentElement.parentElement
+                        // this.getParentElement(parent)
+                        
+                        console.log(parent);
+                    })
+                })
+            }
         }
     }
     //
@@ -277,14 +291,10 @@ class UI{
             const movies_result = document.querySelectorAll('.img-slide a')
             if(movies_result){
                 movies_result.forEach(result => {
-                    //
                     result.setAttribute('href', './search/view.html')
-                    //
                     result.addEventListener('click', e => {
                         e.preventDefault()
-
                         const parent = e.target.parentElement.parentElement.parentElement
-
                         this.getParentElement(parent)
                         
                     })

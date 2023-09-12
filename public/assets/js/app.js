@@ -72,13 +72,8 @@ if(window){
                     </figure>
                 `;
             }
-
-            //
-            // const popularHeader = document.querySelector('.popular-movies')
-            // if(popularHeader){
-                ui.displayPopularMovies(popularmovie)    
-            // }
-            // ui.displayPopularMovies(popularmovie)
+            
+            ui.displayPopularMovies(popularmovie)    
 
             //insert the fetched movies into the <movieSlideShow>
             if(movieSlideshow){
