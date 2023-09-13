@@ -126,6 +126,7 @@ if(window){
 
         const form = document.querySelector('.search-form')
         if(form){
+            form.reset()
             //if the submit is clicked, throw a funtion()
             form.addEventListener('submit', e => {
                 e.preventDefault()
@@ -177,4 +178,9 @@ if(window){
             })
         }
     })
+    //
+    const view_clicked_movie = document.querySelector('.view-search')
+    if(view_clicked_movie){
+        ui.view_search_details()
+    }
 }

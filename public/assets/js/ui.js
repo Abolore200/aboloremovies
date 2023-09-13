@@ -68,14 +68,14 @@ class UI{
             noDate = date.known_for_department
         } 
         //if release_date is empty or undefined, return 'no date'
-        else if(date.release_date === ""){
+        else if(date.release_date === "" || date.first_air_date === ""){
             noDate = 'no date'
         } 
         //if date is defined, return date 
         else if(!date.release_date){
             noDate = date.first_air_date
         }
-         else {
+        else {
             noDate = date.release_date
         }
         return noDate
@@ -119,7 +119,7 @@ class UI{
         if(overview.overview){
             over_view = overview.overview
         } else if(!overview.overview){
-            over_view = ''
+            over_view = 'No Overview'
         } return over_view
     }
 
@@ -213,7 +213,7 @@ class UI{
             const movies_result = document.querySelectorAll('.img-slide a')
             if(movies_result){
                 movies_result.forEach(result => {
-                    result.setAttribute('href', './search/view.html')
+                    result.setAttribute('href', '../view.html')
                     result.addEventListener('click', e => {
                         e.preventDefault()
                         const parent = e.target.parentElement.parentElement.parentElement
@@ -412,6 +412,22 @@ class UI{
         const popluar = document.querySelector('.all-popular-movies')
         if(popluar){
             popluar.innerHTML = allPopluarMovies
+
+            const movies_result = document.querySelectorAll('.img-slide a')
+            if(movies_result){
+                movies_result.forEach(result => {
+                    result.setAttribute('href', '../view.html')
+                    result.addEventListener('click', e => {
+                        // e.preventDefault()
+                        const parent = e.target.parentElement.parentElement.parentElement
+                        this.getParentElement(parent)
+                
+                        if(JSON.parse(sessionStorage.getItem('movie'))){
+                            this.storage()
+                        }
+                    })
+                })
+            }
         }
     }
 
@@ -486,10 +502,26 @@ class UI{
         //
         if(allRatedMovieHeader){
             allRatedMovieHeader.innerHTML = ratedMovie
+
+            const movies_result = document.querySelectorAll('.img-slide a')
+            if(movies_result){
+                movies_result.forEach(result => {
+                    result.setAttribute('href', '../view.html')
+                    result.addEventListener('click', e => {
+                        // e.preventDefault()
+                        const parent = e.target.parentElement.parentElement.parentElement
+                        this.getParentElement(parent)
+                
+                        if(JSON.parse(sessionStorage.getItem('movie'))){
+                            this.storage()
+                        }
+                    })
+                })
+            }
         }
     }
     //
-    movieOne(parent){
+    movies_acted(parent){
         let arr = []
         if(parent.querySelector('.hidden-movies figure')){
 
@@ -559,7 +591,7 @@ class UI{
             overview: parent.querySelector('.hidden-details .overview').textContent,
             id: parent.querySelector('.hidden-details .id').textContent,
             language: parent.querySelector('.hidden-details .language').textContent,
-            known_for: this.movieOne(parent)
+            known_for: this.movies_acted(parent)
         }
 
         this.saveMovieDetails(getMovieDetails)
@@ -586,5 +618,55 @@ class UI{
             movie.splice(0,1)
         }
         sessionStorage.setItem('movie', JSON.stringify(movie))
+    }
+
+    //
+    view_search_details(){
+        const get_search = JSON.parse(sessionStorage.getItem('movie'))
+
+        if(get_search[0].known_for.length === 0){
+            //movie only
+            this.view_movie_only(get_search)
+        } else {
+            //actor + movie
+            // console.log(get_search);
+        }
+    }
+
+    //
+    view_movie_only(get_search){
+        //
+        const viewSearch = document.querySelector('.view-search')
+        let movie = get_search[0]
+
+        let movieTemplate = ""
+        movieTemplate += `
+            <div class="movie-header">
+                <div class="searched-image-header">
+                    <figure>
+                        <img src="${movie.poster}" alt="${movie.title}">
+                    </figure>
+                </div>
+                <div class="searched-details-header">
+                    <div class="title-header">
+                        <p>${movie.title}</p>
+                    </div>
+                    <div class="overview-header">
+                        <p>${movie.overview}</p>
+                    </div>
+                    <div class="details-header">
+                        <p>Release Date: ${movie.release_date}</p>
+                        <p>Rating: ${movie.rating}</p>
+                        <p>Movie ID: ${movie.id}</p>
+                        <p>Language: <span>${movie.language}</span></p>
+                    </div>
+                </div>
+            </div>
+        `;
+        console.log(movie);
+
+        if(viewSearch){
+            viewSearch.innerHTML = movieTemplate
+        }
     }
 }
