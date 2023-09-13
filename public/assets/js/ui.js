@@ -152,22 +152,22 @@ class UI{
                 <figure class="img-slide slides">
                     <div class="img-hover">
                         <a href="#">
-                            <img src="https://image.tmdb.org/t/p/w500/${results[i].poster_path !== null ? results[i].poster_path : results[i].backdrop_path}" alt="${results[i].title !== null ? results[i].title : results[i].original_title}"/>
+                            <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(results[i])}" class="poster" alt="${this.ImgName(results[i])}"/>
                         </a>
                     </div>
                     <figcaption>
                         <a href="#">
-                            <p class="hide"> ${results[i].title} </p>
-                            <p> ${(results[i].title)} </p>
+                            <p class="hide title"> ${results[i].title} </p>
+                            <p class="original-title"> ${(!results[i].title ? results[i].name : results[i].title)} </p>
                         </a>
                         <div class="year-ratings">
-                            <p class="date"> ${results[i].release_date} </p>
-                            <p> ${results[i].vote_average !== null ? results[i].vote_average : 'NR'} </p>
+                            <p class="date"> ${this.releaseDate(results[i])} </p>
+                            <p class="rating"> ${this.rating(results[i])} </p>
                         </div>
-                        <div class="hide">
-                            <p class="overview"> ${results[i].overview} </p>
+                        <div class="hide hidden-details">
+                            <p class="overview"> ${this.overview(results[i])} </p>
                             <p class="id"> ${results[i].id} </p>
-                            <p class="language"> ${results[i].original_language} </p>
+                            <p class="language"> ${this.language(results[i])} </p>
                         </div>
                     </figcaption>
                 </figure>
@@ -186,22 +186,22 @@ class UI{
                 <figure class="img-slide slides">
                     <div class="img-hover">
                         <a href="#">
-                            <img src="https://image.tmdb.org/t/p/w500/${results[i].poster_path !== null ? results[i].poster_path : results[i].backdrop_path}" alt="${results[i].title !== null ? results[i].title : results[i].original_title}"/>
+                            <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(results[i])}" class="poster" alt="${this.ImgName(results[i])}"/>
                         </a>
                     </div>
                     <figcaption>
                         <a href="#">
-                            <p class="hide"> ${results[i].title} </p>
-                            <p> ${(results[i].title)} </p>
+                            <p class="hide title"> ${results[i].title} </p>
+                            <p class="original-title"> ${(!results[i].title ? results[i].name : results[i].title)} </p>
                         </a>
                         <div class="year-ratings">
-                            <p class="date"> ${results[i].release_date} </p>
-                            <p> ${results[i].vote_average !== null ? results[i].vote_average : 'NR'} </p>
+                            <p class="date"> ${this.releaseDate(results[i])} </p>
+                            <p class="rating"> ${this.rating(results[i])} </p>
                         </div>
-                        <div class="hide">
-                            <p class="overview"> ${results[i].overview} </p>
+                        <div class="hide hidden-details">
+                            <p class="overview"> ${this.overview(results[i])} </p>
                             <p class="id"> ${results[i].id} </p>
-                            <p class="language"> ${results[i].original_language} </p>
+                            <p class="language"> ${this.language(results[i])} </p>
                         </div>
                     </figcaption>
                 </figure>
@@ -217,9 +217,11 @@ class UI{
                     result.addEventListener('click', e => {
                         e.preventDefault()
                         const parent = e.target.parentElement.parentElement.parentElement
-                        // this.getParentElement(parent)
+                        this.getParentElement(parent)
                         
-                        console.log(parent);
+                        if(JSON.parse(sessionStorage.getItem('movie'))){
+                            this.storage()
+                        }
                     })
                 })
             }
@@ -293,10 +295,13 @@ class UI{
                 movies_result.forEach(result => {
                     result.setAttribute('href', './search/view.html')
                     result.addEventListener('click', e => {
-                        e.preventDefault()
+                        // e.preventDefault()
                         const parent = e.target.parentElement.parentElement.parentElement
                         this.getParentElement(parent)
-                        
+                
+                        if(JSON.parse(sessionStorage.getItem('movie'))){
+                            this.storage()
+                        }
                     })
                 })
             }
@@ -348,22 +353,22 @@ class UI{
                 <figure class="img-slide slides">
                     <div class="img-hover">
                         <a href="#">
-                            <img src="https://image.tmdb.org/t/p/w500/${popularmovie[i].poster_path !== null ? popularmovie[i].poster_path : popularmovie[i].backdrop_path}" alt="${popularmovie[i].title !== null ? popularmovie[i].title : popularmovie[i].original_title}"/>
+                            <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(popularmovie[i])}" class="poster" alt="${this.ImgName(popularmovie[i])}"/>
                         </a>
                     </div>
                     <figcaption>
                         <a href="#">
-                            <p class="hide"> ${popularmovie[i].title} </p>
-                            <p> ${(popularmovie[i].title)} </p>
+                            <p class="hide title"> ${popularmovie[i].title} </p>
+                            <p class="original-title"> ${(!popularmovie[i].title ? popularmovie[i].name : popularmovie[i].title)} </p>
                         </a>
                         <div class="year-ratings">
-                            <p class="date"> ${popularmovie[i].release_date} </p>
-                            <p> ${popularmovie[i].vote_average !== null ? popularmovie[i].vote_average : 'NR'} </p>
+                            <p class="date"> ${this.releaseDate(popularmovie[i])} </p>
+                            <p class="rating"> ${this.rating(popularmovie[i])} </p>
                         </div>
-                        <div class="hide">
-                            <p class="overview"> ${popularmovie[i].overview} </p>
+                        <div class="hide hidden-details">
+                            <p class="overview"> ${this.overview(popularmovie[i])} </p>
                             <p class="id"> ${popularmovie[i].id} </p>
-                            <p class="language"> ${popularmovie[i].original_language} </p>
+                            <p class="language"> ${this.language(popularmovie[i])} </p>
                         </div>
                     </figcaption>
                 </figure>
@@ -383,22 +388,22 @@ class UI{
                 <figure class="img-slide slides">
                     <div class="img-hover">
                         <a href="#">
-                            <img src="https://image.tmdb.org/t/p/w500/${popularmovie[i].poster_path !== null ? popularmovie[i].poster_path : popularmovie[i].backdrop_path}" alt="${popularmovie[i].title !== null ? popularmovie[i].title : popularmovie[i].original_title}"/>
+                            <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(popularmovie[i])}" class="poster" alt="${this.ImgName(popularmovie[i])}"/>
                         </a>
                     </div>
                     <figcaption>
                         <a href="#">
-                            <p class="hide"> ${popularmovie[i].title} </p>
-                            <p> ${(popularmovie[i].title)} </p>
+                            <p class="hide title"> ${popularmovie[i].title} </p>
+                            <p class="original-title"> ${(!popularmovie[i].title ? popularmovie[i].name : popularmovie[i].title)} </p>
                         </a>
                         <div class="year-ratings">
-                            <p class="date"> ${popularmovie[i].release_date} </p>
-                            <p> ${popularmovie[i].vote_average !== null ? popularmovie[i].vote_average : 'NR'} </p>
+                            <p class="date"> ${this.releaseDate(popularmovie[i])} </p>
+                            <p class="rating"> ${this.rating(popularmovie[i])} </p>
                         </div>
-                        <div class="hide">
-                            <p class="overview"> ${popularmovie[i].overview} </p>
+                        <div class="hide hidden-details">
+                            <p class="overview"> ${this.overview(popularmovie[i])} </p>
                             <p class="id"> ${popularmovie[i].id} </p>
-                            <p class="language"> ${popularmovie[i].original_language} </p>
+                            <p class="language"> ${this.language(popularmovie[i])} </p>
                         </div>
                     </figcaption>
                 </figure>
@@ -422,22 +427,22 @@ class UI{
                 <figure class="img-slide slides">
                     <div class="img-hover">
                         <a href="#">
-                            <img src="https://image.tmdb.org/t/p/w500/${rated[i].poster_path !== null ? rated[i].poster_path : rated[i].backdrop_path}" alt="${rated[i].title !== null ? rated[i].title : rated[i].original_title}"/>
+                            <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(rated[i])}" class="poster" alt="${this.ImgName(rated[i])}"/>
                         </a>
                     </div>
                     <figcaption>
                         <a href="#">
-                            <p class="hide"> ${rated[i].title} </p>
-                            <p> ${(rated[i].title)} </p>
+                            <p class="hide title"> ${rated[i].title} </p>
+                            <p class="original-title"> ${(!rated[i].title ? rated[i].name : rated[i].title)} </p>
                         </a>
                         <div class="year-ratings">
-                            <p class="date"> ${rated[i].release_date} </p>
-                            <p> ${rated[i].vote_average !== null ? rated[i].vote_average : 'NR'} </p>
+                            <p class="date"> ${this.releaseDate(rated[i])} </p>
+                            <p class="rating"> ${this.rating(rated[i])} </p>
                         </div>
-                        <div class="hide">
-                            <p class="overview"> ${rated[i].overview} </p>
+                        <div class="hide hidden-details">
+                            <p class="overview"> ${this.overview(rated[i])} </p>
                             <p class="id"> ${rated[i].id} </p>
-                            <p class="language"> ${rated[i].original_language} </p>
+                            <p class="language"> ${this.language(rated[i])} </p>
                         </div>
                     </figcaption>
                 </figure>
@@ -457,22 +462,22 @@ class UI{
                 <figure class="img-slide slides">
                     <div class="img-hover">
                         <a href="#">
-                            <img src="https://image.tmdb.org/t/p/w500/${rated[i].poster_path !== null ? rated[i].poster_path : rated[i].backdrop_path}" alt="${rated[i].title !== null ? rated[i].title : rated[i].original_title}"/>
+                            <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(rated[i])}" class="poster" alt="${this.ImgName(rated[i])}"/>
                         </a>
                     </div>
                     <figcaption>
                         <a href="#">
-                            <p class="hide"> ${rated[i].title} </p>
-                            <p> ${(rated[i].title)} </p>
+                            <p class="hide title"> ${rated[i].title} </p>
+                            <p class="original-title"> ${(!rated[i].title ? rated[i].name : rated[i].title)} </p>
                         </a>
                         <div class="year-ratings">
-                            <p class="date"> ${rated[i].release_date} </p>
-                            <p> ${rated[i].vote_average !== null ? rated[i].vote_average : 'NR'} </p>
+                            <p class="date"> ${this.releaseDate(rated[i])} </p>
+                            <p class="rating"> ${this.rating(rated[i])} </p>
                         </div>
-                        <div class="hide">
-                            <p class="overview"> ${rated[i].overview} </p>
+                        <div class="hide hidden-details">
+                            <p class="overview"> ${this.overview(rated[i])} </p>
                             <p class="id"> ${rated[i].id} </p>
-                            <p class="language"> ${rated[i].original_language} </p>
+                            <p class="language"> ${this.language(rated[i])} </p>
                         </div>
                     </figcaption>
                 </figure>
@@ -557,6 +562,29 @@ class UI{
             known_for: this.movieOne(parent)
         }
 
-        console.log(getMovieDetails);
+        this.saveMovieDetails(getMovieDetails)
+    }
+    saveMovieDetails(getMovieDetails){
+        let movie = this.storeMovieDetails()
+        movie.push(getMovieDetails)
+        sessionStorage.setItem('movie', JSON.stringify(movie))
+
+    }
+    storeMovieDetails(){
+        let movie;
+        let storedMovie = sessionStorage.getItem('movie')
+        if(storedMovie === null){
+            movie = []
+        } else {
+            movie = JSON.parse(storedMovie)
+        } return movie
+    }
+    storage(){
+        // console.log(id);
+        let movie = this.storeMovieDetails()
+        if(movie.length > 1){
+            movie.splice(0,1)
+        }
+        sessionStorage.setItem('movie', JSON.stringify(movie))
     }
 }
