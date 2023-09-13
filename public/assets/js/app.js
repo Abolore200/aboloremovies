@@ -174,6 +174,11 @@ if(window){
                             ui.displaySearchMovies(movies.searchedMovies.results)
                         }
                     })
+                    .catch(err => {
+                        if(document.querySelector('.search-results')){
+                            document.querySelector('.search-results').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
+                        }
+                    })
                 }
             })
         }
