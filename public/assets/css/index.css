@@ -65,9 +65,8 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .see-more-upcoming,.see-more-popular,.see-more-rated{display:flex;align-items:end;}
 .see-more-btn a{color:var(--yellow);font-family:var(--inter);font-size:1.1rem;transition:border-bottom .3s;}
 .see-more-btn a{display:flex;align-items:center;transition:display .5s;}
-.see-more-btn a i{opacity:0;}
-.see-more-btn a:hover i{animation:move-arrow .5s forwards ease-out;position:relative;}
-@keyframes move-arrow{from{left:0px;opacity:0;}to{left:4px;opacity:1;}}
+.see-more-btn a i{opacity:0;transition:opacity .2s ease-out,left .5s ease-in;position:relative;}
+.see-more-btn a:hover i{opacity:1;left:4px;}
 .upcoming-movies,.popular-movies,.rated-movies{margin:50px 0;justify-content:center;}
 .upcoming-movies,.popular-movies,.rated-movies{display:flex;justify-content:space-between;padding-bottom:100px;}
 .upcoming-movies .img-slide,.popular-movies .img-slide,.rated-movies .img-slide{width:calc(100% / 5);padding:0px 10px;margin:0;min-width:calc(100% / 5);}
@@ -100,10 +99,8 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .top-btn.block{bottom:0px;transition:bottom .5s ease-out;}
 .top-btn{box-shadow:0px 0px 15px -2px var(--yellow);}
 .top-btn i{color:var(--blue);font-size:1.1rem;font-weight:var(--wgt600);position:relative;}
-.top-btn i{transform:rotate(-90deg);}
-.top-btn:hover i{animation:fixed-btn .5s forwards ease-in;}
-@keyframes fixed-btn{from{top:5px;}to{top:-5px;}}
-
+.top-btn i{transform:rotate(-90deg);transition:all .2s ease-out;position:relative;top:0px;}
+.top-btn:hover i{transition:all .2s ease-in;position:relative;top:-5px;}
 .loader-flex{display:flex;flex-direction:column;align-items:center;margin-top:50px;width:100%;}
 .loader-flex .loader{width:50px;height:50px;border:5px solid var(--yellow);border-radius:50%;border-right-color:var(--lightblue);}
 .loader-flex p{color:var(--yellow);margin-top:5px;font-family:var(--open-sans);}

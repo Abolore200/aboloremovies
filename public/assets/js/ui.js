@@ -655,15 +655,14 @@ class UI{
                         <p>${movie.overview}</p>
                     </div>
                     <div class="details-header">
-                        <p>Release Date: ${movie.release_date}</p>
-                        <p>Rating: ${movie.rating}</p>
-                        <p>Movie ID: ${movie.id}</p>
-                        <p>Language: <span>${movie.language}</span></p>
+                        <p><span class="span">Release Date: </span> ${movie.release_date}</p>
+                        <p><span class="span">Rating: </span>${movie.rating}</p>
+                        <p><span class="span">Movie ID: </span>${movie.id}</p>
+                        <p><span class="span">Language: </span> <span>${movie.language}</span></p>
                     </div>
                 </div>
             </div>
         `;
-        console.log(movie);
 
         if(viewSearch){
             viewSearch.innerHTML = movieTemplate
