@@ -62,11 +62,11 @@ if(window){
                         </div>
                         <figcaption>
                             <a href="#">
-                                <p> ${ui.titleLength(popularmovie[i].title)} </p>
+                                <p>${ui.titleLength(popularmovie[i].title)}</p>
                             </a>
                             <div class="year-ratings">
-                                <p> ${popularmovie[i].release_date.substring(0,4)} </p>
-                                <p> ${popularmovie[i].vote_average !== null ? popularmovie[i].vote_average : 'NR'} </p>
+                                <p>${popularmovie[i].release_date.substring(0,4)}</p>
+                                <p>${popularmovie[i].vote_average !== null ? popularmovie[i].vote_average : 'NR'}</p>
                             </div>
                         </figcaption>
                     </figure>

@@ -157,17 +157,17 @@ class UI{
                     </div>
                     <figcaption>
                         <a href="#">
-                            <p class="hide title"> ${results[i].title} </p>
-                            <p class="original-title"> ${(!results[i].title ? results[i].name : results[i].title)} </p>
+                            <p class="hide title">${results[i].title}</p>
+                            <p class="original-title">${(!results[i].title ? results[i].name : results[i].title)}</p>
                         </a>
                         <div class="year-ratings">
-                            <p class="date"> ${this.releaseDate(results[i])} </p>
-                            <p class="rating"> ${this.rating(results[i])} </p>
+                            <p class="date">${this.releaseDate(results[i])}</p>
+                            <p class="rating">${this.rating(results[i])}</p>
                         </div>
                         <div class="hide hidden-details">
-                            <p class="overview"> ${this.overview(results[i])} </p>
-                            <p class="id"> ${results[i].id} </p>
-                            <p class="language"> ${this.language(results[i])} </p>
+                            <p class="overview">${this.overview(results[i])}</p>
+                            <p class="id">${results[i].id}</p>
+                            <p class="language">${this.language(results[i])}</p>
                         </div>
                     </figcaption>
                 </figure>
@@ -191,17 +191,17 @@ class UI{
                     </div>
                     <figcaption>
                         <a href="#">
-                            <p class="hide title"> ${results[i].title} </p>
-                            <p class="original-title"> ${(!results[i].title ? results[i].name : results[i].title)} </p>
+                            <p class="hide title">${results[i].title}</p>
+                            <p class="original-title">${(!results[i].title ? results[i].name : results[i].title)}</p>
                         </a>
                         <div class="year-ratings">
-                            <p class="date"> ${this.releaseDate(results[i])} </p>
-                            <p class="rating"> ${this.rating(results[i])} </p>
+                            <p class="date">${this.releaseDate(results[i])}</p>
+                            <p class="rating">${this.rating(results[i])}</p>
                         </div>
                         <div class="hide hidden-details">
-                            <p class="overview"> ${this.overview(results[i])} </p>
-                            <p class="id"> ${results[i].id} </p>
-                            <p class="language"> ${this.language(results[i])} </p>
+                            <p class="overview">${this.overview(results[i])}</p>
+                            <p class="id">${results[i].id}</p>
+                            <p class="language">${this.language(results[i])}</p>
                         </div>
                     </figcaption>
                 </figure>
@@ -264,17 +264,17 @@ class UI{
                     </div>
                     <figcaption>
                         <a href="#">
-                            <p class="hide title"> ${movies[i].title} </p>
-                            <p class="original-title"> ${(!movies[i].title ? movies[i].name : movies[i].title)} </p>
+                            <p class="hide title">${movies[i].title}</p>
+                            <p class="original-title">${(!movies[i].title ? movies[i].name : movies[i].title)}</p>
                         </a>
                         <div class="year-ratings">
-                            <p class="date"> ${this.releaseDate(movies[i])} </p>
-                            <p class="rating"> ${this.rating(movies[i])} </p>
+                            <p class="date">${this.releaseDate(movies[i])}</p>
+                            <p class="rating">${this.rating(movies[i])}</p>
                         </div>
                         <div class="hide hidden-details">
-                            <p class="overview"> ${this.overview(movies[i])} </p>
-                            <p class="id"> ${movies[i].id} </p>
-                            <p class="language"> ${this.language(movies[i])} </p>
+                            <p class="overview">${this.overview(movies[i])}</p>
+                            <p class="id">${movies[i].id}</p>
+                            <p class="language">${this.language(movies[i])}</p>
                         </div>
                         <div class="hide hidden-movies">
                             ${this.personMovie(movies[i])}
@@ -325,17 +325,17 @@ class UI{
                         </div>
                         <figcaption>
                             <a href="#">
-                                <p class="hide title"> ${film[i].title} </p>
-                                <p class="original-title"> ${(!film[i].title ? film[i].name : film[i].title)} </p>
+                                <p class="hide title">${film[i].title}</p>
+                                <p class="original-title">${(!film[i].title ? film[i].name : film[i].title)}</p>
                             </a>
                             <div class="year-ratings">
-                                <p class="date"> ${this.releaseDate(film[i])} </p>
-                                <p class="rating"> ${this.rating(film[i])} </p>
+                                <p class="date">${this.releaseDate(film[i])}</p>
+                                <p class="rating">${this.rating(film[i])}</p>
                             </div>
                             <div class="hide hidden-details">
-                                <p class="overview"> ${this.overview(film[i])} </p>
-                                <p class="id"> ${film[i].id} </p>
-                                <p class="language"> ${film[i].original_language ? film[i].original_language : ''} </p>
+                                <p class="overview">${this.overview(film[i])}</p>
+                                <p class="id">${film[i].id}</p>
+                                <p class="language">${film[i].original_language ? film[i].original_language : ''}</p>
                             </div>
                         </figcaption>
                     </figure>
@@ -358,17 +358,17 @@ class UI{
                     </div>
                     <figcaption>
                         <a href="#">
-                            <p class="hide title"> ${popularmovie[i].title} </p>
-                            <p class="original-title"> ${(!popularmovie[i].title ? popularmovie[i].name : popularmovie[i].title)} </p>
+                            <p class="hide title">${popularmovie[i].title}</p>
+                            <p class="original-title">${(!popularmovie[i].title ? popularmovie[i].name : popularmovie[i].title)}</p>
                         </a>
                         <div class="year-ratings">
-                            <p class="date"> ${this.releaseDate(popularmovie[i])} </p>
-                            <p class="rating"> ${this.rating(popularmovie[i])} </p>
+                            <p class="date">${this.releaseDate(popularmovie[i])}</p>
+                            <p class="rating">${this.rating(popularmovie[i])}</p>
                         </div>
                         <div class="hide hidden-details">
-                            <p class="overview"> ${this.overview(popularmovie[i])} </p>
-                            <p class="id"> ${popularmovie[i].id} </p>
-                            <p class="language"> ${this.language(popularmovie[i])} </p>
+                            <p class="overview">${this.overview(popularmovie[i])}</p>
+                            <p class="id">${popularmovie[i].id}</p>
+                            <p class="language">${this.language(popularmovie[i])}</p>
                         </div>
                     </figcaption>
                 </figure>
@@ -393,17 +393,17 @@ class UI{
                     </div>
                     <figcaption>
                         <a href="#">
-                            <p class="hide title"> ${popularmovie[i].title} </p>
-                            <p class="original-title"> ${(!popularmovie[i].title ? popularmovie[i].name : popularmovie[i].title)} </p>
+                            <p class="hide title">${popularmovie[i].title}</p>
+                            <p class="original-title">${(!popularmovie[i].title ? popularmovie[i].name : popularmovie[i].title)}</p>
                         </a>
                         <div class="year-ratings">
-                            <p class="date"> ${this.releaseDate(popularmovie[i])} </p>
-                            <p class="rating"> ${this.rating(popularmovie[i])} </p>
+                            <p class="date">${this.releaseDate(popularmovie[i])}</p>
+                            <p class="rating">${this.rating(popularmovie[i])}</p>
                         </div>
                         <div class="hide hidden-details">
-                            <p class="overview"> ${this.overview(popularmovie[i])} </p>
-                            <p class="id"> ${popularmovie[i].id} </p>
-                            <p class="language"> ${this.language(popularmovie[i])} </p>
+                            <p class="overview">${this.overview(popularmovie[i])}</p>
+                            <p class="id">${popularmovie[i].id}</p>
+                            <p class="language">${this.language(popularmovie[i])}</p>
                         </div>
                     </figcaption>
                 </figure>
@@ -448,17 +448,17 @@ class UI{
                     </div>
                     <figcaption>
                         <a href="#">
-                            <p class="hide title"> ${rated[i].title} </p>
-                            <p class="original-title"> ${(!rated[i].title ? rated[i].name : rated[i].title)} </p>
+                            <p class="hide title">${rated[i].title}</p>
+                            <p class="original-title">${(!rated[i].title ? rated[i].name : rated[i].title)}</p>
                         </a>
                         <div class="year-ratings">
-                            <p class="date"> ${this.releaseDate(rated[i])} </p>
-                            <p class="rating"> ${this.rating(rated[i])} </p>
+                            <p class="date">${this.releaseDate(rated[i])}</p>
+                            <p class="rating">${this.rating(rated[i])}</p>
                         </div>
                         <div class="hide hidden-details">
-                            <p class="overview"> ${this.overview(rated[i])} </p>
-                            <p class="id"> ${rated[i].id} </p>
-                            <p class="language"> ${this.language(rated[i])} </p>
+                            <p class="overview">${this.overview(rated[i])}</p>
+                            <p class="id">${rated[i].id}</p>
+                            <p class="language">${this.language(rated[i])}</p>
                         </div>
                     </figcaption>
                 </figure>
@@ -483,17 +483,17 @@ class UI{
                     </div>
                     <figcaption>
                         <a href="#">
-                            <p class="hide title"> ${rated[i].title} </p>
-                            <p class="original-title"> ${(!rated[i].title ? rated[i].name : rated[i].title)} </p>
+                            <p class="hide title">${rated[i].title}</p>
+                            <p class="original-title">${(!rated[i].title ? rated[i].name : rated[i].title)}</p>
                         </a>
                         <div class="year-ratings">
-                            <p class="date"> ${this.releaseDate(rated[i])} </p>
-                            <p class="rating"> ${this.rating(rated[i])} </p>
+                            <p class="date">${this.releaseDate(rated[i])}</p>
+                            <p class="rating">${this.rating(rated[i])} </p>
                         </div>
                         <div class="hide hidden-details">
-                            <p class="overview"> ${this.overview(rated[i])} </p>
-                            <p class="id"> ${rated[i].id} </p>
-                            <p class="language"> ${this.language(rated[i])} </p>
+                            <p class="overview">${this.overview(rated[i])}</p>
+                            <p class="id">${rated[i].id}</p>
+                            <p class="language">${this.language(rated[i])}</p>
                         </div>
                     </figcaption>
                 </figure>
