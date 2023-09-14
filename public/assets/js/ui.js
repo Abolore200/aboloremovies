@@ -229,19 +229,23 @@ class UI{
     }
     //
     displayMessage(form, message, loaderFlex){
-        const error = document.createElement('div')
-        error.classList.add('error')
-        error.innerHTML = `<p> ${message}</p>`
         //
-        const searchModal = document.querySelector('.search-modal')
-
-        form.insertBefore(error, searchModal)
+        const error_header = document.querySelector('.error-header')
+        let error = `
+            <div class="error">
+                <p>${message}</p>
+            </div>
+        `;
+        error_header.innerHTML = error
 
         //remove error after 2 seconds
         setTimeout(() => {
-            error.remove()
-            //
-            loaderFlex.remove()
+            if(error_header){
+                error_header.innerHTML = ""
+            }
+            if(loaderFlex){
+                loaderFlex.remove()
+            }
             //
             form.reset()
         },2000)
