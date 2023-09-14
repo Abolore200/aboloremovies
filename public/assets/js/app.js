@@ -25,6 +25,11 @@ window.addEventListener('scroll', () => {
 
 })
 
+const year = document.querySelector('.year')
+if(year){
+    year.innerHTML = new Date().getFullYear()
+}
+
 //
 const movieSlideshow = document.querySelector('.movie-slideshow')
 //
@@ -78,6 +83,8 @@ if(window){
             //insert the fetched movies into the <movieSlideShow>
             if(movieSlideshow){
                 movieSlideshow.innerHTML = html
+
+                ui.removeAnchorTag()
             }
             //
         })

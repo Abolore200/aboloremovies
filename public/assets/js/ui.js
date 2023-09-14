@@ -177,7 +177,10 @@ class UI{
         if(upcomingMoviesHeader){
             upcomingMoviesHeader.innerHTML = movies
 
-            this.viewHomePageMovie()
+            const checkMovie = document.querySelectorAll('.upcoming-movies .img-slide a')
+            if(checkMovie){
+                this.viewHomePageMovie(checkMovie)
+            }
         }
 
         //
@@ -371,7 +374,10 @@ class UI{
         if(popularHeader){
             popularHeader.innerHTML = html
 
-            this.viewHomePageMovie()
+            const checkMovie = document.querySelectorAll('.popular-movies .img-slide a')
+            if(checkMovie){
+                this.viewHomePageMovie(checkMovie)
+            }
         }
         //
 
@@ -412,6 +418,14 @@ class UI{
     }
 
     //
+    removeAnchorTag(){
+        // const removeAnchor = Array.from(document.querySelectorAll('.movie-slideshow a'))
+        // removeAnchor.forEach(link => {
+        //     link.setAttribute('href', '.search.html')
+        // })
+    }
+
+    //
     displayRatedMovies(rated){
         //
         const ratedMovieHeader = document.querySelector('.rated-movies')
@@ -448,7 +462,10 @@ class UI{
         if(ratedMovieHeader){
             ratedMovieHeader.innerHTML = html
 
-            this.viewHomePageMovie()
+            const checkMovie = document.querySelectorAll('.rated-movies .img-slide a')
+            if(checkMovie){
+                this.viewHomePageMovie(checkMovie)
+            }
         }
 
         //display all the movies
@@ -490,10 +507,10 @@ class UI{
     }
 
     //
-    viewHomePageMovie(){
-        const movies_result = document.querySelectorAll('.img-slide a')
-        if(movies_result){
-            movies_result.forEach(result => {
+    viewHomePageMovie(parentPae){
+        // const movies_result = document.querySelectorAll('.img-slide a')
+        if(parentPae){
+            parentPae.forEach(result => {
                 result.setAttribute('href', './view.html')
                 result.addEventListener('click', e => {
                     // e.preventDefault()
