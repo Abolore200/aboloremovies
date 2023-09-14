@@ -176,6 +176,8 @@ class UI{
         //add upcomingMovie into upcomingMoviesHeader
         if(upcomingMoviesHeader){
             upcomingMoviesHeader.innerHTML = movies
+
+            this.viewHomePageMovie()
         }
 
         //
@@ -210,21 +212,7 @@ class UI{
         if(allUpcomingMoviesHeader){
             allUpcomingMoviesHeader.innerHTML = allUpcomingMovies
 
-            const movies_result = document.querySelectorAll('.img-slide a')
-            if(movies_result){
-                movies_result.forEach(result => {
-                    result.setAttribute('href', '../view.html')
-                    result.addEventListener('click', e => {
-                        e.preventDefault()
-                        const parent = e.target.parentElement.parentElement.parentElement
-                        this.getParentElement(parent)
-                        
-                        if(JSON.parse(sessionStorage.getItem('movie'))){
-                            this.storage()
-                        }
-                    })
-                })
-            }
+            this.viewSeeMoreMvoie()
         }
     }
     //
@@ -382,6 +370,8 @@ class UI{
         const popularHeader = document.querySelector('.popular-movies')
         if(popularHeader){
             popularHeader.innerHTML = html
+
+            this.viewHomePageMovie()
         }
         //
 
@@ -417,21 +407,7 @@ class UI{
         if(popluar){
             popluar.innerHTML = allPopluarMovies
 
-            const movies_result = document.querySelectorAll('.img-slide a')
-            if(movies_result){
-                movies_result.forEach(result => {
-                    result.setAttribute('href', '../view.html')
-                    result.addEventListener('click', e => {
-                        // e.preventDefault()
-                        const parent = e.target.parentElement.parentElement.parentElement
-                        this.getParentElement(parent)
-                
-                        if(JSON.parse(sessionStorage.getItem('movie'))){
-                            this.storage()
-                        }
-                    })
-                })
-            }
+            this.viewSeeMoreMvoie()
         }
     }
 
@@ -471,6 +447,8 @@ class UI{
         //
         if(ratedMovieHeader){
             ratedMovieHeader.innerHTML = html
+
+            this.viewHomePageMovie()
         }
 
         //display all the movies
@@ -507,21 +485,45 @@ class UI{
         if(allRatedMovieHeader){
             allRatedMovieHeader.innerHTML = ratedMovie
 
-            const movies_result = document.querySelectorAll('.img-slide a')
-            if(movies_result){
-                movies_result.forEach(result => {
-                    result.setAttribute('href', '../view.html')
-                    result.addEventListener('click', e => {
-                        // e.preventDefault()
-                        const parent = e.target.parentElement.parentElement.parentElement
-                        this.getParentElement(parent)
-                
-                        if(JSON.parse(sessionStorage.getItem('movie'))){
-                            this.storage()
-                        }
-                    })
+            this.viewSeeMoreMvoie()
+        }
+    }
+
+    //
+    viewHomePageMovie(){
+        const movies_result = document.querySelectorAll('.img-slide a')
+        if(movies_result){
+            movies_result.forEach(result => {
+                result.setAttribute('href', './view.html')
+                result.addEventListener('click', e => {
+                    // e.preventDefault()
+                    const parent = e.target.parentElement.parentElement.parentElement
+                    this.getParentElement(parent)
+                    
+                    if(JSON.parse(sessionStorage.getItem('movie'))){
+                        this.storage()
+                    }
                 })
-            }
+            })
+        }
+    }
+
+    //
+    viewSeeMoreMvoie(){
+        const movies_result = document.querySelectorAll('.img-slide a')
+        if(movies_result){
+            movies_result.forEach(result => {
+                result.setAttribute('href', '../view.html')
+                result.addEventListener('click', e => {
+                    // e.preventDefault()
+                    const parent = e.target.parentElement.parentElement.parentElement
+                    this.getParentElement(parent)
+            
+                    if(JSON.parse(sessionStorage.getItem('movie'))){
+                        this.storage()
+                    }
+                })
+            })
         }
     }
     //
@@ -640,6 +642,9 @@ class UI{
     //
     view_movie_only(get_search){
         //
+        const view_movie = document.querySelector('.view-movie')
+
+        //
         const viewSearch = document.querySelector('.view-search')
         let movie = get_search[0]
 
@@ -670,6 +675,10 @@ class UI{
 
         if(viewSearch){
             viewSearch.innerHTML = movieTemplate
+        }
+        //
+        if(view_movie){
+            view_movie.innerHTML = movieTemplate
         }
     }
 }

@@ -183,9 +183,7 @@ if(window){
             })
         }
     })
-    //
-    const view_clicked_movie = document.querySelector('.view-search')
-    if(view_clicked_movie){
-        ui.view_search_details()
-    }
+
+    //view deails of [movies || actors], view clicked searched result
+    ui.view_search_details()
 }
