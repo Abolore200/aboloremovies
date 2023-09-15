@@ -129,3 +129,7 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .home-logo p{display:flex;align-items:center;}
 .home-logo p .movie-logo{margin-right:5px;}
 .trade-mark p{color:var(--blue);font-family:var(--inter);font-size:1.1rem;}
+
+
+.animate{transition:all 1s ease-in-out;transform:scale(0);}
+.animate.active{transform:scale(1);}

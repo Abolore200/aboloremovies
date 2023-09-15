@@ -149,7 +149,7 @@ class UI{
         //array of 5 upcoming movies
         for(let i = 0; i < (results.length - 15); i++){
             movies += `
-                <figure class="img-slide slides">
+                <figure class="img-slide slides animate">
                     <div class="img-hover">
                         <a href="#">
                             <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(results[i])}" class="poster" alt="${this.ImgName(results[i])}"/>
@@ -181,6 +181,12 @@ class UI{
             if(checkMovie){
                 this.viewHomePageMovie(checkMovie)
             }
+
+            const all_animation = document.querySelectorAll('.animate')
+            if(all_animation){
+                this.getAnimation(all_animation)
+            }
+            
         }
 
         //
@@ -217,6 +223,26 @@ class UI{
 
             this.viewSeeMoreMvoie()
         }
+    }
+
+    //
+    getAnimation(all_animation){
+        const arr = Array.from(all_animation)
+        arr.forEach(animate => {
+            this.getInterSection(animate)
+        })
+    }
+    //
+    getInterSection(animate){
+        const observe = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    entry.target.classList.add('active')
+                }
+            })
+        }, {threshold: 0.5})
+
+        observe.observe(animate)
     }
     //
     displayMessage(form, message, loaderFlex){
@@ -647,12 +673,14 @@ class UI{
     view_search_details(){
         const get_search = JSON.parse(sessionStorage.getItem('movie'))
 
-        if(get_search[0].known_for.length === 0){
-            //movie only
-            this.view_movie_only(get_search)
-        } else {
-            //actor + movie
-            // console.log(get_search);
+        if(get_search !== null){
+            if(get_search[0].known_for.length === 0){
+                //movie only
+                this.view_movie_only(get_search)
+            } else {
+                //actor + movie
+                // console.log(get_search);
+            }
         }
     }
 
