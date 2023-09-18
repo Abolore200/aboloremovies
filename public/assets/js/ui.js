@@ -182,10 +182,10 @@ class UI{
                 this.viewHomePageMovie(checkMovie)
             }
 
-            const all_animation = document.querySelectorAll('.animate')
-            if(all_animation){
-                this.getAnimation(all_animation)
-            }
+            // const all_animation = document.querySelectorAll('.animate')
+            // if(all_animation){
+            //     this.getAnimation(all_animation)
+            // }
             
         }
 

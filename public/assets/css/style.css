@@ -83,7 +83,7 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .loader-flex .loader{animation:loader 2s infinite ease-in-out both;}
 @keyframes loader{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
 .fixed-header{position:relative;overflow:hidden;}
-.fixed-to-top{position:fixed;top:calc(100% - 15%);left:calc(100% - 8%);bottom:0;right:0;width:fit-content;z-index:2;}
+.fixed-to-top{position:fixed;top:calc(100% - 15%);left:calc(100% - 8%);bottom:0;right:0;width:fit-content;z-index:2;height:fit-content;}
 .top-btn{width:55px;height:55px;border:1px solid var(--yellow);background:var(--yellow);border-radius:50%;}
 .top-btn{display:flex;justify-content:center;align-items:center;}
 .top-btn{bottom:-999px;position:relative;transition:bottom 1s ease-in-out}
@@ -132,6 +132,7 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 #close-btn{display:none;}
 
 @media screen and (max-width:768px){
+    header{height:initial;}
     .navbar{width:100%;margin:0 auto;padding:25px 20px 20px;}
     .category{margin-left:0px;position:absolute;width:100%;height:100dvh;top:0;display:flex;justify-content:end;}
     .category{right:-999px;background-color:rgb(0, 0, 0,.5);transition:all .5s ease-in-out;}
@@ -145,4 +146,16 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
     .search-button a button{padding:8px 20px;font-size:0.8rem;}
     #close-btn{display:block;width:100%;text-align:end;padding-right:25px;}
     #close-btn button{background-color:transparent;border:none;color:var(--yellow);font-size:1.5rem;}
+
+    .year-ratings p{font-size:1rem;}
+    .upcoming-header p, .popular-header p, .rated-header p{font-size:1.5rem;}
+    .all-upcoming-movies, .all-popular-movies, .all-rated-movies{flex-wrap:wrap;}
+    .all-upcoming-movies .img-slide, .all-popular-movies .img-slide, .all-rated-movies .img-slide{width:calc(100% / 2);padding:0;margin-bottom:30px;}
+    .all-upcoming-movies .img-slide:nth-child(odd), .all-popular-movies .img-slide:nth-child(odd), .all-rated-movies .img-slide:nth-child(odd){padding-right:5px;}
+    .all-upcoming-movies .img-slide:nth-child(even), .all-popular-movies .img-slide:nth-child(even), .all-rated-movies .img-slide:nth-child(even){padding-left:5px;}
+    .all-upcoming-movies .img-slide .img-hover, .all-popular-movies .img-slide .img-hover, .all-rated-movies .img-slide .img-hover{height:280px;}
+    .img-slide{min-height:auto;}
+    .fixed-to-top{left:calc(100% - 20%);}
+    .footer-col-1, .footer-col-2{flex-direction:column-reverse;}
+    .social-media-link,.home-logo{margin-bottom:15px;}
 }
