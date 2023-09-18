@@ -106,7 +106,6 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .details-header p span{color:var(--yellow);}
 .overview-header p{color:var(--white);font-family:var(--open-sans);font-size:1.2rem;}
 .overview-header{margin-top:10px;margin-right:50px;}
-
 .footer{background-color:var(--yellow);padding:50px 0;width:100%;}
 .footer-header{width:95%;margin:0 auto;}
 .footer-col-1,.footer-col-2{display:flex;justify-content:space-between;align-items:center;}
@@ -130,7 +129,6 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .home-logo p .movie-logo{margin-right:5px;}
 .trade-mark p{color:var(--blue);font-family:var(--inter);font-size:1.1rem;}
 #close-btn{display:none;}
-
 @media screen and (max-width:768px){
     header{height:initial;}
     .navbar{width:100%;margin:0 auto;padding:25px 15px 20px;}
@@ -166,7 +164,7 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
     .searched-image-header,.searched-details-header,.searched-image-header figure{width:100%;}
     .searched-details-header{margin-top:35px;}
     .overview-header{margin-right:0;}
-    .overview-header p{font-size:1.4rem;}
+    .overview-header p{font-size:1.2rem;}
     .details-header p{font-size:1.2rem;}
     .main{padding-bottom:200px;}
 }

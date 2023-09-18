@@ -172,7 +172,7 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
     .social-media-link,.home-logo{margin-bottom:15px;}
     .movie-h1 :is(h1){font-size:3.8rem;margin-top:10px;}
 }
-@media screen and (max-width:361px) {
+@media screen and (max-width:360px) {
     .search-button a button{padding:5px 15px;}
     .search-button #button{margin-left:8px;}
 }
