@@ -22,6 +22,53 @@ class UI{
             active.classList.remove('active')
         })
     }
+    //
+    openMenuBar(){
+        const category = document.querySelector('.category')
+        const category_ul = document.querySelector('.category ul')
+        const closeMenu = document.querySelector('#close-btn button')
+
+        //
+        const openMenu = document.querySelector('#button')
+        openMenu.addEventListener('click', () => {
+            category.classList.add('block')
+            document.body.style.position = 'fixed'
+        })
+
+        //
+        closeMenu.addEventListener('click', () => {
+            if(category.classList.contains('block') && document.body.style.position == 'fixed'){
+                category.classList.remove('block')
+                document.body.style.removeProperty('position')
+            }
+        })
+
+        category.addEventListener('click', e => {
+            if(!category_ul.contains(e.target)){
+                if(category.classList.contains('block') && document.body.style.position == 'fixed'){
+                    category.classList.remove('block')
+                    document.body.style.removeProperty('position')
+                }
+            }
+        })
+    }
+
+    //
+    animateTopBtn(topBtn){
+        if(document.documentElement.scrollTop > 200){
+            topBtn.classList.add('block')
+        } else {
+            topBtn.classList.remove('block')
+        }
+    }
+
+    //
+    currentYear(){
+        const year = document.querySelector('.year')
+        if(year){
+            year.innerHTML = new Date().getFullYear()
+        }
+    }
 
     //
     titleLength(title, name){

@@ -168,4 +168,9 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
     .overview-header{margin-right:0;}
     .overview-header p{font-size:1.4rem;}
     .details-header p{font-size:1.2rem;}
+    .main{padding-bottom:200px;}
+}
+@media screen and (max-width:361px) {
+    .search-button a button{padding:5px 15px;}
+    .search-button #button{margin-left:8px;}
 }

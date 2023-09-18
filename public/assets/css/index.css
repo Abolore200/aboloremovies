@@ -170,5 +170,9 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
     .fixed-to-top{left:calc(100% - 20%);}
     .footer-col-1, .footer-col-2{flex-direction:column-reverse;}
     .social-media-link,.home-logo{margin-bottom:15px;}
-    .movie-h1 :is(h1){font-size:3.5rem;margin-top:10px;}
+    .movie-h1 :is(h1){font-size:3.8rem;margin-top:10px;}
+}
+@media screen and (max-width:361px) {
+    .search-button a button{padding:5px 15px;}
+    .search-button #button{margin-left:8px;}
 }

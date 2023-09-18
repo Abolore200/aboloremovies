@@ -3,8 +3,6 @@ const ui = new UI()
 
 //
 const topBtn = document.querySelector('.top-btn')
-
-//
 const nav = document.querySelector('.navbar')
 const span = Array.from(document.querySelectorAll('.site-name a span'))
 const list = Array.from(document.querySelectorAll('.category ul li a'))
@@ -16,25 +14,21 @@ window.addEventListener('scroll', () => {
         ui.removeActiveClass(nav,span,list)
     }
 
-    //
-    if(document.documentElement.scrollTop > 200){
-        topBtn.classList.add('block')
-    } else {
-        topBtn.classList.remove('block')
-    }
+    //add animation to scrollTop Btn
+    ui.animateTopBtn(topBtn)
 
 })
-
-const year = document.querySelector('.year')
-if(year){
-    year.innerHTML = new Date().getFullYear()
-}
 
 //
 const movieSlideshow = document.querySelector('.movie-slideshow')
 //
 if(window){
     window.addEventListener('load', () => {
+        //open and close menubar
+        ui.openMenuBar()
+
+        //update to current year
+        ui.currentYear()
         
         // function to fetch the movies from the api
         api.popularMovies()
@@ -194,29 +188,3 @@ if(window){
     //view deails of [movies || actors], view clicked searched result
     ui.view_search_details()
 }
-
-const category = document.querySelector('.category')
-const category_ul = document.querySelector('.category ul')
-
-const openMenu = document.querySelector('#button')
-openMenu.addEventListener('click', () => {
-    category.classList.add('block')
-    document.body.style.position = 'fixed'
-})
-
-const closeMenu = document.querySelector('#close-btn button')
-closeMenu.addEventListener('click', () => {
-    if(category.classList.contains('block') && document.body.style.position == 'fixed'){
-        category.classList.remove('block')
-        document.body.style.removeProperty('position')
-    }
-})
-
-category.addEventListener('click', e => {
-    if(!category_ul.contains(e.target)){
-        if(category.classList.contains('block') && document.body.style.position == 'fixed'){
-            category.classList.remove('block')
-            document.body.style.removeProperty('position')
-        }
-    }
-})
