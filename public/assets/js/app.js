@@ -196,7 +196,7 @@ if(window){
 }
 
 const category = document.querySelector('.category')
-const category_ul = document.querySelector('.lists')
+const category_ul = document.querySelector('.category ul')
 
 const openMenu = document.querySelector('#button')
 openMenu.addEventListener('click', () => {

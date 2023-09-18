@@ -142,7 +142,8 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
     .category ul{flex-direction:column;width:50%;height:100dvh;position:relative;padding-top:25px;align-items:start;background-color:var(--blue);padding-left:15px;}
     .category :is(ul li){margin:15px 0;}
     .movie-header{flex-direction:column;padding-bottom:50px;}
-    .site-name a{font-size:1.1rem;}
+    .site-name a{font-size:1.3rem;}
+    .site-name a span i{font-size:1.5rem;}
     .search-button{display:flex;margin-right:0;}
     .search-button #button{display:block;font-size:1.3rem;margin-left:15px;background-color:transparent;color:var(--yellow);border:none;}
     .search-button a button{padding:8px 20px;font-size:0.8rem;}
@@ -169,4 +170,5 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
     .fixed-to-top{left:calc(100% - 20%);}
     .footer-col-1, .footer-col-2{flex-direction:column-reverse;}
     .social-media-link,.home-logo{margin-bottom:15px;}
+    .movie-h1 :is(h1){font-size:3.5rem;margin-top:10px;}
 }
