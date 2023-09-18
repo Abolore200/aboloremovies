@@ -194,3 +194,19 @@ if(window){
     //view deails of [movies || actors], view clicked searched result
     ui.view_search_details()
 }
+
+const category = document.querySelector('.category')
+
+const openMenu = document.querySelector('#button')
+openMenu.addEventListener('click', () => {
+    category.classList.add('block')
+    document.body.style.position = 'fixed'
+})
+
+const closeMenu = document.querySelector('#close-btn')
+closeMenu.addEventListener('click', () => {
+    if(category.classList.contains('block') && document.body.style.position == 'fixed'){
+        category.classList.remove('block')
+        document.body.style.removeProperty('position')
+    }
+})

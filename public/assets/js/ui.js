@@ -226,24 +226,24 @@ class UI{
     }
 
     //
-    getAnimation(all_animation){
-        const arr = Array.from(all_animation)
-        arr.forEach(animate => {
-            this.getInterSection(animate)
-        })
-    }
-    //
-    getInterSection(animate){
-        const observe = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting){
-                    entry.target.classList.add('active')
-                }
-            })
-        }, {threshold: 0.5})
+    // getAnimation(all_animation){
+    //     const arr = Array.from(all_animation)
+    //     arr.forEach(animate => {
+    //         this.getInterSection(animate)
+    //     })
+    // }
+    // //
+    // getInterSection(animate){
+    //     const observe = new IntersectionObserver(entries => {
+    //         entries.forEach(entry => {
+    //             if(entry.isIntersecting){
+    //                 entry.target.classList.add('active')
+    //             }
+    //         })
+    //     }, {threshold: 0.5})
 
-        observe.observe(animate)
-    }
+    //     observe.observe(animate)
+    // }
     //
     displayMessage(form, message, loaderFlex){
         //
