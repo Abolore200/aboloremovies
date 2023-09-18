@@ -196,6 +196,7 @@ if(window){
 }
 
 const category = document.querySelector('.category')
+const category_ul = document.querySelector('.lists')
 
 const openMenu = document.querySelector('#button')
 openMenu.addEventListener('click', () => {
@@ -203,10 +204,19 @@ openMenu.addEventListener('click', () => {
     document.body.style.position = 'fixed'
 })
 
-const closeMenu = document.querySelector('#close-btn')
+const closeMenu = document.querySelector('#close-btn button')
 closeMenu.addEventListener('click', () => {
     if(category.classList.contains('block') && document.body.style.position == 'fixed'){
         category.classList.remove('block')
         document.body.style.removeProperty('position')
+    }
+})
+
+category.addEventListener('click', e => {
+    if(!category_ul.contains(e.target)){
+        if(category.classList.contains('block') && document.body.style.position == 'fixed'){
+            category.classList.remove('block')
+            document.body.style.removeProperty('position')
+        }
     }
 })
