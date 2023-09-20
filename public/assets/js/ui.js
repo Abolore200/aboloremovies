@@ -799,7 +799,7 @@ class UI{
                         <p>${actor.overview}</p>
                     </div>
                     <div class="details-header">
-                        <p><span class="span">Role: </span>${actor.release_date}</p>
+                        <p><span class="span">Department: </span>${actor.release_date}</p>
                         <p><span class="span">Type: </span>${actor.rating}</p>
                         <p><span class="span">ID: </span> <span>${actor.id}</span></p>
                     </div>
@@ -813,6 +813,8 @@ class UI{
 
         if(viewSearch){
             viewSearch.innerHTML = actorTemplate
+
+            this.viewSeeMoreMvoie()
         }
     }
 
