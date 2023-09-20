@@ -726,7 +726,7 @@ class UI{
                 this.view_movie_only(get_search)
             } else {
                 //actor + movie
-                // console.log(get_search);
+                this.view_actor(get_search)
             }
         }
     }
@@ -772,5 +772,80 @@ class UI{
         if(view_movie){
             view_movie.innerHTML = movieTemplate
         }
+    }
+
+    //
+    view_actor(get_search){
+        //
+        const viewSearch = document.querySelector('.view-search')
+
+        //
+        let actor = get_search[0]
+
+        //
+        let actorTemplate = ""
+        actorTemplate += `
+            <div class="movie-header">
+                <div class="searched-image-header">
+                    <figure>
+                        <img src="${actor.poster}" alt="${actor.title}">
+                    </figure>
+                </div>
+                <div class="searched-details-header">
+                    <div class="title-header">
+                        <p>${actor.title}</p>
+                    </div>
+                    <div class="overview-header">
+                        <p>${actor.overview}</p>
+                    </div>
+                    <div class="details-header">
+                        <p><span class="span">Role: </span>${actor.release_date}</p>
+                        <p><span class="span">Type: </span>${actor.rating}</p>
+                        <p><span class="span">ID: </span> <span>${actor.id}</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="known-for-header">
+                <div class="feature-header"><p>Movies Featured In</p></div>
+                <div class="known-for-flex">${this.getKnown_for(actor.known_for)}</div>
+            </div>
+        `;
+
+        if(viewSearch){
+            viewSearch.innerHTML = actorTemplate
+        }
+    }
+
+    getKnown_for(known_for){
+        let known_forTemplate = ""
+        for(let i = 0; i < known_for.length; i++){
+            if(known_for[i] !== null){
+                known_forTemplate += `
+                    <figure class="img-slide slides">
+                        <div class="img-hover">
+                            <a href="#">
+                                <img src="https://image.tmdb.org/t/p/w500/${(known_for[i].poster)}" class="poster" alt="${(known_for[i].title)}"/>
+                            </a>
+                        </div>
+                        <figcaption>
+                            <a href="#">
+                                <p class="hide title">${known_for[i].title}</p>
+                                <p class="original-title">${(known_for[i].title)}</p>
+                            </a>
+                            <div class="year-ratings">
+                                <p class="date">${(known_for[i].release_date)}</p>
+                                <p class="rating">${(known_for[i].rating)}</p>
+                            </div>
+                            <div class="hide hidden-details">
+                                <p class="overview">${(known_for[i].overview)}</p>
+                                <p class="id">${known_for[i].id}</p>
+                                <p class="language">${(known_for[i].language)}</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                `;
+            }
+        }
+        return known_forTemplate
     }
 }

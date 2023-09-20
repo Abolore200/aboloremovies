@@ -129,6 +129,11 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .home-logo p .movie-logo{margin-right:5px;}
 .trade-mark p{color:var(--blue);font-family:var(--inter);font-size:1.1rem;}
 #close-btn{display:none;}
+.known-for-header{margin-top:50px;width:100%;}
+.known-for-flex{display:flex;}
+.known-for-flex figure:first-child{padding-left:0;}
+.feature-header{margin-bottom:20px;font-weight:var(--wgt600);font-family:var(--inter);}
+.feature-header p{font-size:2.5rem;color:var(--white);}
 @media screen and (max-width:768px){
     header{height:initial;}
     .navbar{width:100%;margin:0 auto;padding:25px 15px 20px;}
