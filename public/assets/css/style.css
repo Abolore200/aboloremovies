@@ -134,6 +134,17 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .known-for-flex figure:first-child{padding-left:0;}
 .feature-header{margin-bottom:20px;font-weight:var(--wgt600);font-family:var(--inter);}
 .feature-header p{font-size:2.5rem;color:var(--white);}
+
+/* all tv series */
+.main .tv-rated,.main .airing,.main .rated{width:95%;margin:0 auto;margin-top:100px;}
+.tv-rated-header,.airing-header,.rated-header{margin-bottom:30px;}
+.tv-rated-header p,.airing-header p,.rated-header p{color:var(--white);font-size:2rem;font-weight:600;padding-left:10px;}
+.all-tv-rated-movies,.all-airing-movies,.all-rated-movies{display:flex;flex-wrap:wrap;}
+.all-tv-rated-movies .img-slide :is(.date),.all-airing-movies .img-slide :is(.date),
+.all-rated-movies .img-slide :is(.date),.search-results .img-slide :is(.date){border:none;padding:3px 0px;}
+.tv-rated-body,.airing-body,.rated-body{background-color:var(--yellow);}
+
+
 @media screen and (max-width:768px){
     header{height:initial;}
     .navbar{width:100%;margin:0 auto;padding:25px 15px 20px;}

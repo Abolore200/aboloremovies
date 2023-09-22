@@ -125,6 +125,35 @@ if(window){
             }
         })
 
+                                                //[Tv Series]
+        //Airing Today
+        api.airingToday()
+        .then(airing => {
+            ui.displayAiringToday(airing.airing_today)
+        })
+        .catch(err => {
+            if(document.querySelector('.airing-movies')){
+                document.querySelector('.airing-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
+            }
+            if(document.querySelector('.all-airing-movies')){
+                document.querySelector('.all-airing-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
+            }
+        })
+
+        //On The Air
+        api.tvRated()
+        .then(rated => {
+            ui.displayTvRated(rated.rated)
+        })
+        .catch(err => {
+            if(document.querySelector('.tv-rated-movies')){
+                document.querySelector('.tv-rated-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
+            }
+            if(document.querySelector('.all-tv-rated-movies')){
+                document.querySelector('.all-tv-rated-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
+            }
+        })
+
         const form = document.querySelector('.search-form')
         if(form){
             form.reset()
@@ -166,7 +195,7 @@ if(window){
                     //callback the fetch api
                     .then(movies => {
 
-                        console.log(movies);
+                        // console.log(movies);
                         //if the movie cannot be found or is not available, display 'not found message'
                         if(movies.searchedMovies.results.length === 0){
                             ui.displayMessage(form, 'details not found, be more specific', loaderFlex)

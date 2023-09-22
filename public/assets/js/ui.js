@@ -850,4 +850,159 @@ class UI{
         }
         return known_forTemplate
     }
+
+    //
+    displayAiringToday(airing_today){
+        //
+        const airing = airing_today.results
+
+        let airingMovies = ""
+        for(let i = 0; i < (airing.length - 15); i++){
+            airingMovies += `
+                <figure class="img-slide slides">
+                    <div class="img-hover">
+                        <a href="#">
+                            <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(airing[i])}" class="poster" alt="${this.ImgName(airing[i])}"/>
+                        </a>
+                    </div>
+                    <figcaption>
+                        <a href="#">
+                            <p class="hide title">${airing[i].title}</p>
+                            <p class="original-title">${(!airing[i].title ? airing[i].name : airing[i].title)}</p>
+                        </a>
+                        <div class="year-ratings">
+                            <p class="date">${this.releaseDate(airing[i])}</p>
+                            <p class="rating">${this.rating(airing[i])}</p>
+                        </div>
+                        <div class="hide hidden-details">
+                            <p class="overview">${this.overview(airing[i])}</p>
+                            <p class="id">${airing[i].id}</p>
+                            <p class="language">${this.language(airing[i])}</p>
+                        </div>
+                    </figcaption>
+                </figure>
+            `;
+        }
+
+        const airingToday = document.querySelector('.airing-movies')
+        if(airingToday){
+            airingToday.innerHTML = airingMovies
+
+            const checkMovie = document.querySelectorAll('.airing-movies .img-slide a')
+            if(checkMovie){
+                this.viewHomePageMovie(checkMovie)
+            }
+        }
+
+        let allAiringMovies = ""
+        for(let i = 0; i < airing.length; i++){
+            allAiringMovies += `
+                <figure class="img-slide slides">
+                    <div class="img-hover">
+                        <a href="#">
+                            <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(airing[i])}" class="poster" alt="${this.ImgName(airing[i])}"/>
+                        </a>
+                    </div>
+                    <figcaption>
+                        <a href="#">
+                            <p class="hide title">${airing[i].title}</p>
+                            <p class="original-title">${(!airing[i].title ? airing[i].name : airing[i].title)}</p>
+                        </a>
+                        <div class="year-ratings">
+                            <p class="date">${this.releaseDate(airing[i])}</p>
+                            <p class="rating">${this.rating(airing[i])} </p>
+                        </div>
+                        <div class="hide hidden-details">
+                            <p class="overview">${this.overview(airing[i])}</p>
+                            <p class="id">${airing[i].id}</p>
+                            <p class="language">${this.language(airing[i])}</p>
+                        </div>
+                    </figcaption>
+                </figure>
+            `;
+        }
+
+        const allAiringTodayHeader = document.querySelector('.all-airing-movies')
+        if(allAiringTodayHeader){
+            allAiringTodayHeader.innerHTML = allAiringMovies
+
+            this.viewSeeMoreMvoie()
+        }
+    }
+    displayTvRated(on_the_air){
+        const on_air = on_the_air.results
+
+        let onTheAirMovies = ""
+        for(let i = 0; i < (on_air.length - 15); i++){
+            onTheAirMovies += `
+                <figure class="img-slide slides">
+                    <div class="img-hover">
+                        <a href="#">
+                            <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(on_air[i])}" class="poster" alt="${this.ImgName(on_air[i])}"/>
+                        </a>
+                    </div>
+                    <figcaption>
+                        <a href="#">
+                            <p class="hide title">${on_air[i].title}</p>
+                            <p class="original-title">${(!on_air[i].title ? on_air[i].name : on_air[i].title)}</p>
+                        </a>
+                        <div class="year-ratings">
+                            <p class="date">${this.releaseDate(on_air[i])}</p>
+                            <p class="rating">${this.rating(on_air[i])}</p>
+                        </div>
+                        <div class="hide hidden-details">
+                            <p class="overview">${this.overview(on_air[i])}</p>
+                            <p class="id">${on_air[i].id}</p>
+                            <p class="language">${this.language(on_air[i])}</p>
+                        </div>
+                    </figcaption>
+                </figure>
+            `;
+        }
+
+        const onTheAir = document.querySelector('.tv-rated-movies')
+        if(onTheAir){
+            onTheAir.innerHTML = onTheAirMovies
+
+            const checkMovie = document.querySelectorAll('.tv-rated-movies .img-slide a')
+            if(checkMovie){
+                this.viewHomePageMovie(checkMovie)
+            }
+        }
+
+        let allOnTheAirMovies = ""
+        for(let i = 0; i < on_air.length; i++){
+            allOnTheAirMovies += `
+                <figure class="img-slide slides">
+                    <div class="img-hover">
+                        <a href="#">
+                            <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(on_air[i])}" class="poster" alt="${this.ImgName(on_air[i])}"/>
+                        </a>
+                    </div>
+                    <figcaption>
+                        <a href="#">
+                            <p class="hide title">${on_air[i].title}</p>
+                            <p class="original-title">${(!on_air[i].title ? on_air[i].name : on_air[i].title)}</p>
+                        </a>
+                        <div class="year-ratings">
+                            <p class="date">${this.releaseDate(on_air[i])}</p>
+                            <p class="rating">${this.rating(on_air[i])} </p>
+                        </div>
+                        <div class="hide hidden-details">
+                            <p class="overview">${this.overview(on_air[i])}</p>
+                            <p class="id">${on_air[i].id}</p>
+                            <p class="language">${this.language(on_air[i])}</p>
+                        </div>
+                    </figcaption>
+                </figure>
+            `;
+        }
+
+        const allOnTheAirHeader = document.querySelector('.all-tv-rated-movies')
+        if(allOnTheAirHeader){
+            allOnTheAirHeader.innerHTML = allOnTheAirMovies
+
+            this.viewSeeMoreMvoie()
+        }
+    }
 }
