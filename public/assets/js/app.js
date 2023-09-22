@@ -109,6 +109,22 @@ if(window){
                 document.querySelector('.all-popular-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
             }
         })
+
+        // function to fetch now playing movies from the api
+        api.nowPlayingMovies()
+        .then(now_playing => {
+            const nowPlayingMovies = now_playing.now_playing
+
+            ui.displayNowPlayingMovies(nowPlayingMovies)
+        })
+        .catch(err => {
+            if(document.querySelector('.now-playing-movies')){
+                document.querySelector('.now-playing-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
+            }
+            if(document.querySelector('.all-now-playing-movies')){
+                document.querySelector('.all-now-playing-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
+            }
+        })
         
         //Top Rated Movies
         api.topRatedMovie()

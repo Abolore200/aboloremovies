@@ -929,6 +929,8 @@ class UI{
             this.viewSeeMoreMvoie()
         }
     }
+
+    //
     displayTvRated(on_the_air){
         const on_air = on_the_air.results
 
@@ -1001,6 +1003,84 @@ class UI{
         const allOnTheAirHeader = document.querySelector('.all-tv-rated-movies')
         if(allOnTheAirHeader){
             allOnTheAirHeader.innerHTML = allOnTheAirMovies
+
+            this.viewSeeMoreMvoie()
+        }
+    }
+
+    //
+    displayNowPlayingMovies(nowPlayingMovies){
+        const playing = nowPlayingMovies.results
+
+        let nowPlayingMoviesTemplate = ""
+        for(let i = 0; i < (playing.length - 15); i++){
+            nowPlayingMoviesTemplate += `
+                <figure class="img-slide slides">
+                    <div class="img-hover">
+                        <a href="#">
+                            <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(playing[i])}" class="poster" alt="${this.ImgName(playing[i])}"/>
+                        </a>
+                    </div>
+                    <figcaption>
+                        <a href="#">
+                            <p class="hide title">${playing[i].title}</p>
+                            <p class="original-title">${(!playing[i].title ? playing[i].name : playing[i].title)}</p>
+                        </a>
+                        <div class="year-ratings">
+                            <p class="date">${this.releaseDate(playing[i])}</p>
+                            <p class="rating">${this.rating(playing[i])}</p>
+                        </div>
+                        <div class="hide hidden-details">
+                            <p class="overview">${this.overview(playing[i])}</p>
+                            <p class="id">${playing[i].id}</p>
+                            <p class="language">${this.language(playing[i])}</p>
+                        </div>
+                    </figcaption>
+                </figure>
+            `;
+        }
+
+        const nowPlaying = document.querySelector('.now-playing-movies')
+        if(nowPlaying){
+            nowPlaying.innerHTML = nowPlayingMoviesTemplate
+
+            const checkMovie = document.querySelectorAll('.now-playing-movies .img-slide a')
+            if(checkMovie){
+                this.viewHomePageMovie(checkMovie)
+            }
+        }
+
+        let allNowPlayingMovies = ""
+        for(let i = 0; i < playing.length; i++){
+            allNowPlayingMovies += `
+                <figure class="img-slide slides">
+                    <div class="img-hover">
+                        <a href="#">
+                            <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(playing[i])}" class="poster" alt="${this.ImgName(playing[i])}"/>
+                        </a>
+                    </div>
+                    <figcaption>
+                        <a href="#">
+                            <p class="hide title">${playing[i].title}</p>
+                            <p class="original-title">${(!playing[i].title ? playing[i].name : playing[i].title)}</p>
+                        </a>
+                        <div class="year-ratings">
+                            <p class="date">${this.releaseDate(playing[i])}</p>
+                            <p class="rating">${this.rating(playing[i])} </p>
+                        </div>
+                        <div class="hide hidden-details">
+                            <p class="overview">${this.overview(playing[i])}</p>
+                            <p class="id">${playing[i].id}</p>
+                            <p class="language">${this.language(playing[i])}</p>
+                        </div>
+                    </figcaption>
+                </figure>
+            `;
+        }
+
+        const allNowPlayingHeader = document.querySelector('.all-now-playing-movies')
+        if(allNowPlayingHeader){
+            allNowPlayingHeader.innerHTML = allNowPlayingMovies
 
             this.viewSeeMoreMvoie()
         }
