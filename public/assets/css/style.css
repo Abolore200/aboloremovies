@@ -189,7 +189,7 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
     .img-slide:last-child{padding-right:10px;}
     .img-slide:first-child{padding-left:10px;}
     .img-slide{width:calc(100% / 4);}
-    .search-input{width:50%;}
+    /* .search-input{width:50%;} */
 }
 
 @media screen and (max-width:768px){
