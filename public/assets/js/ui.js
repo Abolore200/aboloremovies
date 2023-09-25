@@ -312,7 +312,7 @@ class UI{
             }
         }
 
-        console.log(person[0]);
+        console.log(person);
 
         const allPersonMoviesHeader = document.querySelector('.all-person-movies')
         //
@@ -355,6 +355,96 @@ class UI{
     }
     //
     
+    trendingTv(trending_tv){
+        const tv = trending_tv.results
+
+        //trending tv-series movies
+        const trendingTvMoviesHeader = document.querySelector('.trendingTV-movies')
+
+        //trending tv-series movies-all
+        const alltrendingTvMoviesHeader = document.querySelector('.all-trendingTV-movies')
+
+        //
+        let movies = ""
+
+        //array of 5 trending tv-series movies
+        for(let i = 0; i < (tv.length - 15); i++){
+            movies += `
+                <figure class="img-slide slides animate">
+                    <div class="img-hover">
+                        <a href="#">
+                            <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(tv[i])}" class="poster" alt="${this.ImgName(tv[i])}"/>
+                        </a>
+                    </div>
+                    <figcaption>
+                        <a href="#">
+                            <p class="hide title">${tv[i].title}</p>
+                            <p class="original-title">${(!tv[i].title ? tv[i].name : tv[i].title)}</p>
+                        </a>
+                        <div class="year-ratings">
+                            <p class="date">${this.releaseDate(tv[i])}</p>
+                            <p class="rating">${this.rating(tv[i])}</p>
+                        </div>
+                        <div class="hide hidden-details">
+                            <p class="overview">${this.overview(tv[i])}</p>
+                            <p class="id">${tv[i].id}</p>
+                            <p class="language">${this.language(tv[i])}</p>
+                        </div>
+                    </figcaption>
+                </figure>
+            `;
+        }
+        //add upcomingMovie into upcomingMoviesHeader
+        if(trendingTvMoviesHeader){
+            trendingTvMoviesHeader.innerHTML = movies
+
+            const checkMovie = document.querySelectorAll('.trendingTV-movies .img-slide a')
+            if(checkMovie){
+                this.viewHomePageMovie(checkMovie)
+            }
+
+            const all_animation = document.querySelectorAll('.animate')
+            if(all_animation){
+                this.getAnimation(all_animation)
+            }
+            
+        }
+
+        //
+        let allUpcomingMovies = ""
+        //array of all upcoming movies
+        for(let i = 0; i < tv.length; i++){
+            allUpcomingMovies += `
+                <figure class="img-slide slides">
+                    <div class="img-hover">
+                        <a href="#">
+                            <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(tv[i])}" class="poster" alt="${this.ImgName(tv[i])}"/>
+                        </a>
+                    </div>
+                    <figcaption>
+                        <a href="#">
+                            <p class="hide title">${tv[i].title}</p>
+                            <p class="original-title">${(!tv[i].title ? tv[i].name : tv[i].title)}</p>
+                        </a>
+                        <div class="year-ratings">
+                            <p class="date">${this.releaseDate(tv[i])}</p>
+                            <p class="rating">${this.rating(tv[i])}</p>
+                        </div>
+                        <div class="hide hidden-details">
+                            <p class="overview">${this.overview(tv[i])}</p>
+                            <p class="id">${tv[i].id}</p>
+                            <p class="language">${this.language(tv[i])}</p>
+                        </div>
+                    </figcaption>
+                </figure>
+            `;
+        }
+        if(alltrendingTvMoviesHeader){
+            alltrendingTvMoviesHeader.innerHTML = allUpcomingMovies
+
+            this.viewSeeMoreMvoie()
+        }
+    }
 
 
     //
@@ -933,7 +1023,7 @@ class UI{
                         <p>${movie.overview}</p>
                     </div>
                     <div class="details-header">
-                        <p><span class="span">Release Date: </span> ${movie.release_date}</p>
+                        <p><span class="span">Release Date: </span> ${movie.release_date !== "undefined" ? movie.release_date : ""}</p>
                         <p><span class="span">Rating: </span>${movie.rating}</p>
                         <p><span class="span">Movie ID: </span>${movie.id}</p>
                         <p><span class="span">Language: </span> <span>${movie.language}</span></p>
@@ -1001,7 +1091,7 @@ class UI{
         if(view_movie){
             view_movie.innerHTML = actorTemplate
 
-            const checkMovie = document.querySelectorAll('.known-for-flex .img-slide a')
+            const checkMovie = document.querySelectorAll('.img-slide a')
             if(checkMovie){
                 this.viewHomePageMovie(checkMovie)
             }

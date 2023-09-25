@@ -37,10 +37,10 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .category ul li :is(a:hover){color:var(--yellow);}
 .category ul li a:hover::after{width:100%;}
 .category ul li a.active{color:var(--white);}
-.movie-header{width:95%;margin:0 auto;display:flex;padding-top:100px;}
+.movie-header{width:95%;margin:0 auto;display:flex;padding-top:100px;align-items:center;}
 .movie-started,.movie-slideshow{width:50%;}
 .movie-slideshow{display:flex;position:relative;}
-.movie-h1{width:100%;margin-right:auto;margin-top:100px;}
+.movie-h1{width:100%;margin-right:auto;}
 .movie-h1 :is(h1){text-transform:capitalize;font-size:4rem;color:#fff;}
 .movie-h1 :is(h1 span){color:var(--yellow)}
 .movie-h1 p{color:var(--yellow);font-weight:600;font-size:1.2rem;display:flex;align-items:center;font-family:var(--inter);}
@@ -82,7 +82,7 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .img-slide:last-child{padding-right:0;}
 .now-playing-movies .img-slide :is(.date),.upcoming-movies .img-slide :is(.date),.popular-movies .img-slide :is(.date),.rated-movies .img-slide :is(.date){border:none;padding:3px 0px;}
 .img-hover,.img-slide{border-radius:5px;}
-.img-hover{overflow:hidden;width:100%;height:50vh;}
+.img-hover{overflow:hidden;width:100%;height:400px;}
 .img-hover img{transition:transform .5s;object-fit:cover;}
 .img-hover:hover img{transform:scale(1.1);}
 .movie-slideshow::-webkit-scrollbar{height:5px;}
@@ -155,21 +155,21 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .airing-movies,.tv-rated-movies{padding-bottom:0px;}
 
 /* trending movies, tv series, people */
-.main .trending,.main .person,.main .rated{width:95%;margin:0 auto;}
-.trending-header,.person-header,.rated-header{display:flex;justify-content:space-between;align-items:center;}
-.trending-header p,.person-header p,.rated-header p{color:var(--white);font-size:2rem;font-weight:600;}
-.see-more-trending,.see-more-person,.see-more-rated{display:flex;align-items:end;}
-.trending-movies,.person-movies,.rated-movies{margin:50px 0;justify-content:center;}
-.trending-movies,.person-movies,.rated-movies{display:flex;justify-content:space-between;padding-bottom:100px;}
-.trending-movies .img-slide,.person-movies .img-slide,.rated-movies .img-slide{width:calc(100% / 5);padding:0px 10px;margin:0;min-width:calc(100% / 5);}
-.trending-movies .img-slide,.person-movies .img-slide,.rated-movies .img-slide{display:flex;flex-direction:column;justify-content:space-between;}
-.trending-movies .img-slide img,.person-movies .img-slide img,.rated-movies .img-slide img{width:100%;height:100%;}
-.trending-movies .img-slide figcaption,.person-movies .img-slide figcaption,.rated-movies .img-slide figcaption{text-align:start;margin-top:10px;}
+.main .trending,.main .person,.main .trendingTV{width:95%;margin:0 auto;}
+.trending-header,.person-header,.trendingTV-header{display:flex;justify-content:space-between;align-items:center;}
+.trending-header p,.person-header p,.trendingTV-header p{color:var(--white);font-size:2rem;font-weight:600;}
+.see-more-trending,.see-more-person,.see-more-trendingTV{display:flex;align-items:end;}
+.trending-movies,.person-movies,.trendingTV-movies{margin:50px 0;justify-content:center;}
+.trending-movies,.person-movies,.trendingTV-movies{display:flex;justify-content:space-between;padding-bottom:100px;}
+.trending-movies .img-slide,.person-movies .img-slide,.trendingTV-movies .img-slide{width:calc(100% / 5);padding:0px 10px;margin:0;min-width:calc(100% / 5);}
+.trending-movies .img-slide,.person-movies .img-slide,.trendingTV-movies .img-slide{display:flex;flex-direction:column;justify-content:space-between;}
+.trending-movies .img-slide img,.person-movies .img-slide img,.trendingTV-movies .img-slide img{width:100%;height:100%;}
+.trending-movies .img-slide figcaption,.person-movies .img-slide figcaption,.trendingTV-movies .img-slide figcaption{text-align:start;margin-top:10px;}
 .trending-movies .img-slide figcaption :is(p, :not(.year-ratings)) p,
 .person-movies .img-slide figcaption :is(p, :not(.year-ratings)) p,
-.rated-movies .img-slide figcaption :is(p, :not(.year-ratings)) p{font-family:var(--open-sans);color:var(--yellow);font-weight:var(--wgt600);font-size:1.05rem;}
-.trending-movies .img-slide :is(.date),.person-movies .img-slide :is(.date),.rated-movies .img-slide :is(.date){border:none;padding:3px 0px;}
-.main .person,.main .rated,.main .trending{margin-bottom:80px;}
+.trendingTV-movies .img-slide figcaption :is(p, :not(.year-ratings)) p{font-family:var(--open-sans);color:var(--yellow);font-weight:var(--wgt600);font-size:1.05rem;}
+.trending-movies .img-slide :is(.date),.person-movies .img-slide :is(.date),.trendingTV-movies .img-slide :is(.date){border:none;padding:3px 0px;}
+.main .person,.main .trendingTV,.main .trending{margin-bottom:80px;}
 .trending-movies,.person-movies{padding-bottom:0px;}
 
 
@@ -179,13 +179,27 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
     .now-playing-movies, .upcoming-movies, .popular-movies, .rated-movies{flex-wrap:wrap;justify-content:start;}
     .img-slide:last-child{padding-right:10px;}
     .img-slide:first-child{padding-left:10px;}
+    .movie-slideshow .img-slide:first-child{padding-left:0;}
+    .movie-slideshow .img-slide:last-child{padding-right:0;}
+    .movie-slideshow .img-slide{padding:0 5px;}
     /* tv series */
     .airing-movies .img-slide, .tv-rated-movies .img-slide, .rated-movies .img-slide{width:calc(100% / 3);}
     .airing-movies, .tv-rated-movies, .rated-movies{flex-wrap:wrap;justify-content:start;}
+    /* trending */
+    .trending-movies .img-slide, .person-movies .img-slide, .trendingTV-movies .img-slide{width:calc(100% / 3);margin-bottom:20px;}
+    .trending-movies, .person-movies, .trendingTV-movies{flex-wrap:wrap;justify-content:start;}
     .site-name a{font-size:1.2rem;}
     .category{margin-left:50px;}
     .category :is(ul li){margin:0 10px;font-size:0.9rem;}
     .search-button a button{padding:8px 23px;}
+    .movie-h1 :is(h1){font-size:3rem;}
+    .get-started-btn :is(button){padding:10px 20px;font-size:.75rem;}
+    .get-started-btn{margin-top:25px;}
+}
+/*  */
+@media screen and (min-width:1025px) and (max-width:1399px){
+    .trending-movies, .person-movies, .trendingTV-movies{flex-wrap:wrap;justify-content:start;}
+    .trending-movies .img-slide, .person-movies .img-slide, .trendingTV-movies .img-slide{width:calc(100% / 4);margin-bottom:20px;}
 }
 
 @media screen and (max-width:768px){
@@ -235,6 +249,14 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
     .now-playing-movies .img-slide:nth-child(odd),.upcoming-movies .img-slide:nth-child(odd), .airing-movies .img-slide:nth-child(odd), .tv-rated-movies .img-slide:nth-child(odd){padding-right:5px;}
     .now-playing-movies .img-slide:nth-child(even),.upcoming-movies .img-slide:nth-child(even), .airing-movies .img-slide:nth-child(even), .tv-rated-movies .img-slide:nth-child(even){padding-left:5px;}
     .now-playing-movies .img-slide .img-hover,.upcoming-movies .img-slide .img-hover, .airing-movies .img-slide .img-hover, .tv-rated-movies .img-slide .img-hover{height:280px;}
+
+    /* trending */
+    .now-playing-header p,.trending-header p, .person-header p, .trendingTV-header p{font-size:1.5rem;}
+    .now-playing-movies,.trending-movies, .person-movies, .trendingTV-movies{flex-wrap:wrap;}
+    .now-playing-movies .img-slide,.trending-movies .img-slide, .person-movies .img-slide, .trendingTV-movies .img-slide{width:calc(100% / 2);padding:0;margin-bottom:30px;}
+    .now-playing-movies .img-slide:nth-child(odd),.trending-movies .img-slide:nth-child(odd), .person-movies .img-slide:nth-child(odd), .trendingTV-movies .img-slide:nth-child(odd){padding-right:5px;}
+    .now-playing-movies .img-slide:nth-child(even),.trending-movies .img-slide:nth-child(even), .person-movies .img-slide:nth-child(even), .trendingTV-movies .img-slide:nth-child(even){padding-left:5px;}
+    .now-playing-movies .img-slide .img-hover,.trending-movies .img-slide .img-hover, .person-movies .img-slide .img-hover, .trendingTV-movies .img-slide .img-hover{height:280px;}
 }
 @media screen and (max-width:360px) {
     .search-button a button{padding:5px 15px;}

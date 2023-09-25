@@ -39,12 +39,12 @@ if(window){
             if(document.querySelector('.trending-movies')){
                 document.querySelector('.trending-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
             }
-            if(document.querySelector('.all-trending-movies')){
-                document.querySelector('.all-trending-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
+            if(document.querySelector('.all-trendingMovies-movies')){
+                document.querySelector('.all-trendingMovies-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
             }
         })
 
-        //trending people
+        //trending person
         api.trendingPerson()
         .then(trending_person => {
             ui.trendingPerson(trending_person.trending_person);
@@ -55,6 +55,20 @@ if(window){
             }
             if(document.querySelector('.all-popular-movies')){
                 document.querySelector('.all-popular-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
+            }
+        })
+
+        //trending TV
+        api.trendingTv()
+        .then(trending_tv => {
+            ui.trendingTv(trending_tv.trending_tv);
+        })
+        .catch(err => {
+            if(document.querySelector('.trendingTv-movies')){
+                document.querySelector('.trendingTv-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
+            }
+            if(document.querySelector('.all-trendingTv-movies')){
+                document.querySelector('.all-trendingTv-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
             }
         })
 
