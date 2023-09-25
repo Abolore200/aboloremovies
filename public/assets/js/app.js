@@ -35,6 +35,29 @@ if(window){
         .then(trending_movies => {
             ui.trendingMovies(trending_movies.trending_movies);
         })
+        .catch(err => {
+            if(document.querySelector('.trending-movies')){
+                document.querySelector('.trending-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
+            }
+            if(document.querySelector('.all-trending-movies')){
+                document.querySelector('.all-trending-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
+            }
+        })
+
+        //trending people
+        api.trendingPerson()
+        .then(trending_person => {
+            ui.trendingPerson(trending_person.trending_person);
+        })
+        .catch(err => {
+            if(document.querySelector('.popular-movies')){
+                document.querySelector('.popular-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
+            }
+            if(document.querySelector('.all-popular-movies')){
+                document.querySelector('.all-popular-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
+            }
+        })
+
         
         // function to fetch the movies from the api
         api.popularMovies()

@@ -139,7 +139,7 @@ class UI{
             img = image.poster_path
         }
         //
-        else if(image.poster_path === null || image.backdrop_path === null){
+        else if(image.poster_path === null && !image.backdrop_path){
             img = 'No Image Found'
         }
         //if backdrop_path is defined, return backdrop_path
@@ -216,7 +216,7 @@ class UI{
                 </figure>
             `;
         }
-        console.log(html);
+
         //
         if(trendingMoviesHeader){
             trendingMoviesHeader.innerHTML = html
@@ -264,6 +264,97 @@ class UI{
             this.viewSeeMoreMvoie()
         }
     }
+
+    //
+    trendingPerson(trending_person){
+        const person = trending_person.results
+
+        //
+        const trendingPersonHeader = document.querySelector('.person-movies')
+
+        let personTemplate = ""
+        //
+        for(let i = 0; i < (person.length - 15); i++){
+            personTemplate += `
+                <figure class="img-slide slides">
+                    <div class="img-hover">
+                        <a href="#">
+                            <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(person[i])}" class="poster" alt="${this.ImgName(person[i])}"/>
+                        </a>
+                    </div>
+                    <figcaption>
+                        <a href="#">
+                            <p class="hide title">${person[i].title || person[i].original_name}</p>
+                            <p class="original-title">${(!person[i].original_name ? person[i].name : person[i].original_name)}</p>
+                        </a>
+                        <div class="year-ratings">
+                            <p class="date">${this.releaseDate(person[i])}</p>
+                            <p class="rating">${this.rating(person[i])}</p>
+                        </div>
+                        <div class="hide hidden-details">
+                            <p class="overview">${this.overview(person[i])}</p>
+                            <p class="id">${person[i].id}</p>
+                            <p class="language">${this.language(person[i])}</p>
+                        </div>
+                        <div class="hide hidden-movies">
+                            ${this.personMovie(person[i])}
+                        </div>
+                    </figcaption>
+                </figure>
+            `;
+        }
+        if(trendingPersonHeader){
+            trendingPersonHeader.innerHTML = personTemplate
+
+            const checkMovie = document.querySelectorAll('.person-movies .img-slide a')
+            if(checkMovie){
+                this.viewHomePageMovie(checkMovie)
+            }
+        }
+
+        console.log(person[0]);
+
+        const allPersonMoviesHeader = document.querySelector('.all-person-movies')
+        //
+        let allPersonMovies = ""
+        //array of all Person movies
+        for(let i = 0; i < person.length; i++){
+            allPersonMovies += `
+                <figure class="img-slide slides">
+                    <div class="img-hover">
+                        <a href="#">
+                            <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(person[i])}" class="poster" alt="${this.ImgName(person[i])}"/>
+                        </a>
+                    </div>
+                    <figcaption>
+                        <a href="#">
+                            <p class="hide title">${person[i].title}</p>
+                            <p class="original-title">${(!person[i].title ? person[i].name : person[i].title)}</p>
+                        </a>
+                        <div class="year-ratings">
+                            <p class="date">${this.releaseDate(person[i])}</p>
+                            <p class="rating">${this.rating(person[i])}</p>
+                        </div>
+                        <div class="hide hidden-details">
+                            <p class="overview">${this.overview(person[i])}</p>
+                            <p class="id">${person[i].id}</p>
+                            <p class="language">${this.language(person[i])}</p>
+                        </div>
+                        <div class="hide hidden-movies">
+                            ${this.personMovie(person[i])}
+                        </div>
+                    </figcaption>
+                </figure>
+            `;
+        }
+        if(allPersonMoviesHeader){
+            allPersonMoviesHeader.innerHTML = allPersonMovies
+
+            this.viewSeeMoreMvoie()
+        }
+    }
+    //
+    
 
 
     //
@@ -666,10 +757,10 @@ class UI{
     }
 
     //
-    viewHomePageMovie(parentPae){
+    viewHomePageMovie(parentPage){
         // const movies_result = document.querySelectorAll('.img-slide a')
-        if(parentPae){
-            parentPae.forEach(result => {
+        if(parentPage){
+            parentPage.forEach(result => {
                 result.setAttribute('href', './view.html')
                 result.addEventListener('click', e => {
                     // e.preventDefault()
@@ -866,6 +957,10 @@ class UI{
         const viewSearch = document.querySelector('.view-search')
 
         //
+        const view_movie = document.querySelector('.view-movie')
+
+
+        //
         let actor = get_search[0]
 
         //
@@ -901,6 +996,15 @@ class UI{
             viewSearch.innerHTML = actorTemplate
 
             this.viewSeeMoreMvoie()
+        }
+
+        if(view_movie){
+            view_movie.innerHTML = actorTemplate
+
+            const checkMovie = document.querySelectorAll('.known-for-flex .img-slide a')
+            if(checkMovie){
+                this.viewHomePageMovie(checkMovie)
+            }
         }
     }
 
