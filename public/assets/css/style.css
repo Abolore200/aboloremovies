@@ -49,7 +49,7 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .all-upcoming-movies,.all-popular-movies,.all-rated-movies{display:flex;flex-wrap:wrap;}
 .img-hover,.img-slide,.img-hover img{border-radius:5px;}
 .img-slide{width:calc(100% / 5);padding:0px 10px;margin-bottom:40px;height:100%;}
-.img-slide{height:450px;display:flex;flex-direction:column;justify-content:space-between;}
+.img-slide{display:flex;flex-direction:column;justify-content:space-between;}
 .img-hover{width:100%;}
 .img-hover img{width:100%;height:100%;}
 .img-slide figcaption{text-align:start;margin-top:10px;}
@@ -178,6 +178,11 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 @media screen and (min-width:1025px) and (max-width:1399px){
     .all-trendingMovies-movies, .all-person-movies, .all-popular-movies, .all-rated-movies{flex-wrap:wrap;justify-content:start;}
     .known-for-flex .img-slide,.all-trendingMovies-movies .img-slide, .all-person-movies .img-slide, .all-popular-movies .img-slide, .all-rated-movies .img-slide{width:calc(100% / 4);margin-bottom:25px;}
+
+    .all-now-playing-movies .img-slide, .all-upcoming-movies .img-slide, .all-popular-movies .img-slide, .all-rated-movies .img-slide{width:calc(100% / 4);margin-bottom:25px;}
+    .all-now-playing-movies, .all-upcoming-movies, .all-popular-movies, .all-rated-movies{flex-wrap:wrap;justify-content:start;}
+    .img-slide:last-child{padding-right:10px;}
+    .img-slide:first-child{padding-left:10px;}
 }
 
 @media screen and (max-width:768px){
@@ -215,7 +220,7 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
     .searched-image-header,.searched-details-header,.searched-image-header figure{width:100%;}
     .searched-details-header{margin-top:35px;}
     .overview-header{margin-right:0;}
-    .overview-header p{font-size:1.2rem;}
+    .overview-header p{font-size:1rem;}
     .details-header p{font-size:1.2rem;}
     .main{padding-bottom:200px;}
     .feature-header p{font-size:2rem;}

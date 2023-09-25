@@ -50,11 +50,11 @@ if(window){
             ui.trendingPerson(trending_person.trending_person);
         })
         .catch(err => {
-            if(document.querySelector('.popular-movies')){
-                document.querySelector('.popular-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
+            if(document.querySelector('.person-movies')){
+                document.querySelector('.person-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
             }
-            if(document.querySelector('.all-popular-movies')){
-                document.querySelector('.all-popular-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
+            if(document.querySelector('.all-person-movies')){
+                document.querySelector('.all-person-movies').innerHTML = `<div style="text-align:center;width:100%;"><p style="color:var(--yellow);"> ${err}. Try Reloading </p></div>`
             }
         })
 

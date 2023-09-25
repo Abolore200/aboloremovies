@@ -370,7 +370,7 @@ class UI{
         //array of 5 trending tv-series movies
         for(let i = 0; i < (tv.length - 15); i++){
             movies += `
-                <figure class="img-slide slides animate">
+                <figure class="img-slide slides">
                     <div class="img-hover">
                         <a href="#">
                             <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(tv[i])}" class="poster" alt="${this.ImgName(tv[i])}"/>
