@@ -180,6 +180,92 @@ class UI{
             main_lanuage = ''
         } return main_lanuage
     }
+
+    //
+    trendingMovies(trending_movies){
+        const movie = trending_movies.results
+
+        //
+        const trendingMoviesHeader = document.querySelector('.trending-movies')
+
+        let html = ""
+        //
+        for(let i = 0; i < (movie.length - 15); i++){
+            html += `
+                <figure class="img-slide slides">
+                    <div class="img-hover">
+                        <a href="#">
+                            <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(movie[i])}" class="poster" alt="${this.ImgName(movie[i])}"/>
+                        </a>
+                    </div>
+                    <figcaption>
+                        <a href="#">
+                            <p class="hide title">${movie[i].title}</p>
+                            <p class="original-title">${(!movie[i].title ? movie[i].name : movie[i].title)}</p>
+                        </a>
+                        <div class="year-ratings">
+                            <p class="date">${this.releaseDate(movie[i])}</p>
+                            <p class="rating">${this.rating(movie[i])}</p>
+                        </div>
+                        <div class="hide hidden-details">
+                            <p class="overview">${this.overview(movie[i])}</p>
+                            <p class="id">${movie[i].id}</p>
+                            <p class="language">${this.language(movie[i])}</p>
+                        </div>
+                    </figcaption>
+                </figure>
+            `;
+        }
+        console.log(html);
+        //
+        if(trendingMoviesHeader){
+            trendingMoviesHeader.innerHTML = html
+
+            const checkMovie = document.querySelectorAll('.trending-movies .img-slide a')
+            if(checkMovie){
+                this.viewHomePageMovie(checkMovie)
+            }
+        }
+
+        //
+        const allTrendingMoviesHeader = document.querySelector('.all-trendingMovies-movies')
+        //
+        let allTrendingMovies = ""
+        //array of all Trending movies
+        for(let i = 0; i < movie.length; i++){
+            allTrendingMovies += `
+                <figure class="img-slide slides">
+                    <div class="img-hover">
+                        <a href="#">
+                            <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(movie[i])}" class="poster" alt="${this.ImgName(movie[i])}"/>
+                        </a>
+                    </div>
+                    <figcaption>
+                        <a href="#">
+                            <p class="hide title">${movie[i].title}</p>
+                            <p class="original-title">${(!movie[i].title ? movie[i].name : movie[i].title)}</p>
+                        </a>
+                        <div class="year-ratings">
+                            <p class="date">${this.releaseDate(movie[i])}</p>
+                            <p class="rating">${this.rating(movie[i])}</p>
+                        </div>
+                        <div class="hide hidden-details">
+                            <p class="overview">${this.overview(movie[i])}</p>
+                            <p class="id">${movie[i].id}</p>
+                            <p class="language">${this.language(movie[i])}</p>
+                        </div>
+                    </figcaption>
+                </figure>
+            `;
+        }
+        if(allTrendingMoviesHeader){
+            allTrendingMoviesHeader.innerHTML = allTrendingMovies
+
+            this.viewSeeMoreMvoie()
+        }
+    }
+
+
     //
     addUpcomingMovies(upcomingMovies){
         const results = upcomingMovies.results

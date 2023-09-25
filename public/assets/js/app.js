@@ -29,6 +29,12 @@ if(window){
 
         //update to current year
         ui.currentYear()
+
+        //trending movies
+        api.trendingMovies()
+        .then(trending_movies => {
+            ui.trendingMovies(trending_movies.trending_movies);
+        })
         
         // function to fetch the movies from the api
         api.popularMovies()

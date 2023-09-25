@@ -144,6 +144,16 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .all-now-playing-movies .img-slide :is(.date),.search-results .img-slide :is(.date){border:none;padding:3px 0px;}
 .tv-rated-body,.airing-body,.all-playing-body{background-color:var(--yellow);}
 
+/* trending */
+.main .trendingMovies,.main .airing,.main .now-playing{width:95%;margin:0 auto;margin-top:100px;}
+.trendingMovies-header,.airing-header,.now-playing-header{margin-bottom:30px;}
+.trendingMovies-header p,.airing-header p,.now-playing-header p{color:var(--white);font-size:2rem;font-weight:600;padding-left:10px;}
+.all-trendingMovies-movies,.all-airing-movies,.all-now-playing-movies{display:flex;flex-wrap:wrap;}
+.all-trendingMovies-movies .img-slide :is(.date),.all-airing-movies .img-slide :is(.date),
+.all-now-playing-movies .img-slide :is(.date),.search-results .img-slide :is(.date){border:none;padding:3px 0px;}
+.trendingMovies-body,.airing-body,.all-playing-body{background-color:var(--yellow);}
+
+
 @media screen and (min-width:769px) and (max-width:1024px){
     .all-now-playing-movies .img-slide, .all-upcoming-movies .img-slide, .all-popular-movies .img-slide, .all-rated-movies .img-slide{width:calc(100% / 3);margin-bottom:25px;}
     .all-now-playing-movies, .all-upcoming-movies, .all-popular-movies, .all-rated-movies{flex-wrap:wrap;justify-content:start;}

@@ -3,110 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abolore Movies</title>
-    <link rel="stylesheet" href="./assets/css/index.css">
+    <title>Popular Movies</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- <link rel="icon" href="<i class="fa-solid fa-film"></i>"> -->
 </head>
-<body>
+<body class="upcoming-body">
     <a name="top"></a>
     <header class="header">
         <nav class="navbar">
             <div class="site-name">
-                <a href="./index.html">
+                <a href="../index.html">
                     <span class="movie-logo"><i class="fa-solid fa-film"></i></span>
                     abolore<span>movies</span>
                 </a>
             </div>
             <div class="category">
-                <ul class="lists">
+                <ul>
                     <li id="close-btn">
                         <button>
                             <i class="fa-solid fa-xmark"></i>
                         </button>
                     </li>
-                    <li><a href="./index.html">home</a></li>
-                    <li><a href="./movies.html">movies</a></li>
+                    <li><a href="../index.html">home</a></li>
+                    <li><a href="../movies.html">movies</a></li>
                     <li><a href="#">actors</a></li>
-                    <li><a href="./tv-series.html">tv series</a></li>
+                    <li><a href="../tv-series.html">tv series</a></li>
                 </ul>
             </div>
             <div class="search-button">
-                <a href="./search.html">
+                <a href="../search.html">
                     <button type="button">search</button>
                 </a>
                 <button id="button" type="button"><i class="fa-solid fa-bars"></i></button>
             </div>
         </nav>
-        <section class="movie-header">
-            <div class="movie-started">
-                <div class="movie-h1">
-                    <p>&nbsp; aboloremovies &nbsp;</p>
-                    <h1>
-                        let make your own <span>cinema...</span>
-                    </h1>
-                </div>
-                <div class="get-started-btn">
-                    <button type="button"> <i class="fa-solid fa-play"></i> &nbsp; get started</button>
-                </div>
-            </div>
-            <div class="movie-slideshow">
-                <div class="loader-flex">
-                    <div class="loader"></div>
-                    <p> Loading </p>
-                </div>
-            </div>
-        </section>
     </header>
-    <!-- <a name="movies"></a> -->
     <main class="main">
-        <section class="trending">
-            <div class="trending-header">
+        <section class="trendingMovies">
+            <div class="trendingMovies-header">
                 <p>Trending Movies</p>
-                <div class="see-more-trending see-more-btn">
-                    <a href="./trending/movies.html">
-                        <span>see more</span>
-                        <i class="fa-solid fa-arrow-right-long"></i>
-                    </a>
-                </div>
             </div>
-            <div class="trending-movies">
-                <div class="loader-flex">
-                    <div class="loader"></div>
-                    <p> Loading </p>
-                </div>
-            </div>
-        </section>
-        <section class="popular">
-            <div class="popular-header">
-                <p>Popular Movies</p>
-                <div class="see-more-popular see-more-btn">
-                    <a href="./movies/popular.html">
-                        <span>see more</span>
-                        <i class="fa-solid fa-arrow-right-long"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="popular-movies">
-                <div class="loader-flex">
-                    <div class="loader"></div>
-                    <p> Loading </p>
-                </div>
-            </div>
-        </section>
-        <section class="rated">
-            <div class="rated-header">
-                <p>Top-Rated Movies</p>
-                <div class="see-more-rated see-more-btn">
-                    <a href="./movies/top-rated.html">
-                        <span>see more</span>
-                        <i class="fa-solid fa-arrow-right-long"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="rated-movies">
+            <div class="all-trendingMovies-movies">
                 <div class="loader-flex">
                     <div class="loader"></div>
                     <p> Loading </p>
@@ -165,8 +104,8 @@
         </section>
     </footer>
 
-    <script defer src="./assets/js/ui.js"></script>
-    <script defer src="./assets/js/api.js"></script>
-    <script defer src="./assets/js/app.js"></script>
+    <script defer src="../assets/js/ui.js"></script>
+    <script defer src="../assets/js/api.js"></script>
+    <script defer src="../assets/js/app.js"></script>
 </body>
 </html>
