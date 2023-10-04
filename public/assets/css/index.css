@@ -172,6 +172,8 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .main .person,.main .trendingTV,.main .trending{margin-bottom:80px;}
 .trending-movies,.person-movies{padding-bottom:0px;}
 
+.movie-slideshow .img-slide .img-hover{height:375px;}
+
 
 
 @media screen and (min-width:769px) and (max-width:1024px){
@@ -215,6 +217,9 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 
     .now-playing-movies, .upcoming-movies, .popular-movies, .rated-movies{flex-wrap:wrap;justify-content:start;}
     .now-playing-movies .img-slide, .upcoming-movies .img-slide, .popular-movies .img-slide, .rated-movies .img-slide{width:calc(100% / 4);margin-bottom:20px;}
+
+    .airing-movies, .tv-rated-movies, .popular-movies, .rated-movies{flex-wrap:wrap;justify-content:start;}
+    .airing-movies .img-slide, .tv-rated-movies .img-slide, .popular-movies .img-slide, .rated-movies .img-slide{width:calc(100% / 4);margin-bottom:20px;}
     .img-slide:first-child{padding-left:10px;}
     .img-slide:last-child{padding-right:10px;}
 }

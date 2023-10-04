@@ -32,22 +32,22 @@ class UI{
         const openMenu = document.querySelector('#button')
         openMenu.addEventListener('click', () => {
             category.classList.add('block')
-            document.body.style.position = 'fixed'
+            document.body.style.overflowY = 'hidden'
         })
 
         //
         closeMenu.addEventListener('click', () => {
-            if(category.classList.contains('block') && document.body.style.position == 'fixed'){
+            if(category.classList.contains('block') && document.body.style.overflowY == 'hidden'){
                 category.classList.remove('block')
-                document.body.style.removeProperty('position')
+                document.body.style.removeProperty('overflow-y')
             }
         })
 
         category.addEventListener('click', e => {
             if(!category_ul.contains(e.target)){
-                if(category.classList.contains('block') && document.body.style.position == 'fixed'){
+                if(category.classList.contains('block') && document.body.style.overflowY == 'hidden'){
                     category.classList.remove('block')
-                    document.body.style.removeProperty('position')
+                    document.body.style.removeProperty('overflow-y')
                 }
             }
         })
