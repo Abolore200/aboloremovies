@@ -123,8 +123,6 @@ if(window){
             //insert the fetched movies into the <movieSlideShow>
             if(movieSlideshow){
                 movieSlideshow.innerHTML = html
-
-                ui.removeAnchorTag()
             }
             //
         })
