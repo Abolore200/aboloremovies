@@ -30,6 +30,9 @@ if(window){
         //update to current year
         ui.currentYear()
 
+        //remove category
+        ui.removeCategory()
+
         //trending movies
         api.trendingMovies()
         .then(trending_movies => {

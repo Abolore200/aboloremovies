@@ -53,6 +53,23 @@ class UI{
         })
     }
 
+    //remove category when any list is clicked
+    removeCategory(){
+        const category = document.querySelector('.category')
+        //
+        const list = document.querySelectorAll('.category ul li :is(a)')
+        if(list){
+            const listArr = Array.from(list)
+            listArr.forEach(arr => {
+                arr.addEventListener('click', () => {
+                    if(category.classList.contains('block')){
+                        category.classList.remove('block')
+                    }
+                })
+            })
+        }
+    }
+
     //
     animateTopBtn(topBtn){
         if(document.documentElement.scrollTop > 200){
@@ -311,8 +328,6 @@ class UI{
                 this.viewHomePageMovie(checkMovie)
             }
         }
-
-        console.log(person);
 
         const allPersonMoviesHeader = document.querySelector('.all-person-movies')
         //
