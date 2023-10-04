@@ -61,8 +61,8 @@ class UI{
         if(list){
             const listArr = Array.from(list)
             //diabled actors link
-            
             listArr[2].style.pointerEvents = 'none'
+            
             listArr.forEach(arr => {
                 arr.addEventListener('click', () => {
                     if(category.classList.contains('block')){
