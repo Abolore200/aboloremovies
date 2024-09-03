@@ -1449,7 +1449,7 @@ class UI{
         })
     }
 
-    loadMoreSearchedMovies(searcedValue){
+    loadMoreSearchedMovies(searcedValue,pageValue){
         const searchedDiv = document.querySelector('.search-results')
         const loader = `
         <div class="loader-flex">
@@ -1462,8 +1462,8 @@ class UI{
         }
 
 
-        page += 1
-        api.searchMovies(searcedValue,page).then(data => {
+        pageValue += 1
+        api.searchMovies(searcedValue,pageValue).then(data => {
             if(data){
                 const movieResponse = data.searchedMovies.results
                 let movies = ""

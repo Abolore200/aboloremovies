@@ -7,6 +7,7 @@ const nav = document.querySelector('.navbar')
 const span = Array.from(document.querySelectorAll('.site-name a span'))
 const list = Array.from(document.querySelectorAll('.category ul li a'))
 let searchedValue = ""
+let pageValue = 1
 //
 window.addEventListener('scroll', () => {
     if(document.documentElement.scrollTop > 50){
@@ -254,7 +255,7 @@ if(window){
                     searchedValue = search
         
                     // function to fetch the movies from the api
-                    api.searchMovies(search,1)
+                    api.searchMovies(search,pageValue)
 
                     //callback the fetch api
                     .then(movies => {
@@ -299,7 +300,7 @@ if(window){
             loadMoreSearchedBtn.style.display = 'none'
             loadMoreSearchedBtn.addEventListener('click', (e) => {
                 e.preventDefault()
-                ui.loadMoreSearchedMovies(searchedValue)
+                ui.loadMoreSearchedMovies(searchedValue,pageValue)
             })
         }
         
