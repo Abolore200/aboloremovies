@@ -1,6 +1,6 @@
 class API{
     //trending movies
-    async trendingMovies(){
+    async trendingMovies(page){
         const options = {
             method: 'GET',
             headers: {
@@ -8,7 +8,7 @@ class API{
               Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMGMyYWQ3MzFmNDljNDU0YjY4YWQ4OTlkMTdmZWViNCIsInN1YiI6IjY0ZjA4NWY0OTdhNGU2MDBhYzNlNGI5MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XeS0eYVjdPNCbSb-gk-xNR7MKq2YFdufOdYFWVzmEBU'
             }
         }; 
-        const response = await fetch('https://api.themoviedb.org/3/trending/movie/day?language=en-U', options)
+        const response = await fetch(`https://api.themoviedb.org/3/trending/movie/day?language=en-U&page=${page}`, options)
         const trending_movies = await response.json()
         return {trending_movies}
     }

@@ -152,7 +152,8 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .all-trendingMovies-movies .img-slide :is(.date),.all-person-movies .img-slide :is(.date),
 .all-trendingTV-movies .img-slide :is(.date),.search-results .img-slide :is(.date){border:none;padding:3px 0px;}
 .trendingMovies-body,.person-body,.all-playing-body{background-color:var(--yellow);}
-
+.load-more-btn{display:flex;align-items:center;justify-content:center;margin:20px 0;}
+.load-more-btn button{padding:8px 40px;background-color:#ffc727;color:#263238;font-weight:600;font-family:var(--poppins);font-size:calc(1rem + 2px);border:none;}
 
 @media screen and (min-width:769px) and (max-width:1024px){
     .all-now-playing-movies .img-slide, .all-upcoming-movies .img-slide, .all-popular-movies .img-slide, .all-rated-movies .img-slide{width:calc(100% / 3);margin-bottom:25px;}

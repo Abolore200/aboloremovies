@@ -34,7 +34,7 @@ if(window){
         ui.removeCategory()
 
         //trending movies
-        api.trendingMovies()
+        api.trendingMovies(1)
         .then(trending_movies => {
             ui.trendingMovies(trending_movies.trending_movies);
         })
@@ -276,4 +276,15 @@ if(window){
 
     //view deails of [movies || actors], view clicked searched result
     ui.view_search_details()
+}
+
+
+const loadMoreBtn = document.querySelector('.load-more-btn button')
+if(loadMoreBtn){
+    loadMoreBtn.addEventListener('click', (e) => {
+
+        e.preventDefault()
+    
+        ui.loadMoreMovies()
+    })
 }

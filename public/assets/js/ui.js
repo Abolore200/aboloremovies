@@ -1,3 +1,4 @@
+let page = 1
 class UI{
     addActiveClass(nav,span,list){
         nav.classList.add('active')
@@ -1382,5 +1383,59 @@ class UI{
 
             this.viewSeeMoreMvoie()
         }
+    }
+
+    loadMoreMovies(){
+        page += 1
+        api.trendingMovies(page).then(data => {
+            if(data){
+                const trendingMovies = document.querySelector('.all-trendingMovies-movies')
+
+                const movieResponse = data.trending_movies.results
+
+                // const moviesDiv = document.createElement('div')
+                // moviesDiv.style.width = '100%'
+
+
+                let movies = ""
+                // result.setAttribute('href', '../view.html')
+
+
+                //array of 5 trending tv-series movies
+                for(let i = 0; i < movieResponse.length; i++){
+                    movies += `
+                        <figure class="img-slide slides">
+                            <div class="img-hover">
+                                <a href="#">
+                                    <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(movieResponse[i])}" class="poster" alt="${this.ImgName(movieResponse[i])}"/>
+                                </a>
+                            </div>
+                            <figcaption>
+                                <a href="#">
+                                    <p class="hide title">${movieResponse[i].title}</p>
+                                    <p class="original-title">${(!movieResponse[i].title ? movieResponse[i].name : movieResponse[i].title)}</p>
+                                </a>
+                                <div class="year-ratings">
+                                    <p class="date">${this.releaseDate(movieResponse[i])}</p>
+                                    <p class="rating">${this.rating(movieResponse[i])}</p>
+                                </div>
+                                <div class="hide hidden-details">
+                                    <p class="overview">${this.overview(movieResponse[i])}</p>
+                                    <p class="id">${movieResponse[i].id}</p>
+                                    <p class="language">${this.language(movieResponse[i])}</p>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    `;
+                }
+
+
+                if(trendingMovies){
+                    trendingMovies.innerHTML += movies
+        
+                    this.viewSeeMoreMvoie()
+                }
+            }
+        })
     }
 }
