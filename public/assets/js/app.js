@@ -6,6 +6,7 @@ const topBtn = document.querySelector('.top-btn')
 const nav = document.querySelector('.navbar')
 const span = Array.from(document.querySelectorAll('.site-name a span'))
 const list = Array.from(document.querySelectorAll('.category ul li a'))
+let searchedValue = ""
 //
 window.addEventListener('scroll', () => {
     if(document.documentElement.scrollTop > 50){
@@ -248,9 +249,12 @@ if(window){
 
                     //
                     const loaderFlex = document.querySelector('.loader-flex')
+
+                    //
+                    searchedValue = search
         
                     // function to fetch the movies from the api
-                    api.searchMovies(search)
+                    api.searchMovies(search,1)
 
                     //callback the fetch api
                     .then(movies => {
@@ -260,6 +264,13 @@ if(window){
                         if(movies.searchedMovies.results.length === 0){
                             ui.displayMessage(form, 'details not found, be more specific', loaderFlex)
                         } else {
+
+                            //display load more after searched button is clicked
+                            const loadMoreSearchedBtn = document.querySelector('.search-btn-load')
+                            if(loadMoreSearchedBtn){
+                                loadMoreSearchedBtn.style.display = 'block'
+                            }
+
                             //if the movie is available, display the movie
                             ui.displaySearchMovies(movies.searchedMovies.results)
                         }
@@ -272,19 +283,28 @@ if(window){
                 }
             })
         }
+
+        //load more trending movies
+        const loadMoreTrendingBtn = document.querySelector('.trending-btn-load')
+        if(loadMoreTrendingBtn){
+            loadMoreTrendingBtn.addEventListener('click', (e) => {
+                e.preventDefault()
+                ui.loadMoreTrendingMovies()
+            })
+        }
+
+        //hide load more search button on window load
+        const loadMoreSearchedBtn = document.querySelector('.search-btn-load')
+        if(loadMoreSearchedBtn){
+            loadMoreSearchedBtn.style.display = 'none'
+            loadMoreSearchedBtn.addEventListener('click', (e) => {
+                e.preventDefault()
+                ui.loadMoreSearchedMovies(searchedValue)
+            })
+        }
+        
     })
 
     //view deails of [movies || actors], view clicked searched result
     ui.view_search_details()
-}
-
-
-const loadMoreBtn = document.querySelector('.load-more-btn button')
-if(loadMoreBtn){
-    loadMoreBtn.addEventListener('click', (e) => {
-
-        e.preventDefault()
-    
-        ui.loadMoreMovies()
-    })
 }

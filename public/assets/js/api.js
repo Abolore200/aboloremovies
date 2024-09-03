@@ -84,7 +84,7 @@ class API{
     }
     
     //fetch api for search movies
-    async searchMovies(search){
+    async searchMovies(search,page){
         const options = {
             method: 'GET',
             headers: {
@@ -92,7 +92,7 @@ class API{
               Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMGMyYWQ3MzFmNDljNDU0YjY4YWQ4OTlkMTdmZWViNCIsInN1YiI6IjY0ZjA4NWY0OTdhNGU2MDBhYzNlNGI5MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XeS0eYVjdPNCbSb-gk-xNR7MKq2YFdufOdYFWVzmEBU'
             }
         }; 
-        const response = await fetch(`https://api.themoviedb.org/3/search/multi?query=${search}&include_adult=false&language=en-US&`, options)
+        const response = await fetch(`https://api.themoviedb.org/3/search/multi?query=${search}&include_adult=false&language=en-US&page=${page}`, options)
         const searchedMovies = await response.json()
         return {searchedMovies}
     }

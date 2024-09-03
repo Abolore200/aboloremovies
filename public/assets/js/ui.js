@@ -1,4 +1,5 @@
 let page = 1
+let searchedPage = 0
 class UI{
     addActiveClass(nav,span,list){
         nav.classList.add('active')
@@ -1385,23 +1386,25 @@ class UI{
         }
     }
 
-    loadMoreMovies(){
+    loadMoreTrendingMovies(){
+        const trendingMovies = document.querySelector('.all-trendingMovies-movies')
+        const loader = `
+        <div class="loader-flex">
+            <div class="loader"></div>
+            <p> Loading </p>
+        </div>
+        `;
+        if(trendingMovies){
+            trendingMovies.innerHTML += loader
+        }
+
+
         page += 1
         api.trendingMovies(page).then(data => {
             if(data){
-                const trendingMovies = document.querySelector('.all-trendingMovies-movies')
-
                 const movieResponse = data.trending_movies.results
-
-                // const moviesDiv = document.createElement('div')
-                // moviesDiv.style.width = '100%'
-
-
                 let movies = ""
-                // result.setAttribute('href', '../view.html')
-
-
-                //array of 5 trending tv-series movies
+                //add trending tv-series movies to div
                 for(let i = 0; i < movieResponse.length; i++){
                     movies += `
                         <figure class="img-slide slides">
@@ -1429,11 +1432,104 @@ class UI{
                     `;
                 }
 
-
                 if(trendingMovies){
                     trendingMovies.innerHTML += movies
-        
+
+                    //
                     this.viewSeeMoreMvoie()
+                }
+                //
+                const loaderIcon = document.querySelectorAll('.all-trendingMovies-movies .loader-flex')
+                if(loaderIcon){
+                    loaderIcon.forEach(loadIcon => {
+                        loadIcon.style.display = 'none'
+                    })
+                }
+            }
+        })
+    }
+
+    loadMoreSearchedMovies(searcedValue){
+        const searchedDiv = document.querySelector('.search-results')
+        const loader = `
+        <div class="loader-flex">
+            <div class="loader"></div>
+            <p> Loading </p>
+        </div>
+        `;
+        if(searchedDiv){
+            searchedDiv.innerHTML += loader
+        }
+
+
+        page += 1
+        api.searchMovies(searcedValue,page).then(data => {
+            if(data){
+                const movieResponse = data.searchedMovies.results
+                let movies = ""
+                //add trending tv-series movies to div
+                for(let i = 0; i < movieResponse.length; i++){
+                    movies += `
+                        <figure class="img-slide slides">
+                            <div class="img-hover">
+                                <a href="#">
+                                    <img src="https://image.tmdb.org/t/p/w500/${this.imgPoster(movieResponse[i])}" class="poster" alt="${this.ImgName(movieResponse[i])}"/>
+                                </a>
+                            </div>
+                            <figcaption>
+                                <a href="#">
+                                    <p class="hide title">${movieResponse[i].title}</p>
+                                    <p class="original-title">${(!movieResponse[i].title ? movieResponse[i].name : movieResponse[i].title)}</p>
+                                </a>
+                                <div class="year-ratings">
+                                    <p class="date">${this.releaseDate(movieResponse[i])}</p>
+                                    <p class="rating">${this.rating(movieResponse[i])}</p>
+                                </div>
+                                <div class="hide hidden-details">
+                                    <p class="overview">${this.overview(movieResponse[i])}</p>
+                                    <p class="id">${movieResponse[i].id}</p>
+                                    <p class="language">${this.language(movieResponse[i])}</p>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    `;
+                }
+
+                if(searchedDiv){
+                    searchedDiv.innerHTML += movies
+
+                    const movies_result = document.querySelectorAll('.img-slide a')
+                    if(movies_result){
+                        movies_result.forEach(result => {
+                            result.setAttribute('href', './search/view.html')
+                            result.addEventListener('click', e => {
+                                // e.preventDefault()
+                                const parent = e.target.parentElement.parentElement.parentElement
+                                this.getParentElement(parent)
+                        
+                                if(JSON.parse(sessionStorage.getItem('movie'))){
+                                    this.storage()
+                                }
+                            })
+                        })
+                    }
+                }
+                //
+                const loaderIcon = document.querySelectorAll('.search-results .loader-flex')
+                if(loaderIcon){
+                    loaderIcon.forEach(loadIcon => {
+                        loadIcon.style.display = 'none'
+                    })
+                }
+
+                const loadMoreSearchedBtn = document.querySelector('.search-btn-load')
+                let total_page = data.searchedMovies.total_pages
+                let page_ = data.searchedMovies.page
+
+                if(total_page == page_ || page > total_page){
+                    if(loadMoreSearchedBtn){
+                        loadMoreSearchedBtn.style.display = 'none'
+                    }
                 }
             }
         })

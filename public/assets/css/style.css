@@ -48,7 +48,7 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .upcoming-header p,.popular-header p,.rated-header p{color:var(--white);font-size:2rem;font-weight:600;padding-left:10px;}
 .all-upcoming-movies,.all-popular-movies,.all-rated-movies{display:flex;flex-wrap:wrap;}
 .img-hover,.img-slide,.img-hover img{border-radius:5px;}
-.img-slide{width:calc(100% / 5);padding:0px 10px;margin-bottom:40px;height:100%;}
+.img-slide{width:calc(100% / 5);padding:0px 10px;margin-bottom:40px;aspect-ratio:3/4;}
 .img-slide{display:flex;flex-direction:column;justify-content:space-between;}
 .img-hover{width:100%;}
 .img-hover img{width:100%;height:100%;}
