@@ -7,7 +7,6 @@ const nav = document.querySelector('.navbar')
 const span = Array.from(document.querySelectorAll('.site-name a span'))
 const list = Array.from(document.querySelectorAll('.category ul li a'))
 let searchedValue = ""
-let pageValue = 1
 //
 window.addEventListener('scroll', () => {
     if(document.documentElement.scrollTop > 50){
@@ -225,6 +224,7 @@ if(window){
                 
                 //search input
                 const search = document.querySelector('.search-input').value
+                let pageValue = 1
                 
                 //if search input is empty
                 if(search === ''){
@@ -247,6 +247,8 @@ if(window){
                     if(searchResult){
                         searchResult.innerHTML = loader
                     }
+
+
 
                     //
                     const loaderFlex = document.querySelector('.loader-flex')
@@ -297,10 +299,14 @@ if(window){
         //hide load more search button on window load
         const loadMoreSearchedBtn = document.querySelector('.search-btn-load')
         if(loadMoreSearchedBtn){
+            let pageValue = 1
             loadMoreSearchedBtn.style.display = 'none'
             loadMoreSearchedBtn.addEventListener('click', (e) => {
                 e.preventDefault()
-                ui.loadMoreSearchedMovies(searchedValue,pageValue)
+                // if(pageValue === 1){
+                    pageValue += 1
+                    ui.loadMoreSearchedMovies(searchedValue,pageValue)
+                // }
             })
         }
         

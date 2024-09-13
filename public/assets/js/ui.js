@@ -1389,7 +1389,7 @@ class UI{
     loadMoreTrendingMovies(){
         const trendingMovies = document.querySelector('.all-trendingMovies-movies')
         const loader = `
-        <div class="loader-flex">
+        <div class="load-more">
             <div class="loader"></div>
             <p> Loading </p>
         </div>
@@ -1439,10 +1439,10 @@ class UI{
                     this.viewSeeMoreMvoie()
                 }
                 //
-                const loaderIcon = document.querySelectorAll('.all-trendingMovies-movies .loader-flex')
+                const loaderIcon = document.querySelectorAll('.all-trendingMovies-movies .load-more')
                 if(loaderIcon){
                     loaderIcon.forEach(loadIcon => {
-                        loadIcon.style.display = 'none'
+                        loadIcon.remove()
                     })
                 }
             }
@@ -1452,7 +1452,7 @@ class UI{
     loadMoreSearchedMovies(searcedValue,pageValue){
         const searchedDiv = document.querySelector('.search-results')
         const loader = `
-        <div class="loader-flex">
+        <div class="load-more">
             <div class="loader"></div>
             <p> Loading </p>
         </div>
@@ -1461,11 +1461,10 @@ class UI{
             searchedDiv.innerHTML += loader
         }
 
-
-        pageValue += 1
         api.searchMovies(searcedValue,pageValue).then(data => {
             if(data){
                 const movieResponse = data.searchedMovies.results
+                // const total_page = data.searchedMovies.results
                 let movies = ""
                 //add trending tv-series movies to div
                 for(let i = 0; i < movieResponse.length; i++){
@@ -1515,10 +1514,10 @@ class UI{
                     }
                 }
                 //
-                const loaderIcon = document.querySelectorAll('.search-results .loader-flex')
+                const loaderIcon = document.querySelectorAll('.search-results .load-more')
                 if(loaderIcon){
                     loaderIcon.forEach(loadIcon => {
-                        loadIcon.style.display = 'none'
+                        loadIcon.remove()
                     })
                 }
 
