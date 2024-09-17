@@ -97,7 +97,7 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .movie-header{display:flex;width:100%;align-items:center;}
 .searched-image-header{width:35%;}
 .searched-details-header{width:65%;display:flex;flex-direction:column;}
-.searched-image-header figure{width:calc(100% - 30%);height:500px;border-radius:7px;}
+.searched-image-header figure{width:calc(100% - 30%);aspect-ratio:3/4;border-radius:7px;}
 .searched-image-header figure img{width:100%;height:100%;object-fit:cover;border-radius:7px;}
 .title-header p{color:var(--yellow);font-weight:var(--wgt700);font-size:2.5rem;}
 .title-header p{font-family:var(--raleway);}

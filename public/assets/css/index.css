@@ -54,7 +54,7 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .search-button{margin-right:20px;}
 .search-button a button:hover{background-color:var(--yellow);color:var(--blue);}
 .movie-slideshow{display:flex;align-items:center;padding-bottom:20px;position:relative;overflow-x:auto;scroll-snap-type:inline mandatory;}
-.movie-slideshow .img-slide{min-width:calc(100% / 2);width:calc(100% / 2);padding:0 15px;scroll-snap-align:start;aspect-ratio:3/4;}
+.movie-slideshow .img-slide{min-width:calc(100% / 2);width:calc(100% / 2);padding:0 15px;scroll-snap-align:start;}
 .movie-slideshow .img-slide img{width:100%;height:100%;border-radius:5px;object-fit:cover;}
 .movie-slideshow .img-slide figcaption{text-align:start;margin-top:10px;}
 .movie-slideshow .img-slide figcaption :is(p, :not(.year-ratings)) p{font-family:var(--open-sans);color:var(--yellow);font-weight:var(--wgt600);font-size:1.05rem;}
@@ -172,7 +172,7 @@ header{background-position:center;background-size:cover;background-repeat:no-rep
 .main .person,.main .trendingTV,.main .trending{margin-bottom:80px;}
 .trending-movies,.person-movies{padding-bottom:0px;}
 
-.movie-slideshow .img-slide .img-hover{height:375px;}
+.movie-slideshow .img-slide .img-hover{aspect-ratio:3/4;}
 
 
 
