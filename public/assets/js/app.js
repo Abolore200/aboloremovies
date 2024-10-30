@@ -25,6 +25,9 @@ const movieSlideshow = document.querySelector('.movie-slideshow')
 //
 if(window){
     window.addEventListener('load', () => {
+        //
+        let allPageValue = 1;
+
         //open and close menubar
         ui.openMenuBar()
 
@@ -224,7 +227,8 @@ if(window){
                 
                 //search input
                 const search = document.querySelector('.search-input').value
-                let pageValue = 1
+                // let pageValue = 1
+                // allPageValue = pageValue
                 
                 //if search input is empty
                 if(search === ''){
@@ -255,9 +259,11 @@ if(window){
 
                     //
                     searchedValue = search
+
+                    // loadMoreSearchedBtn()
         
                     // function to fetch the movies from the api
-                    api.searchMovies(search,pageValue)
+                    api.searchMovies(search,allPageValue = 1)
 
                     //callback the fetch api
                     .then(movies => {
@@ -299,13 +305,13 @@ if(window){
         //hide load more search button on window load
         const loadMoreSearchedBtn = document.querySelector('.search-btn-load')
         if(loadMoreSearchedBtn){
-            let pageValue = 1
+            // let pageValue = 1
             loadMoreSearchedBtn.style.display = 'none'
             loadMoreSearchedBtn.addEventListener('click', (e) => {
                 e.preventDefault()
                 // if(pageValue === 1){
-                    pageValue += 1
-                    ui.loadMoreSearchedMovies(searchedValue,pageValue)
+                    allPageValue += 1
+                    ui.loadMoreSearchedMovies(searchedValue,allPageValue)
                 // }
             })
         }
